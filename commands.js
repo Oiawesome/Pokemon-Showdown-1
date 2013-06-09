@@ -126,7 +126,9 @@ var commands = exports.commands = {
 
 	join: function(target, room, user, connection) {
 		var targetRoom = Rooms.get(target);
-		if (room.isPrivate && !this.can('mute', 'targetUser')) return false;
+		if (room.isPrivate && !this.can('mute', 'targetUser')) {
+			return connection.sendTo(target, "You cannot join the room '"+target+"' because it is currently private.");
+		}
 		if (target && !targetRoom) {
 			return connection.sendTo(target, "|noinit|nonexistent|The room '"+target+"' does not exist.");
 		}
