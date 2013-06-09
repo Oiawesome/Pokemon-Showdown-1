@@ -1335,7 +1335,7 @@ console.log("NEW CHATROOM: lobby");
 rooms.lobby = new ChatRoom('lobby', 'Lobby');
 room.isPrivate: false;
 console.log("NEW CHATROOM: authchat");
-rooms.authchat = new ChatRoom('authchat', 'Auth Chat');
+rooms.authchat = new ChatRoom('authchat', 'Authority Chat');
 room.isPrivate: true;
 
 exports.GlobalRoom = GlobalRoom;
