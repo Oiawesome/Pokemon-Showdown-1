@@ -126,6 +126,7 @@ var commands = exports.commands = {
 
 	join: function(target, room, user, connection) {
 		var targetRoom = Rooms.get(target);
+		if (room.isPrivate && !this.can('mute', 'targetUser')) return false;
 		if (target && !targetRoom) {
 			return connection.sendTo(target, "|noinit|nonexistent|The room '"+target+"' does not exist.");
 		}
