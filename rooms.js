@@ -1333,8 +1333,10 @@ console.log("NEW GLOBAL: global");
 rooms.global = new GlobalRoom('global');
 console.log("NEW CHATROOM: lobby");
 rooms.lobby = new ChatRoom('lobby', 'Lobby');
+room.isPrivate: false;
 console.log("NEW CHATROOM: authchat");
 rooms.authchat = new ChatRoom('authchat', 'Auth Chat');
+room.isPrivate: true;
 
 exports.GlobalRoom = GlobalRoom;
 exports.BattleRoom = BattleRoom;

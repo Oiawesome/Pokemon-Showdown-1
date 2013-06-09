@@ -134,6 +134,7 @@ var commands = exports.commands = {
 		}
 		if (!user.joinRoom(targetRoom || room, connection)) {
 			// This condition appears to be impossible for now.
+			if (this.can('mute', targetUser)) return false;
 			return connection.sendTo(target, "|noinit|joinfailed|The room '"+target+"' could not be joined.");
 		}
 	},
