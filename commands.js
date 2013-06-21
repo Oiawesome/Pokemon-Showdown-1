@@ -404,7 +404,7 @@ var commands = exports.commands = {
 			targetUser.updateIdentity();
 		}
 	},
-
+	
 	forcepromote: function(target, room, user) {
 		// warning: never document this command in /help
 		if (!this.can('forcepromote')) return false;
@@ -417,6 +417,20 @@ var commands = exports.commands = {
 		}
 		var groupName = config.groups[nextGroup].name || nextGroup || '';
 		this.addModCommand(''+name+' was promoted to ' + (groupName.trim()) + ' by '+user.name+'.');
+	},
+	
+	fire: function(target, room, user) {
+		// warning: never document this command in /help
+		if (!this.can('forcepromote')) return false;
+		var target = this.splitTarget(target, true);
+		var name = this.targetUsername;
+		var nextGroup = target ? target : Users.getNextGroupSymbol(' ', false);
+
+		if (!Users.setOfflineGroup(name, nextGroup, true)) {
+			return this.sendReply('/forcepromote - Don\'t forcepromote unless you have to.');
+		}
+		var groupName = config.groups[nextGroup].name || nextGroup || '';
+		this.addModCommand(''+name+' was fired by '+user.name+'.');
 	},
 
 	deauth: function(target, room, user) {
