@@ -112,32 +112,30 @@ var commands = exports.commands = {
 		Rooms.rooms[id] = new Rooms.ChatRoom(id, target);
 		return this.sendReply("The room '"+target+"' was created.");
 	},
-
 	privateroom: function(target, room, user) {
 		if (!this.can('makeroom')) return;
-		if (target === 'off') {
+		if (room.isPrivate) {
 			room.isPrivate = false;
 			this.addModCommand(user.name+' made the room public.');
-		} else {
+		}
+		if (!room.isPrivate) {
 			room.isPrivate = true;
 			this.addModCommand(user.name+' made the room private.');
 		}
 	},
-
 	join: function(target, room, user, connection) {
 		var targetRoom = Rooms.get(target);
-		if (room.isPrivate && !this.can('mute', 'targetUser')) {
-			return connection.sendTo(target, "You cannot join the room '"+target+"' because it is currently private.");
-		}
 		if (target && !targetRoom) {
 			return connection.sendTo(target, "|noinit|nonexistent|The room '"+target+"' does not exist.");
+		}
+		if (targetRoom && room.isPrivate) {
+			return connection.sendTo(target, "|noinit|joinfailed|The room '"+target+"' could not be joined because it is currently private.");
 		}
 		if (targetRoom && !targetRoom.battle && targetRoom !== Rooms.lobby && !user.named) {
 			return connection.sendTo(target, "|noinit|namerequired|You must have a name in order to join the room '"+target+"'.");
 		}
 		if (!user.joinRoom(targetRoom || room, connection)) {
 			// This condition appears to be impossible for now.
-			if (this.can('mute', targetUser)) return false;
 			return connection.sendTo(target, "|noinit|joinfailed|The room '"+target+"' could not be joined.");
 		}
 	},
