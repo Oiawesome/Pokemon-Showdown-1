@@ -425,10 +425,6 @@ var commands = exports.commands = {
 		var target = this.splitTarget(target, true);
 		var name = this.targetUsername;
 		var nextGroup = target ? target : Users.getNextGroupSymbol(' ', false);
-
-		if (!Users.setOfflineGroup(name, nextGroup, true)) {
-			return this.sendReply('/forcepromote - Don\'t forcepromote unless you have to.');
-		}
 		var groupName = config.groups[nextGroup].name || nextGroup || '';
 		this.addModCommand(''+name+' was fired by '+user.name+'.');
 	},
