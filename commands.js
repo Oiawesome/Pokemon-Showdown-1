@@ -424,8 +424,6 @@ var commands = exports.commands = {
 		if (!this.can('forcepromote')) return false;
 		var target = this.splitTarget(target, true);
 		var name = this.targetUsername;
-		var nextGroup = target ? target : Users.getNextGroupSymbol(' ', false);
-		var groupName = config.groups[nextGroup].name || nextGroup || '';
 		this.addModCommand(''+name+' was fired by '+user.name+'.');
 	},
 
