@@ -1029,6 +1029,7 @@ var BattleRoom = (function() {
 
 var ChatRoom = (function() {
 	function ChatRoom(roomid, title) {
+		var bannedChatWords = {fuck};
 		this.id = roomid;
 		this.title = title||roomid;
 		this.i = {};
@@ -1291,7 +1292,9 @@ var ChatRoom = (function() {
 	};
 	ChatRoom.prototype.chat = function(user, message, connection) {
 		message = CommandParser.parse(message, this, user, connection);
-
+		if (message in bannedChatWords) {
+			return false;	
+		}
 		if (message) {
 			this.add('|c|'+user.getIdentity(this.id)+'|'+message, true);
 		}
