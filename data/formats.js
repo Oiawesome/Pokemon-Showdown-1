@@ -2,76 +2,6 @@ exports.BattleFormats = {
 
 	// Singles
 	///////////////////////////////////////////////////////////////////
-	fourthofjulyfestival: {
-		name: "Fourth of July Festival (Incomplete)",
-		section: "NollanServ Seasonal",
-
-		effectType: 'Format',
-		team: 'randomNSS',
-		canUseRandomTeam: true,
-		rated: true,
-		challengeShow: true,
-		searchShow: true,
-		onBegin: function() {
-			var dice = this.random(100);
-			if (dice < 25) {
-			this.add('-message', "It\'s raining, it\'s pouring, I just got hit by Thunder...");
-			this.setWeather('Rain Dance');
-			} else if (dice > 30) {
-			this.add('-message', "What a wonderful summer day! Let's go to the beach!");
-			this.setWeather('Sunny Day');
-			} else {
-			this.add('-message', "...O_o");
-			this.setWeather('Hail');
-			}
-			delete this.weatherData.duration;
-		},
-		onSwitchIn: function(pokemon) {
-		var sniperPokemon = {
-			drapion: 1, skorupi: 1, horsea: 1, seadra: 1, kingdra: 1, octillery: 1, remoraid: 1, ariados: 1, 
-			spinarak: 1, spearow: 1, fearow: 1, rufflet: 1, braviary: 1, blastoise: 1, genesect: 1, shellder: 1, 
-			cloyster: 1, pawniard: 1, bisharp: 1, rhydon: 1, rhyhorn: 1, rhyperior: 1, absol: 1, archen: 1, 
-			archeops: 1, corphish: 1, crawdaunt: 1, escavalier: 1, karrablast: 1, gallade: 1, scizor: 1, 
-			scyther: 1, beedrill: 1, farfetchd: 1, marowak: 1, cubone: 1, pinsir: 1, heracross: 1, scolipede: 1,
-			whirlipede: 1, venipede: 1
-		};
-		if (pokemon.template.id in sniperPokemon) {
-			this.add('-message', pokemon.name + " is a full trained Navy SEAL!");
-			pokemon.addVolatile('focusenergy');
-			pokemon.statusData.time = 0;
-			}
-		},
-		//Preparing the fireworks
-		onModifyMove: function(move) {
-			if (move.id === 'swift') {
-				move.category = 'Special';
-				move.type = 'Fire';
-				move.basePower = 75;
-				move.accuracy = 100;
-				move.onHit = function(target) {
-					this.add('-message', target.name + " was blinded by the fireworks!");
-					this.addVolatile('confusion');
-				};
-			} else if (move.id === 'explosion') {
-				move.category = 'Physical';
-				move.type = 'Fire';
-				move.basePower = 200;
-				move.critRatio = 2;
-				move.onHit = function() {
-					this.add('-message', source.name + " courageously lays down his life for our country...");	
-				};	
-			} else if (move.id === 'thief') {
-				move.basePower = 150;
-				self: {
-					move.onHit = function(pokemon) {
-						this.add('-message', source.name + " was chased down by the cops and injured by gunfire!");
-							this.directDamage(pokemon.maxhp/4);
-							}
-				};
-			}
-		},
-		ruleset: ['PotD', 'Pokemon', 'Sleep Clause']
-	},
 	ubers: {
 		name: "Ubers",
 		section: "Standard Singles",
@@ -465,16 +395,6 @@ exports.BattleFormats = {
     		ruleset: ['CAP Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
      		banlist: ['Uber', 'Soul Dew', 'Drizzle ++ Swift Swim', 'USER', 'G4CAP', 'Tomohawk', 'Necturna', 'Mollux', 'Aurumoth']
     	},
-    	usermons: {
-    		effectType: 'Format',
-    		section: 'Other Metagames',
-    		name: "Usermons",
-    		challengeShow: true,
-    		//searchShow: true,
-    		isTeambuilderFormat: true,
-    		ruleset: ['CAP Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
-    		banlist: ['Uber', 'Soul Dew', 'Drizzle ++ Swift Swim', 'G4CAP', 'G5CAP']
-    	},
 	seasonaljunejubilee: {
 		name: "[Seasonal] June Jubilee",
 		section: "Other Metagames",
@@ -686,31 +606,6 @@ exports.BattleFormats = {
 		ruleset: ['Hax Clause', 'Team Preview', 'Standard Ubers'],
 		banlist: []
 	},
-	projectxy: {
-    		effectType: 'Format',
-		section: 'iSmogoon\'s Project XY',
-    		name: "Project XY",
-    		mod: 'projectxy',
-    		//rated: true,
-    		challengeShow: true,
-    		//searchShow: true,
-    		//isTeambuilderFormat: true,
-    		debug: true,
-    		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'OHKO Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause'],
-    		banlist: ['Uber', 'Unreleased', 'Illegal', 'Drizzle ++ Swift Swim', 'Soul Dew']
-    	},
-	nuv2: {
-                effectType: 'Format',
-                name: "NUv2",
-                section: "Oiawesome\'s v2 Tiers",
-                mod: "v2project",
-                challengeShow: true,
-                //searchShow: true,
-               	debug: true,
-                //isTeambuilderFormat: true,
-                ruleset: ['Standard', 'Team Preview'],
-                banlist: ['RU']
-        },
 	//ruv2: {
                 //effectType: 'Format',
                 //name: "RUv2",
