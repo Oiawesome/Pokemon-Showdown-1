@@ -209,9 +209,6 @@ for (var i in Rooms.rooms) {
 }
 
 var crypto = require('crypto');
-var poofeh = true;
-var canpet = true;
-var canbs = true;
 
 var commands = exports.commands = {
 
@@ -220,7 +217,7 @@ var commands = exports.commands = {
 	 *********************************************************/
 	tour: function(target, room, user, connection) {
 		if (!user.can('broadcast')) {
-			return this.sendReply('You do not have enough authority to use this command.');
+			return this.sendReply('You do not have enough swaggah to use this command.');
 		}
 		if (tour[room.id].status != 0) {
 			return this.sendReply('There is already a tournament running, or there is one in a signup phase.');
@@ -254,12 +251,12 @@ var commands = exports.commands = {
 		tour[room.id].status = 1;
 		tour[room.id].players = new Array();		
 
-		room.addRaw('<hr /><h2><font color="green">' + sanitize(user.name) + ' has started a ' + tempTourTier + ' Tournament.</font> <font color="red">/j</font> <font color="green">to join!</font></h2><b><font color="blueviolet">PLAYERS:</font></b> ' + targets[1] + '<br /><font color="blue"><b>TIER:</b></font> ' + tempTourTier.toUpperCase() + '<hr />');
+		room.addRaw('<hr /><h2><font color="green">' + sanitize(user.name) + ' has started a(n) ' + tempTourTier + ' Tournament.</font> <font color="red">/j</font> <font color="green">to join!</font></h2><b><font color="blueviolet">PLAYERS:</font></b> ' + targets[1] + '<br /><font color="blue"><b>TIER:</b></font> ' + tempTourTier.toUpperCase() + '<hr />');
 	},
 	
 	endtour: function(target, room, user, connection) {
 		if (!user.can('broadcast')) {
-			return this.sendReply('You do not have enough authority to use this command.');
+			return this.sendReply('You do not have enough money to use this command.');
 		}
 		if (tour[room.id].status == 0) {
 			return this.sendReply('There is no active tournament.');
@@ -270,7 +267,7 @@ var commands = exports.commands = {
 	
 	toursize: function(target, room, user, connection) {
 		if (!user.can('broadcast')) {
-			return this.sendReply('You are an asshole for trying :D.');
+			return this.sendReply('What did you think would happen? You would magically be promoted to a voice so you could use this command?.');
 		}
 		if (tour[room.id].status > 1) {
 			return this.sendReply('The tournament size cannot be changed now!');
@@ -416,7 +413,7 @@ var commands = exports.commands = {
 	forceleave: 'fl',
 	fl: function(target, room, user, connection) {
 		if (!user.can('broadcast')) {
-			return this.sendReply('You do not have enough authority to use this command.');
+			return this.sendReply('You do not have enough intelligence to use this command.');
 		}
 		if (tour[room.id].status == 0 || tour[room.id].status == 2) {
 			return this.sendReply('There is no tournament in a sign-up phase.  Use /dq username if you wish to remove someone in an active tournament.');
@@ -490,7 +487,7 @@ viewround: 'vr',
 	disqualify: 'dq',
 	dq: function(target, room, user, connection) {
 		if (!user.can('ban')) {
-			return this.sendReply('You do not have enough authority to use this command.');
+			return this.sendReply('You do not have enough maturity, nollan powah, to use this command, and you just suck for trying that cruel joke.');
 		}
 		if (!target) {
 			return this.sendReply('Proper syntax for this command is: /dq username');
@@ -531,7 +528,7 @@ viewround: 'vr',
 	
 	replace: function(target, room, user, connection) {
 		if (!user.can('broadcast')) {
-			return this.sendReply('You do not have enough authority to use this command.');
+			return this.sendReply('You do not have enough battery charge left to use this command.');
 		}
 		if (tour[room.id].status != 2) {
 			return this.sendReply('The tournament is currently in a sign-up phase or is not active, and replacing users only works mid-tournament.');
