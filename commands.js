@@ -489,7 +489,7 @@ viewround: 'vr',
 	
 	disqualify: 'dq',
 	dq: function(target, room, user, connection) {
-		if (!user.can('broadcast')) {
+		if (!user.can('ban')) {
 			return this.sendReply('You do not have enough authority to use this command.');
 		}
 		if (!target) {
