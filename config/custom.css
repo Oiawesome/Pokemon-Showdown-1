@@ -1,6 +1,15 @@
 .lobbychat .battle-log,
 .huge-layout .lobbychat .battle-log
 { 
+        position: absolute;
+        top: 51px;
+        right: 0;
+        bottom: 40px;
+        left: 551px;
+        border-top: 0;
+        border-right: 0;
+        height: auto;
+        width: auto;
         background-color: #99ffff;
         background: #99ffff url(http://i.imgur.com/ZyZevw7.png) no-repeat scroll right bottom;
 }
