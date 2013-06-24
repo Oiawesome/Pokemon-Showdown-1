@@ -13,7 +13,6 @@
 
 var crypto = require('crypto');
 
-var commands = exports.commands = {
 	if (typeof tour == "undefined") {
 	tour = new Object();
 }
