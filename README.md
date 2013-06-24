@@ -1,25 +1,3 @@
-Tournament and Money Mods
-========================================================================
-Hi guys!  Orivexes here, with a bit of instructions on how to use this github.
-
-I'll be honest--I'm not a pro with this software.  So the most helpful thing I can suggest is how to get my mods into an existing PS! installation.
-
-The tour mod is loosely based off of one made by a fellow named Steve.  I don't really know Steve, but he rocks, so kudos to him.  I used some similar formats and command names for familiarity's sake.
-
-
-I guess I'll say hi as well, this is Nollan. Ok, so for those with the newer servers (ones running the command-parser.js and such), the tour commands do not work for you, due to several commands changes.
-After some various fixing/editing, I have made a working tour command for these later servers.
-To be modest though, Orivexes definitely deserves more or less all the credit for these commands, not me. I simply edited them a bit.
-Anyways, if you want to try the tour commands, pull these from my server's coding:
-
-- config/commands.js
-- commands-parser.js
-- users.js
-- rooms.js
-
-I have tried my best to mark the edited sections with //start tour commands and //end tour commands, etc. 
-If you have any problems with pulling these feel free to ask me for help.
-
 Pokémon Showdown
 ========================================================================
 
