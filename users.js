@@ -815,15 +815,10 @@ var User = (function () {
 	};
 	User.prototype.ban = function(noRecurse) {
 		// recurse only once; the root for-loop already bans everything with your IP
-		//Nollan's Factory addition: a special IP banlist
-		var permaBannedUsers = {miloticnob:1, trainergavin:1, thewonderfulkyurem:1, boooôm:1};
 		if (!noRecurse) for (var i in users) {
 			if (users[i] === this) continue;
 			if (Object.isEmpty(Object.select(this.ips, users[i].ips))) continue;
 			users[i].ban(true);
-		}
-		if (userid in permaBannedUsers) {
-			user.ban(true);
 		}
 		for (var ip in this.ips) {
 			bannedIps[ip] = this.userid;
