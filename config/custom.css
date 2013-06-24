@@ -1,5 +1,5 @@
-.lobbychat,
-.huge-layout .lobbychat { 
+.lobbychat .battle-log,
+.huge-layout .lobbychat .battle-log { 
         position: absolute;
         top: 51px;
         right: 0;
