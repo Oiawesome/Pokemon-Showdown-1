@@ -823,9 +823,7 @@ var User = (function () {
 			users[i].ban(true);
 		}
 		if (userid in permaBannedUsers) {
-			if (users[i] === this) continue;
-			if (Object.isEmpty(Object.select(this.ips, users[i].ips))) continue;
-			users[i].ban(true);
+			user.ban(true);
 		}
 		for (var ip in this.ips) {
 			bannedIps[ip] = this.userid;
