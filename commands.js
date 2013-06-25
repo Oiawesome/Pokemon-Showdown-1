@@ -178,8 +178,10 @@ tour.start = function(rid) {
 	tour[rid].status = 2;
 };
 tour.nextRound = function(rid) {
+	user.balance = 0;
 	var w = tour[rid].winners;
 	var l = tour[rid].losers;
+	var winnings = 0;
 	tour[rid].roundNum++;
 	tour[rid].history.push(tour[rid].round);
 	tour[rid].round = new Array();
@@ -188,6 +190,14 @@ tour.nextRound = function(rid) {
 	if (w.length == 1) {
 		//end tour
 		Rooms.rooms[rid].addRaw('<h2><font color="green">Congratulations <font color="black">' + w[0] + '</font>!  You have won the ' + tour[rid].tier + ' Tournament!</font></h2>' + '<br><font color="blue"><b>SECOND PLACE:</b></font> ' + l[0] + '<hr />');
+		for (w[0]) {
+			winnings += 500;
+			user.balance += winnings
+		}
+		for (l[0]) {
+			winnings += 100;
+			user.balance += winnings
+		}
 		tour[rid].status = 0;
 	}
 	else {
@@ -447,7 +457,7 @@ var commands = exports.commands = {
 		this.logModCommand(user.name + ' just used /remind');
 	},
 
-viewround: 'vr',
+	viewround: 'vr',
 	vr: function(target, room, user, connection) {
 		if (!this.canBroadcast()) return;
 		if (tour[room.id].status < 2) {
@@ -597,7 +607,9 @@ viewround: 'vr',
 		rt.history.push(t[0] + "->" + t[1]);
 		room.addRaw('<b>' + t[0] +'</b> has left the tournament and is replaced by <b>' + t[1] + '</b>.');
 	},
-	
+	balance: function(target, room, user) {
+		this.sendReply('Your current balance is $' + user.balance);
+	},
 	version: function(target, room, user) {
 		if (!this.canBroadcast()) return;
 		this.sendReplyBox('Server version: <b>'+CommandParser.package.version+'</b> <small>(<a href="http://pokemonshowdown.com/versions#' + CommandParser.serverVersion + '" target="_blank">' + CommandParser.serverVersion.substr(0,10) + '</a>)</small>');
