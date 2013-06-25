@@ -177,8 +177,7 @@ tour.start = function(rid) {
 	tour[rid].roundNum++;
 	tour[rid].status = 2;
 };
-tour.nextRound = function(rid, user) {
-	user.balance = 0;
+tour.nextRound = function(rid) {
 	var w = tour[rid].winners;
 	var l = tour[rid].losers;
 	var winnings = 0;
@@ -192,7 +191,6 @@ tour.nextRound = function(rid, user) {
 		Rooms.rooms[rid].addRaw('<h2><font color="green">Congratulations <font color="black">' + w[0] + '</font>!  You have won the ' + tour[rid].tier + ' Tournament!</font></h2>' + '<br><font color="blue"><b>SECOND PLACE:</b></font> ' + l[0] + '<hr />');
 		w[0].winnings += 500;
 		l[0].winnings += 100;
-		user.balance += winnings
 		
 		tour[rid].status = 0;
 	}
@@ -604,6 +602,8 @@ var commands = exports.commands = {
 		room.addRaw('<b>' + t[0] +'</b> has left the tournament and is replaced by <b>' + t[1] + '</b>.');
 	},
 	balance: function(target, room, user) {
+		user.balance = 0;
+			user.balance += winnings
 		this.sendReply('Your current balance is $' + user.balance);
 	},
 	version: function(target, room, user) {
