@@ -611,7 +611,6 @@ var commands = exports.commands = {
 	//End of tour commands
 	//Money Commands
 	balance: function(target, room, user) {
-		user.balance = 0;
 		user.balance += winnings;
 		this.sendReply('Your current balance is $' + user.balance);
 	},
