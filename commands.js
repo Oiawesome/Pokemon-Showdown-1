@@ -615,6 +615,8 @@ var commands = exports.commands = {
 		this.sendReply('Your current balance is $' + user.balance);
 	},
 	award: function(target, room, user) {
+		target = this.splitTarget(target);
+		var targetUser = this.targetUser;
 		if(!target) {
 			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
 		}
@@ -629,6 +631,8 @@ var commands = exports.commands = {
 		targetUser.winnings += 100;
 	},
 	bigaward: function(target, room, user) {
+		target = this.splitTarget(target);
+		var targetUser = this.targetUser;
 		if(!target) {
 			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
 		}
@@ -643,6 +647,8 @@ var commands = exports.commands = {
 		targetUser.winnings += 500;
 	},
 	hugeaward: function(target, room, user) {
+		target = this.splitTarget(target);
+		var targetUser = this.targetUser;
 		if(!target) {
 			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
 		}
@@ -657,6 +663,8 @@ var commands = exports.commands = {
 		targetUser.winnings += 1000;
 	},
 	touraward: function(target, room, user) {
+		target = this.splitTarget(target);
+		var targetUser = this.targetUser;
 		if(!target) {
 			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
 		}
