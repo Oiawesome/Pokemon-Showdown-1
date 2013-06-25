@@ -12,7 +12,9 @@
  */
 
 var crypto = require('crypto');
-	
+	//
+	var winnings = 0;
+	//
 	if (typeof tour == "undefined") {
 		tour = new Object();
 	}
@@ -180,7 +182,6 @@ tour.start = function(rid) {
 tour.nextRound = function(rid) {
 	var w = tour[rid].winners;
 	var l = tour[rid].losers;
-	var winnings = 0;
 	tour[rid].roundNum++;
 	tour[rid].history.push(tour[rid].round);
 	tour[rid].round = new Array();
