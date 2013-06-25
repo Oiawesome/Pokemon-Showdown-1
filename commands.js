@@ -625,7 +625,7 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $100. '+target);
 		this.addModCommand(''+targetUser.name+' was awarded $100 by '+user.name+'.');
-		targetUser.winnings += 100;
+		winnings += 100;
 	},
 	bigaward: function(target, room, user) {
 		target = this.splitTarget(target);
@@ -638,7 +638,7 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $500. Good job!'+target);
 		this.addModCommand(''+targetUser.name+' was awarded $500 by '+user.name+'.');
-		targetUser.winnings += 500;
+		winnings += 500;
 	},
 	hugeaward: function(target, room, user) {
 		target = this.splitTarget(target);
@@ -651,7 +651,7 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $1000. Amazing!'+target);
 		this.addModCommand(''+targetUser.name+' was awarded $1000 by '+user.name+'.');
-		targetUser.winnings += 1000;
+		winnings += 1000;
 	},
 	touraward: function(target, room, user) {
 		target = this.splitTarget(target);
@@ -664,7 +664,7 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $5000 for winning the tournament, congratulations!'+target);
 		this.addModCommand(''+targetUser.name+' was awarded $5000 by '+user.name+', since he/she won the tournament.');
-		targetUser.winnings += 5000;
+		winnings += 5000;
 	},
 	buy: function(target, room, user) {
 		if (!target) {
