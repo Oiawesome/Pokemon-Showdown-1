@@ -611,7 +611,8 @@ var commands = exports.commands = {
 	//End of tour commands
 	//Money Commands
 	balance: function(target, room, user) {
-		this.sendReply('Your current balance is $' + winnings);
+		user.balance += winnings
+		this.sendReply('Your current balance is $' + user.balance);
 	},
 	award: function(target, room, user) {
 		target = this.splitTarget(target);
@@ -670,7 +671,7 @@ var commands = exports.commands = {
 			return this.sendReplyBox('The shop requires you to specify what you want to purchase. Your options are Voice Promotion ($100000), Usermon Request ($50000), or Slots ($1000).')
 		}
 		if (target === voicepromotion) {
-			if (winnings < 100000) {
+			if (user.balance < 100000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
 			}
 			if (user.group === "+" || user.group === "%" || user.group === "@" || user.group === "&" || user.group === "~") {
@@ -680,14 +681,14 @@ var commands = exports.commands = {
 			user.group = "+";
 		}
 		if (target === 'usermonrequest') {
-			if (winnings < 50000) {
+			if (user.balance < 50000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
 			}
 			user.winnings -= 50000;
 			this.sendReplyBox('You now have the ability to make a new usermon. A usermon is a custom made pokemon, general based on a person or character. Please make an outline including base stats, abilities, learnsets, typing, etc, and then get it to Nollan so he can make it.');
 		}
 		if (target === 'slots') {
-			if (winnings < 1000) {
+			if (user.balance < 1000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
 			}
 			user.winnings -= 1000;
