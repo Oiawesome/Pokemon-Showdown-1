@@ -208,6 +208,8 @@ for (var i in Rooms.rooms) {
 
 var crypto = require('crypto');
 
+	var winnings = 0;
+	
 var commands = exports.commands = {
 
 	/**** tour commands, also by StevoDuhHero ****/
@@ -608,8 +610,6 @@ var commands = exports.commands = {
 	},
 	//End of tour commands
 	//Money Commands
-	var winnings = 0;
-
 	balance: function(target, room, user) {
 		user.balance = 0 + winnings
 		this.sendReply('Your current balance is $' + user.balance);
