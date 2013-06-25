@@ -617,10 +617,7 @@ var commands = exports.commands = {
 	award: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
-		if(!target) {
-			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
-		}
-		if (!targetUser) {
+		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
 		if (!this.can('ban', targerUser)) {
@@ -633,9 +630,6 @@ var commands = exports.commands = {
 	bigaward: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
-		if(!target) {
-			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
-		}
 		if (!targetUser) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
@@ -649,9 +643,6 @@ var commands = exports.commands = {
 	hugeaward: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
-		if(!target) {
-			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
-		}
 		if (!targetUser) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
@@ -665,9 +656,6 @@ var commands = exports.commands = {
 	touraward: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
-		if(!target) {
-			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
-		}
 		if (!targetUser) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
