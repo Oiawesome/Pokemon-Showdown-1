@@ -488,7 +488,7 @@ var commands = exports.commands = {
 	disqualify: 'dq',
 	dq: function(target, room, user, connection) {
 		if (!user.can('ban')) {
-			return this.sendReply('You do not have enough maturity, nollan powah, to use this command, and you just suck for trying that cruel joke.');
+			return this.sendReply('You do not have enough maturity, nollan powah, or awesomeness to use this command, and you just suck for trying that cruel joke.');
 		}
 		if (!target) {
 			return this.sendReply('Proper syntax for this command is: /dq username');
