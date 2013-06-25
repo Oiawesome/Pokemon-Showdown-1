@@ -12,10 +12,13 @@
  */
 
 var crypto = require('crypto');
-
+	//Money variable
+	user.balance = 0;
+	//END
+	
 	if (typeof tour == "undefined") {
-	tour = new Object();
-}
+		tour = new Object();
+	}
 tour.tiers = new Array();
 setTimeout(function() {for (var i in Data.base.Formats) {tour.tiers.push(i);}}, 1000);
 tour.reset = function(rid) {
@@ -178,7 +181,6 @@ tour.start = function(rid) {
 	tour[rid].status = 2;
 };
 tour.nextRound = function(rid) {
-	user.balance = 0;
 	var w = tour[rid].winners;
 	var l = tour[rid].losers;
 	var winnings = 0;
