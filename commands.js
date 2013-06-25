@@ -12,9 +12,7 @@
  */
 
 var crypto = require('crypto');
-	//
-	var winnings = 0;
-	//
+	
 	if (typeof tour == "undefined") {
 		tour = new Object();
 	}
@@ -190,8 +188,6 @@ tour.nextRound = function(rid) {
 	if (w.length == 1) {
 		//end tour
 		Rooms.rooms[rid].addRaw('<h2><font color="green">Congratulations <font color="black">' + w[0] + '</font>!  You have won the ' + tour[rid].tier + ' Tournament!</font></h2>' + '<br><font color="blue"><b>SECOND PLACE:</b></font> ' + l[0] + '<hr />');
-		w[0].winnings += 500;
-		l[0].winnings += 100;
 		
 		tour[rid].status = 0;
 	}
