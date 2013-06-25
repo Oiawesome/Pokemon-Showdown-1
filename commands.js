@@ -608,10 +608,128 @@ var commands = exports.commands = {
 	},
 	//End of tour commands
 	//Money Commands
+	var winnings = 0;
+
 	balance: function(target, room, user) {
-		user.balance = 0;
-		user.balance += winnings
+		user.balance = 0 + winnings
 		this.sendReply('Your current balance is $' + user.balance);
+	},
+	award: function(target, room, user) {
+		if(!target) {
+			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
+		}
+		if (!targetUser) {
+			return this.sendReply('User '+this.targetUsername+' not found.');
+		}
+		if (!this.can('ban', targerUser)) {
+			return this.sendReply('You do not have enough authority to use this command.')
+		}
+		targetUser.popup(user.name+' has awarded you $100. '+target);
+		this.addModCommand(''+targetUser.name+' was awarded $100 by '+user.name+'.';
+		targetUser.winnings += 100;
+	},
+	bigaward: function(target, room, user) {
+		if(!target) {
+			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
+		}
+		if (!targetUser) {
+			return this.sendReply('User '+this.targetUsername+' not found.');
+		}
+		if (!this.can('ban', targerUser)) {
+			return this.sendReply('You do not have enough authority to use this command.')
+		}
+		targetUser.popup(user.name+' has awarded you $500. Good job!'+target);
+		this.addModCommand(''+targetUser.name+' was awarded $500 by '+user.name+'.';
+		targetUser.winnings += 500;
+	},
+	hugeaward: function(target, room, user) {
+		if(!target) {
+			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
+		}
+		if (!targetUser) {
+			return this.sendReply('User '+this.targetUsername+' not found.');
+		}
+		if (!this.can('ban', targerUser)) {
+			return this.sendReply('You do not have enough authority to use this command.')
+		}
+		targetUser.popup(user.name+' has awarded you $1000. Amazing!'+target);
+		this.addModCommand(''+targetUser.name+' was awarded $1000 by '+user.name+'.';
+		targetUser.winnings += 1000;
+	},
+	touraward: function(target, room, user) {
+		if(!target) {
+			return this.sendReply('You have to award someone, and unfortunately this server doesn\'t count. Try /award Nollan.')
+		}
+		if (!targetUser) {
+			return this.sendReply('User '+this.targetUsername+' not found.');
+		}
+		if (!this.can('ban', targerUser)) {
+			return this.sendReply('You do not have enough authority to use this command.')
+		}
+		targetUser.popup(user.name+' has awarded you $5000 for winning the tournament, congratulations!'+target);
+		this.addModCommand(''+targetUser.name+' was awarded $5000 by '+user.name+', since he/she won the tournament.';
+		targetUser.winnings += 5000;
+	},
+	buy: function(target, room, user) {
+		if (!target) {
+			return this.sendReplyBox('The shop requires you to specify what you want to purchase. Your options are Voice Promotion ($100000), Usermon Request ($50000), or Slots ($1000).')
+		}
+		if (target === voicepromotion) {
+			if (user.balance < 100000) {
+				return this.sendReply('You do not have enough balance to make this purchase.');
+			}
+			if (user.group === "+" || user.group === "%" || user.group === "@" || user.group === "&" || user.group === "~") {
+				return this.sendReply('You are already ranked at voice or higher, unless you want a demotion, you cannot make this purchase.')
+			}
+			user.winnings -= 100000;
+			user.group = "+";
+		}
+		if (target === 'usermonrequest') {
+			if (user.balance < 50000) {
+				return this.sendReply('You do not have enough balance to make this purchase.');
+			}
+			user.winnings -= 50000;
+			this.sendReplyBox('You now have the ability to make a new usermon. A usermon is a custom made pokemon, general based on a person or character. Please make an outline including base stats, abilities, learnsets, typing, etc, and then get it to Nollan so he can make it.');
+		}
+		if (target === 'slots') {
+			if (user.balance < 1000) {
+				return this.sendReply('You do not have enough balance to make this purchase.');
+			}
+			user.winnings -= 1000;
+			var chance = Math.floor(Math.random() * 100);
+			var chance2 = Math.floor(Math.random() * 10000);
+			var chance3 = Math.floor(Math.random() * 1000);
+
+			if (chance < 1) {
+				winnings += 5000; // 1/100
+			} else if (chance < 5) { // 4/100
+				winnings += 3000;
+			} else if (chance < 10) {	// 5/100
+				winnings += 1500;
+			} else if (chance < 20) {	// 10/100
+				winnings += 1000;
+			} else if (chance < 40) {	// 30/100
+				winnings += 750;
+			} else {	// 50/100
+				winnings -= 1500;
+			}
+
+			if (chance2 < 1) {
+				winnings += 10000;
+			} else if (chance2 < 10) {
+				winnings += 5000;
+			} else if (chance2 < 100) {
+				winnings += 2500;
+			} else if (chance2 < 500) {
+				winnings += 1000;
+			}
+
+			if (chance3 < 1) {
+			winnings += (Math.floor(Math.random() * (10000 - 2000 + 10)) + 2000) * 1000;
+			} 
+			user.emit('console', 'You' + ((winnings < 0) ? " lost":" won") + " $" + Math.abs(winnings) + "!");
+			user.emit('console', "Your Balance: $" + user.balance);
+		}
 	},
 	//End of Money Commands
 	version: function(target, room, user) {
