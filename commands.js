@@ -190,11 +190,11 @@ tour.nextRound = function(rid) {
 	if (w.length == 1) {
 		//end tour
 		Rooms.rooms[rid].addRaw('<h2><font color="green">Congratulations <font color="black">' + w[0] + '</font>!  You have won the ' + tour[rid].tier + ' Tournament!</font></h2>' + '<br><font color="blue"><b>SECOND PLACE:</b></font> ' + l[0] + '<hr />');
-		for (w[0]) {
+		for w[0] {
 			winnings += 500;
 			user.balance += winnings
 		}
-		for (l[0]) {
+		for l[0] {
 			winnings += 100;
 			user.balance += winnings
 		}
