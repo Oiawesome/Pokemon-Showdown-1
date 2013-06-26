@@ -1,3 +1,15 @@
+Money Mod
+========================================================================
+
+Hey everyone, Nollan here. For those interested in the money commands for my server, I will kindly offer some advice. But first,
+I want to give credit where credit is due. I can easily say I did not make these commands by myself. Additional credit goes to Chomi
+and Orivexes, whose respective Money Mod and Slots command were very helpful in the making of these commands. I also want to recognize
+bandicam, who requested I make these and is the reason I decided to in the first place. Additionally, note these commands are very new,
+and stil have several bugs to be fixed.
+
+Ok, so if you want to try these, simply pull them from commands.js, that is where it all is. Make sure to pull the "var winners = 0;" at 
+line 211, without that the code will NOT work. Anyways, enjoy!
+
 Pokémon Showdown
 ========================================================================
 
