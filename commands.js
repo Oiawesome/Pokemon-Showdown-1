@@ -678,7 +678,7 @@ var commands = exports.commands = {
 	},
 	buy: function(target, room, user) {
 		var match = false;
-		if (!target || !match) {
+		if (match = false) {
 			return this.sendReplyBox('The shop requires you to specify what you want to purchase. Your options are Voice Promotion ($100000), Usermon Request ($50000), or Slots ($1000).')
 		}
 		if (target === 'voicepromotion') {
