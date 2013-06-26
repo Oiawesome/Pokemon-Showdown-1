@@ -1,13 +1,13 @@
         .mainmenuwrapper {
-                color: #BBFFFF;
+                color: #A9A9A9;
                 font-size: 11pt;
                 font-family: Verdana,Helvetica,Arial,sans-serif;
-                background: url("http://th06.deviantart.net/fs70/PRE/i/2012/177/6/d/thundurus_wallpaper_by_shineshizu-d54x5xd.jpg") no-repeat scroll top right;
+                background: url("http://th06.deviantart.net/fs70/PRE/i/2012/177/6/d/thundurus_wallpaper_by_shineshizu-d54x5xd.jpg") no-repeat scroll top center;
         }
         .userlist {
                 border-left: 1px solid #23686f;
                 min-height: 100%;
-                background: #9ed3e8;
+                background: #A9A9A9;
         }
         .userlist li {
                 border-bottom: 1px solid #23686f;
