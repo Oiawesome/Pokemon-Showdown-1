@@ -384,6 +384,18 @@ exports.BattleFormats = {
     		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause'],
     		banlist: ['Unreleased', 'Illegal', 'Sheer Cold', 'Horn Drill', 'Guillotine']
     	},
+    	skybattle: {
+    		effectType: 'Format',
+    		section: 'Other Metagames',
+    		name: "Gen 5 Sky Battle",
+    		rated: true,
+    		challengeShow: true,
+    		searchShow: true,
+    		isTeambuilderFormat: true,
+    		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause', 'OHKO Clause', 'Sky Battle'],
+    		banlist: ['Unreleased', 'Illegal', 'Soul Dew']
+
+    	},
     	dscap: {
     		effectType: 'Format',
     		section: "Other Metagames",
@@ -834,6 +846,15 @@ exports.BattleFormats = {
 			}
 			if (!template.nfe) {
 				return [set.species+" doesn't have an evolution family."];
+			}
+		}
+	},
+	skybattle: {
+		effectType: 'Rule',
+		validateSet: function(set) {
+			var template = this.getTemplate(set.species || set.name);
+			if (!template.ability === 'Levitate' && !template.types === 'Flying') {
+				return [set.species+" isn't allowed because it is not Flying type or does not have the ability Levitate."];
 			}
 		}
 	},
