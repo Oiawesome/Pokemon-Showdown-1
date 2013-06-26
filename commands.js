@@ -692,7 +692,7 @@ var commands = exports.commands = {
 			user.winnings -= 100000;
 			user.balance += winnings;
 			return winnings = 0;
-			this.addModCommand(''+user.name+' has purchased voice.');
+			this.add('|raw|<div class="broadcast-red"><b>Voice was purchased by' +user.name+ '!</b><br />An administrator will promote you as soon as possible.</div>');
 			this.sendReply('You have successfully purchased voice. Please wait while an Administrator promotes you. If you do not get promoted, please remind or contact an Administrator to promote you.');
 		}
 		if (target === 'usermon') {
@@ -703,7 +703,7 @@ var commands = exports.commands = {
 			user.winnings -= 50000;
 			user.balance += winnings;
 			return winnings = 0;
-			this.addModCommand(''+user.name+' has purchased a usermon request');
+			this.add('|raw|<div class="broadcast-red"><b>A usermon slot was purchased by' +user.name+ '!</b><br /></div>');
 			this.sendReplyBox('You now have the ability to make a new usermon. A usermon is a custom made pokemon, general based on a person or character. Please make an outline including base stats, abilities, learnsets, typing, etc, and then get it to Nollan so he can make it.');
 		}
 		if (target === 'slots') {
@@ -711,7 +711,6 @@ var commands = exports.commands = {
 			if (user.balance < 1000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
 			}
-			this.addModCommand(''+user.name+' has purchased a spin at the slots.');
 			user.winnings -= 1000;
 			var chance = Math.floor(Math.random() * 100);
 			var chance2 = Math.floor(Math.random() * 10000);
@@ -744,9 +743,9 @@ var commands = exports.commands = {
 			if (chance3 < 1) {
 			winnings += (Math.floor(Math.random() * (10000 - 2000 + 10)) + 2000) * 1000;
 			} 
-			user.sendReply('You' + ((winnings < 0) ? " lost":" won") + " $" + Math.abs(winnings) + "!");
+			this.sendReply('You' + ((winnings < 0) ? " lost":" won") + " $" + Math.abs(winnings) + "!");
 			user.balance += winnings;
-			user.sendReply("Your balance is now $" + user.balance);
+			this.sendReply("Your balance is now $" + user.balance);
 			return winnings = 0;
 		}
 	},
