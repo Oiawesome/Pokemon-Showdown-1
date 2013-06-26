@@ -679,23 +679,23 @@ var commands = exports.commands = {
 	buy: function(target, room, user) {
 		var match = false;
 		if (match = false) {
-			return this.sendReplyBox('The shop requires you to specify what you want to purchase. Your options are Voice Promotion ($100000), Usermon Request ($50000), or Slots ($1000).')
+			return this.sendReplyBox('The shop requires you to specify what you want to purchase. Your options are Voice ($100000), Usermon ($50000), or Slots ($1000).')
 		}
-		if (target === 'voicepromotion') {
+		if (target === 'voice') {
 			match = true;
 			if (user.balance < 100000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
 			}
 			if (user.group === "+" || user.group === "%" || user.group === "@" || user.group === "&" || user.group === "~") {
-				return this.sendReply('You are already ranked at voice or higher, unless you want a demotion, you cannot make this purchase.')
+				return this.sendReply('You are already ranked at voice or higher, unless you want a demotion, you cannot make this purchase.');
 			}
 			user.winnings -= 100000;
 			user.balance += winnings;
 			return winnings = 0;
 			this.addModCommand(''+user.name+' has purchased voice.');
-			user.group = "+";
+			this.sendReply('You have successfully purchased voice. Please wait while an Administrator promotes you. If you do not get promoted, please remind or contact an Administrator to promote you.');
 		}
-		if (target === 'usermonrequest') {
+		if (target === 'usermon') {
 			match = true;
 			if (user.balance < 50000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
@@ -703,7 +703,7 @@ var commands = exports.commands = {
 			user.winnings -= 50000;
 			user.balance += winnings;
 			return winnings = 0;
-			this.addModCommand(''+user.name+' has purchased a usermon request')
+			this.addModCommand(''+user.name+' has purchased a usermon request');
 			this.sendReplyBox('You now have the ability to make a new usermon. A usermon is a custom made pokemon, general based on a person or character. Please make an outline including base stats, abilities, learnsets, typing, etc, and then get it to Nollan so he can make it.');
 		}
 		if (target === 'slots') {
@@ -711,6 +711,7 @@ var commands = exports.commands = {
 			if (user.balance < 1000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
 			}
+			this.addModCommand(''+user.name+' has purchased a spin at the slots.');
 			user.winnings -= 1000;
 			var chance = Math.floor(Math.random() * 100);
 			var chance2 = Math.floor(Math.random() * 10000);
@@ -743,9 +744,9 @@ var commands = exports.commands = {
 			if (chance3 < 1) {
 			winnings += (Math.floor(Math.random() * (10000 - 2000 + 10)) + 2000) * 1000;
 			} 
-			user.emit('console', 'You' + ((winnings < 0) ? " lost":" won") + " $" + Math.abs(winnings) + "!");
+			user.sendReply('You' + ((winnings < 0) ? " lost":" won") + " $" + Math.abs(winnings) + "!");
 			user.balance += winnings;
-			user.emit('console', "Your balance is now $" + user.balance);
+			user.sendReply("Your balance is now $" + user.balance);
 			return winnings = 0;
 		}
 	},
