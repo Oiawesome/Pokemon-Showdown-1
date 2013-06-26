@@ -852,7 +852,7 @@ exports.BattleFormats = {
 		effectType: 'Rule',
 		validateSet: function(set) {
 			var template = this.getTemplate(set.species || set.name);
-			if (!template.ability === 'Levitate' && !template.types === ['Flying']) {
+			if (template.ability !== 'Levitate' && !template.types !== ['Flying']) {
 				return [set.species+" isn't allowed because it is not Flying type or does not have the ability Levitate."];
 			}
 		}
