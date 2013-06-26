@@ -4,6 +4,28 @@
                 font-family: Verdana,Helvetica,Arial,sans-serif;
                 background: url("http://th06.deviantart.net/fs70/PRE/i/2012/177/6/d/thundurus_wallpaper_by_shineshizu-d54x5xd.jpg") no-repeat scroll top center;
         }
+        .menugroup .button:hover {
+                background: none repeat scroll 0% 0% #000000;
+                opacity: 1.0;
+        }
+        .menugroup .button:hover {
+                background: -moz-linear-gradient(center top , #000000) repeat scroll 0% 0%
+                transparent;
+                border-color: #000000;
+        }
+        .menugroup .button {
+                opacity: 1.0;
+                font-size: 12pt;
+                font-family: Verdana,Helvetica,Arial,sans-serif;
+                display: inline-block;
+                padding: 1px;
+                width: 200px;
+                text-align: center;
+                text-decoration: none;
+                color: rgb(192, 192, 192);
+                border: 1px solid #303030;
+                background: none repeat scroll 0% 0% #303030;
+        }
         .userlist {
                 border-left: 1px solid #23686f;
                 min-height: 100%;
