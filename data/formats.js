@@ -4,7 +4,7 @@ exports.BattleFormats = {
 	///////////////////////////////////////////////////////////////////
 	ubers: {
 		name: "Ubers",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		rated: true,
@@ -16,7 +16,7 @@ exports.BattleFormats = {
 	},
 	ou: {
 		name: "OU",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		challengeDefault: true,
@@ -29,7 +29,7 @@ exports.BattleFormats = {
 	},
 	vgcsingles: {
 		effectType: 'Format',
-		section: "Standard Singles",
+		section: "Singles",
 		name: "VGC Singles",
 		rated: true,
 		challengeShow: true,
@@ -76,7 +76,7 @@ exports.BattleFormats = {
 	oulenient: {
 		effectType: 'Format',
 		name: "OU Lenient",
-		section: "Standard Singles",
+		section: "Singles",
 		rated: true,
 		challengeShow: true,
 		searchShow: true,
@@ -86,7 +86,7 @@ exports.BattleFormats = {
 	},
 	oumonotype: {
 		name: "OU Monotype",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		rated: true,
@@ -98,7 +98,7 @@ exports.BattleFormats = {
 	},
 	cap: {
 		name: "CAP",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		rated: true,
@@ -110,7 +110,7 @@ exports.BattleFormats = {
 	},
 	uu: {
 		name: "UU",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		rated: true,
@@ -122,7 +122,7 @@ exports.BattleFormats = {
 	},
 	ru: {
 		name: "RU",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		rated: true,
@@ -134,7 +134,7 @@ exports.BattleFormats = {
 	},
 	nu: {
 		name: "NU",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		rated: true,
@@ -146,7 +146,7 @@ exports.BattleFormats = {
 	},
 	pu: {
 		name: "PU",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		rated: true,
@@ -158,7 +158,7 @@ exports.BattleFormats = {
 	},
 	lc: {
 		name: "LC",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		maxLevel: 5,
@@ -171,7 +171,7 @@ exports.BattleFormats = {
 	},
 	randombattle: {
 		name: "Random Battle",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		team: 'random',
@@ -184,7 +184,7 @@ exports.BattleFormats = {
 	},
 	challengecup: {
 		name: "Challenge Cup",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		team: 'randomCC',
@@ -196,7 +196,7 @@ exports.BattleFormats = {
 	},
 	challengecup1vs1: {
 		name: "Challenge Cup 1-vs-1",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		team: 'randomCC',
@@ -215,7 +215,7 @@ exports.BattleFormats = {
 	},
 	customgame: {
 		name: "Custom Game",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		challengeShow: true,
@@ -227,7 +227,7 @@ exports.BattleFormats = {
 	},
 	customgamenoteampreview: {
 		name: "Custom Game (no Team Preview)",
-		section: "Standard Singles",
+		section: "Singles",
 
 		effectType: 'Format',
 		challengeShow: true,
@@ -243,7 +243,7 @@ exports.BattleFormats = {
 
 	doublesvgc2013: {
 		name: "Doubles VGC 2013",
-		section: 'Standard Doubles',
+		section: 'Doubles',
 
 		effectType: 'Format',
 		gameType: 'doubles',
@@ -291,7 +291,7 @@ exports.BattleFormats = {
 	},
 	smogondoubles: {
 		name: "Smogon Doubles",
-		section: "Standard Doubles",
+		section: "Doubles",
 
 		effectType: 'Format',
 		gameType: 'doubles',
@@ -318,7 +318,7 @@ exports.BattleFormats = {
 	},
 	uberdoubles: {
 		name: "Uber Doubles",
-		section: "Standard Doubles",
+		section: "Doubles",
 		
 		effectType: 'Format',
 		gameType: 'doubles',
@@ -343,7 +343,7 @@ exports.BattleFormats = {
 	},
 	doublescustomgame: {
 		name: "Doubles Custom Game",
-		section: "Standard Doubles",
+		section: "Doubles",
 
 		effectType: 'Format',
 		gameType: 'doubles',
@@ -392,7 +392,7 @@ exports.BattleFormats = {
     		challengeShow: true,
     		searchShow: true,
     		isTeambuilderFormat: true,
-    		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
+    		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Sky Battle', 'Team Preview'],
 		banlist: ['Uber', 'Soul Dew']
 	},
     	dscap: {
