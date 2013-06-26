@@ -689,7 +689,7 @@ var commands = exports.commands = {
 			if (user.group === "+" || user.group === "%" || user.group === "@" || user.group === "&" || user.group === "~") {
 				return this.sendReply('You are already ranked at voice or higher, unless you want a demotion, you cannot make this purchase.');
 			}
-			user.winnings -= 100000;
+			winnings -= 100000;
 			user.balance += winnings;
 			return winnings = 0;
 			this.add('|raw|<div class="broadcast-red"><b>Voice was purchased by' +user.name+ '!</b><br />An administrator will promote you as soon as possible.</div>');
@@ -700,7 +700,7 @@ var commands = exports.commands = {
 			if (user.balance < 50000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
 			}
-			user.winnings -= 50000;
+			winnings -= 50000;
 			user.balance += winnings;
 			return winnings = 0;
 			this.add('|raw|<div class="broadcast-red"><b>A usermon slot was purchased by' +user.name+ '!</b><br /></div>');
@@ -711,7 +711,7 @@ var commands = exports.commands = {
 			if (user.balance < 1000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
 			}
-			user.winnings -= 1000;
+			winnings -= 1000;
 			var chance = Math.floor(Math.random() * 100);
 			var chance2 = Math.floor(Math.random() * 10000);
 			var chance3 = Math.floor(Math.random() * 1000);
