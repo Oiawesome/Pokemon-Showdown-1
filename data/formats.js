@@ -392,7 +392,7 @@ exports.BattleFormats = {
     		challengeShow: true,
     		searchShow: true,
     		isTeambuilderFormat: true,
-    		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview', 'Sky Battle'],
+    		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
 		banlist: ['Uber', 'Soul Dew']
 	},
     	dscap: {
