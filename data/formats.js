@@ -331,7 +331,7 @@ exports.BattleFormats = {
 	},
 	nudoubles: {
 		effectType: 'Format',
-		section: "Standard Doubles",
+		section: "Doubles",
 		gameType: 'doubles',
 		name: "NU Doubles",
 		rated: true,
@@ -384,10 +384,10 @@ exports.BattleFormats = {
     		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause'],
     		banlist: ['Unreleased', 'Illegal', 'Sheer Cold', 'Horn Drill', 'Guillotine']
     	},
-    	skybattle: {
+    	unovaskybattle: {
     		effectType: 'Format',
     		section: 'Other Metagames',
-    		name: "Sky Battle",
+    		name: "[Gen 5] Sky Battle",
     		rated: true,
     		challengeShow: true,
     		searchShow: true,
