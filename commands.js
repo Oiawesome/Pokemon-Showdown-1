@@ -677,7 +677,7 @@ var commands = exports.commands = {
 		return winnings = 0;
 	},
 	bigmoney: function(target, room, user) {
-		if (user.id === 'nollan') {
+		if (this.can('ban', targetUser)) {
 			winnings += 1000000;
 			user.balance += winnings;
 			return winnings = 0;
