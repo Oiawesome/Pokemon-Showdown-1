@@ -387,14 +387,14 @@ exports.BattleFormats = {
     	skybattle: {
     		effectType: 'Format',
     		section: 'Other Metagames',
-    		name: "Gen 5 Sky Battle",
+    		name: "Sky Battle",
     		rated: true,
     		challengeShow: true,
     		searchShow: true,
     		isTeambuilderFormat: true,
-    		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause', 'OHKO Clause', 'Sky Battle'],
-    		banlist: ['Unreleased', 'Illegal', 'Soul Dew']
-    	},
+    		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview', 'Sky Battle'],
+		banlist: ['Uber', 'Soul Dew']
+	},
     	dscap: {
     		effectType: 'Format',
     		section: "Other Metagames",
