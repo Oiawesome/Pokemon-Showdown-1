@@ -394,7 +394,6 @@ exports.BattleFormats = {
     		isTeambuilderFormat: true,
     		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause', 'OHKO Clause', 'Sky Battle'],
     		banlist: ['Unreleased', 'Illegal', 'Soul Dew']
-
     	},
     	dscap: {
     		effectType: 'Format',
