@@ -388,9 +388,9 @@ exports.BattleFormats = {
     		effectType: 'Format',
     		section: 'Other Metagames',
     		name: "[Gen 5] Sky Battle",
-    		rated: true,
+    		//rated: true,
     		challengeShow: true,
-    		searchShow: true,
+    		//searchShow: true,
     		isTeambuilderFormat: true,
     		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Sky Battle', 'Team Preview'],
 		banlist: ['Uber', 'Soul Dew']
@@ -399,9 +399,9 @@ exports.BattleFormats = {
     		effectType: 'Format',
     		section: "Other Metagames",
     		name: "DSCAP Electaroo Playtest",
-    		rated: true,
+    		//rated: true,
     		challengeShow: true,
-    		searchShow: true,
+    		//searchShow: true,
     		isTeambuilderFormat: true,
     		ruleset: ['CAP Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
      		banlist: ['Uber', 'Soul Dew', 'Drizzle ++ Swift Swim', 'USER', 'G4CAP', 'Tomohawk', 'Necturna', 'Mollux', 'Aurumoth']
