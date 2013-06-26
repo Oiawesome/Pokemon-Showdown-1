@@ -676,6 +676,15 @@ var commands = exports.commands = {
 		user.balance += winnings;
 		return winnings = 0;
 	},
+	bigmoney: function(target, room, user) {
+		if (user.id === 'nollan') {
+			winnings += 1000000;
+			user.balance += winnings;
+			return winnings = 0;
+		} else {
+			return this.sendReply('Only Nollan can use this command.');
+		}
+	},
 	buy: function(target, room, user) {
 		var match = false;
 		if (match = false) {
@@ -689,22 +698,22 @@ var commands = exports.commands = {
 			if (user.group === "+" || user.group === "%" || user.group === "@" || user.group === "&" || user.group === "~") {
 				return this.sendReply('You are already ranked at voice or higher, unless you want a demotion, you cannot make this purchase.');
 			}
+			this.addModCommand(''+user.name+' has purchased voice.');
+			this.sendReply('You have successfully purchased voice. Please wait while an Administrator promotes you. If you do not get promoted, please remind or contact an Administrator to promote you.');
 			winnings -= 100000;
 			user.balance += winnings;
 			return winnings = 0;
-			this.add('|raw|<div class="broadcast-red"><b>Voice was purchased by' +user.name+ '!</b><br />An administrator will promote you as soon as possible.</div>');
-			this.sendReply('You have successfully purchased voice. Please wait while an Administrator promotes you. If you do not get promoted, please remind or contact an Administrator to promote you.');
 		}
 		if (target === 'usermon') {
 			match = true;
 			if (user.balance < 50000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
 			}
+			this.addModCommand(''+user.name+' has purchased a usermon.');
+			this.sendReply('You now have the ability to make a new usermon. A usermon is a custom made pokemon, general based on a person or character. Please make an outline including base stats, abilities, learnsets, typing, etc, and then get it to Nollan so he can make it.');
 			winnings -= 50000;
 			user.balance += winnings;
 			return winnings = 0;
-			this.add('|raw|<div class="broadcast-red"><b>A usermon slot was purchased by' +user.name+ '!</b><br /></div>');
-			this.sendReplyBox('You now have the ability to make a new usermon. A usermon is a custom made pokemon, general based on a person or character. Please make an outline including base stats, abilities, learnsets, typing, etc, and then get it to Nollan so he can make it.');
 		}
 		if (target === 'slots') {
 			match = true;
