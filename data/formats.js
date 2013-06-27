@@ -96,6 +96,17 @@ exports.BattleFormats = {
 		ruleset: ['Pokemon', 'Standard', 'Same Type Clause', 'Evasion Abilities Clause', 'Team Preview'],
 		banlist: ['Uber', 'Drizzle ++ Swift Swim', 'Soul Dew']
 	},
+	skybattleou: {
+		name: "Sky Battle OU",
+		section: "Singles",
+		effectType: 'Format',
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		isTeambuilderFormat: true,
+		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview', 'Sky Battle Clause'],
+		banlist: ['Uber', 'Soul Dew']
+	},
 	cap: {
 		name: "CAP",
 		section: "Singles",
@@ -341,6 +352,31 @@ exports.BattleFormats = {
 		ruleset: ['RU'],
 		banlist: ['RU', 'BL3', 'Sky Drop']
 	},
+	doublesskybattle: {
+		name: "Sky Battle Doubles",
+		section: "Doubles",
+		gameType: 'doubles',
+		effectType: 'Format',
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		isTeambuilderFormat: true,
+		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview', 'Sky Battle Clause'],
+		banlist: ['Uber', 'Soul Dew']
+	},
+	bhdoubles: {
+		name: "BH Doubles",
+		section: "Doubles",
+		
+		effectType: 'Format',
+		gameType: 'doubles',
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		isTeambuilderFormat: true,
+		ruleset: ['Pokemon', 'OHKO Clause'],
+		banlist: ['Wonder Guard', 'Pure Power', 'Huge Power', 'Shadow Tag', 'Arena Trap']
+	},
 	doublescustomgame: {
 		name: "Doubles Custom Game",
 		section: "Doubles",
@@ -384,17 +420,6 @@ exports.BattleFormats = {
     		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause'],
     		banlist: ['Unreleased', 'Illegal', 'Sheer Cold', 'Horn Drill', 'Guillotine']
     	},
-    	unovaskybattle: {
-    		effectType: 'Format',
-    		section: 'Other Metagames',
-    		name: "[Gen 5] Sky Battle",
-    		//rated: true,
-    		challengeShow: true,
-    		//searchShow: true,
-    		isTeambuilderFormat: true,
-    		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Sky Battle', 'Team Preview'],
-		banlist: ['Uber', 'Soul Dew']
-	},
     	dscap: {
     		effectType: 'Format',
     		section: "Other Metagames",
@@ -495,19 +520,6 @@ exports.BattleFormats = {
 		section: "Other Metagames",
 
 		effectType: 'Format',
-		rated: true,
-		challengeShow: true,
-		searchShow: true,
-		isTeambuilderFormat: true,
-		ruleset: ['Pokemon', 'OHKO Clause'],
-		banlist: ['Wonder Guard', 'Pure Power', 'Huge Power', 'Shadow Tag', 'Arena Trap']
-	},
-	bhdoubles: {
-		name: "BH Doubles",
-		section: "Other Metagames",
-		
-		effectType: 'Format',
-		gameType: 'doubles',
 		rated: true,
 		challengeShow: true,
 		searchShow: true,
@@ -848,15 +860,15 @@ exports.BattleFormats = {
 			}
 		}
 	},
-	skybattle: {
-		effectType: 'Rule',
-		validateSet: function(set) {
-			var template = this.getTemplate(set.species || set.name);
-			if (template.ability !== 'Levitate' && template.types !== ['Flying']) {
-				return [set.species+" isn't allowed because it is not Flying type or does not have the ability Levitate."];
-			}
-		}
-	},
+	skybattleclause: {
+                effectType: 'Rule',
+                validateSet: function(set) {
+                        var template = this.getTemplate(set.species || set.name);
+                        if (!template.ability === 'Levitate' && template.id !== 'charizard' && template.id !== 'pidgey' && template.id !== 'pidgeotto' && template.id !== 'pidgeot' && template.id !== 'spearow' && template.id !== 'fearow' && template.id !== 'zubat' && template.id !== 'golbat' && template.id !== 'farfetchd' && template.id !== 'doduo' && template.id !== 'dodrio' && template.id !== 'scyther' && template.id !== 'gyarados' && template.id !== 'aerodactyl' && template.id !== 'articuno' && template.id !== 'zapdos' && template.id !== 'moltres' && template.id !== 'dragonite' && template.id !== 'hoothoot' && template.id !== 'noctowl' && template.id !== 'ledyba' && template.id !== 'ledian' && template.id !== 'crobat' && template.id !== 'togetic' && template.id !== 'natu' && template.id !== 'xatu' && template.id !== 'hoppip' && template.id !== 'skiploom' && template.id !== 'jumpluff' && template.id !== 'yanma' && template.id !== 'murkrow' && template.id !== 'gligar' && template.id !== 'delibird' && template.id !== 'skarmory' && template.id !== 'mantine' && template.id !== 'lugia' && template.id !== 'hooh' && template.id !== 'beautifly' && template.id !== 'taillow' && template.id !== 'swellow' && template.id !== 'wingull' && template.id !== 'pelipper' && template.id !== 'masquerain' && template.id !== 'ninjask' && template.id !== 'swablu' && template.id !== 'altaria' && template.id !== 'tropius' && template.id !== 'salamence' && template.id !== 'rayquaza' && template.id !== 'starly' && template.id !== 'staravia' && template.id !== 'staraptor' && template.id !== 'mothim' && template.id !== 'combee' && template.id !== 'vespiquen' && template.id !== 'drifloon' && template.id !== 'drifblim' && template.id !== 'honchkrow' && template.id !== 'chatot' && template.id !== 'mantyke' && template.id !== 'togekiss' && template.id !== 'yanmega' && template.id !== 'gliscor' && template.id !== 'shaymin-sky' && template.id !== 'arceus-flying' && template.id !== 'pidove' && template.id !== 'tranquill' && template.id !== 'unfezant' && template.id !== 'woobat' && template.id !== 'swoobat' && template.id !== 'sigilyph' && template.id !== 'archen' && template.id !== 'archeops' && template.id !== 'ducklett' && template.id !== 'swanna' && template.id !== 'emolga' && template.id !== 'rufflet' && template.id !== 'braviary' && template.id !== 'vullaby' && template.id !== 'mandibuzz' && template.id !== 'tornadus' && template.id !== 'tornadus-therian' && template.id !== 'thundurus' && template.id !== 'thundurus-therian' && template.id !== 'landorus' && template.id !== 'landorustherian') {
+                                return [set.species+" is banned because it does not have Levitate or the Flying type."];
+                        }
+                }
+        },
 	speciesclause: {
 		effectType: 'Rule',
 		onStart: function() {
