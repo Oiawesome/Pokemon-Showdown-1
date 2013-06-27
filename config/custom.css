@@ -27,13 +27,18 @@
                 background: none repeat scroll 0% 0% #303030;
         }
         .userlist {
-                border-left: 1px solid #23686f;
+                border-left: 1px solid #FFFFFF;
+                border-right: 1px solid #FFFFFF;
                 min-height: 100%;
-                background: #F5F5F5;
+                background: #303030;
         }
         .userlist li {
-                border-bottom: 1px solid #23686f;
+                border-bottom: 1px solid #FFFFFF;
+                border-top: 1px solid #FFFFFF;
                 height: 19px;
                 font: 10pt Verdana, sans-serif;
                 white-space: nowrap;
+        }
+        .userlist li button:hover {
+                background: #000000;
         }
