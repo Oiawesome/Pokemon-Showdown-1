@@ -1255,7 +1255,7 @@ exports.BattleFormats = {
 	gen1randombattle: {
 		mod: 'gen1',
 		effectType: 'Format',
-		name: "[Gen1] Random Battle",
+		name: "[Gen 1] Random Battle",
 		section: "Past Generations",
 		team: 'random',
 		canUseRandomTeam: true,
