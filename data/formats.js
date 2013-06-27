@@ -1246,10 +1246,24 @@ exports.BattleFormats = {
 		maxLevel: 5,
 		rated: true,
 		challengeShow: true,
+		searchShow: true,
 		debug: true,
 		isTeambuilderFormat: true,
 		ruleset: ['Pokemon', 'Little Cup', 'Sleep Clause', 'Species Clause', 'OHKO Clause', 'Evasion Clause', 'Freeze Clause'],
 		banlist: ['Uber', 'OU', 'UU', 'Illegal', 'Sonicboom', 'Dragon Rage']
+	},
+	gen1randombattle: {
+		mod: 'gen1',
+		effectType: 'Format',
+		name: "[Gen1] Random Battle",
+		section: "Past Generations",
+		team: 'random',
+		canUseRandomTeam: true,
+		searchDefault: true,
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		ruleset: ['PotD', 'Pokemon', 'Sleep Clause']
 	},
 	gen1challengecup: {
 		mod: 'gen1',
