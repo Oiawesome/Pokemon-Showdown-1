@@ -627,7 +627,7 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $100. '+target);
 		this.addModCommand(''+targetUser.name+' was awarded $100 by '+user.name+'.');
-		winnings += 100;
+		targetUser.winnings += 100;
 		user.balance += winnings;
 		return winnings = 0;
 	},
@@ -642,7 +642,7 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $500. Good job!'+target);
 		this.addModCommand(''+targetUser.name+' was awarded $500 by '+user.name+'.');
-		winnings += 500;
+		targetUser.winnings += 500;
 		user.balance += winnings;
 		return winnings = 0;
 	},
@@ -657,7 +657,7 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $1000. Amazing!'+target);
 		this.addModCommand(''+targetUser.name+' was awarded $1000 by '+user.name+'.');
-		winnings += 1000;
+		targetUser.winnings += 1000;
 		user.balance += winnings;
 		return winnings = 0;
 	},
@@ -672,7 +672,7 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $5000 for winning the tournament, congratulations!'+target);
 		this.addModCommand(''+targetUser.name+' was awarded $5000 by '+user.name+', since he/she won the tournament.');
-		winnings += 5000;
+		targetUser.winnings += 5000;
 		user.balance += winnings;
 		return winnings = 0;
 	},
@@ -701,7 +701,7 @@ var commands = exports.commands = {
 			}
 			this.addModCommand(''+user.name+' has purchased voice.');
 			this.sendReply('You have successfully purchased voice. Please wait while an Administrator promotes you. If you do not get promoted, please remind or contact an Administrator to promote you.');
-			winnings -= 100000;
+			user.winnings -= 100000;
 			user.balance += winnings;
 			return winnings = 0;
 		}
@@ -712,7 +712,7 @@ var commands = exports.commands = {
 			}
 			this.addModCommand(''+user.name+' has purchased a usermon.');
 			this.sendReply('You now have the ability to make a new usermon. A usermon is a custom made pokemon, general based on a person or character. Please make an outline including base stats, abilities, learnsets, typing, etc, and then get it to Nollan so he can make it.');
-			winnings -= 50000;
+			user.winnings -= 50000;
 			user.balance += winnings;
 			return winnings = 0;
 		}
@@ -721,37 +721,37 @@ var commands = exports.commands = {
 			if (user.balance < 1000) {
 				return this.sendReply('You do not have enough balance to make this purchase.');
 			}
-			winnings -= 1000;
+			user.winnings -= 1000;
 			var chance = Math.floor(Math.random() * 100);
 			var chance2 = Math.floor(Math.random() * 10000);
 			var chance3 = Math.floor(Math.random() * 1000);
 
 			if (chance < 1) {
-				winnings += 5000; // 1/100
+				user.winnings += 5000; // 1/100
 			} else if (chance < 5) { // 4/100
-				winnings += 3000;
+				user.winnings += 3000;
 			} else if (chance < 10) {	// 5/100
-				winnings += 1500;
+				user.winnings += 1500;
 			} else if (chance < 20) {	// 10/100
-				winnings += 1000;
+				user.winnings += 1000;
 			} else if (chance < 40) {	// 30/100
-				winnings += 750;
+				user.winnings += 750;
 			} else {	// 50/100
-				winnings -= 1500;
+				user.winnings -= 1500;
 			}
 
 			if (chance2 < 1) {
-				winnings += 10000;
+				user.winnings += 10000;
 			} else if (chance2 < 10) {
-				winnings += 5000;
+				user.winnings += 5000;
 			} else if (chance2 < 100) {
-				winnings += 2500;
+				user.winnings += 2500;
 			} else if (chance2 < 500) {
-				winnings += 1000;
+				user.winnings += 1000;
 			}
 
 			if (chance3 < 1) {
-			winnings += (Math.floor(Math.random() * (10000 - 2000 + 10)) + 2000) * 1000;
+			user.winnings += (Math.floor(Math.random() * (10000 - 2000 + 10)) + 2000) * 1000;
 			} 
 			this.sendReply('You' + ((winnings < 0) ? " lost":" won") + " $" + Math.abs(winnings) + "!");
 			user.balance += winnings;
