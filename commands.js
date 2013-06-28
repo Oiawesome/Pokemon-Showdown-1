@@ -626,7 +626,7 @@ var commands = exports.commands = {
 			} else {
 				connection.sendTo(room, ''+count+' users had their balances loaded from userbalance.csv.');
 			}
-		});
+		}
 	},
 	savebalance: function(target, room, user, connection) {
 		if (!this.can('modchat')) return false;
