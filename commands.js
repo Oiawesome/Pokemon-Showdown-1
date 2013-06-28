@@ -619,6 +619,9 @@ var commands = exports.commands = {
 	userbalance: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
+		if (!targetUser.balance || targetUser.balance <= 0) {
+			user.balance = 0;
+		}
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
@@ -704,21 +707,21 @@ var commands = exports.commands = {
 		var targetUser = this.targetUser;
 		var donation = 0;
 		//tour.splint is used since it is the command needed and is already specified in the tour functions
-		var targets = tour.splint(target);
+		var target = tour.splint(target);
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
-		targets[1] = parseInt(targets[1]);
-		if (isNaN(targets[1])) {
+		target[1] = parseInt(target[1]);
+		if (isNaN(target[1])) {
 			return this.sendReply('Proper syntax for this command: /give user, amount of money');
 		}
-		if (user.balance < targets[1]) {
+		if (user.balance < target[1]) {
 			return this.sendReply('You do not have enough balance to make this donation.');
 		}
-		if (targets[1] <= 0) {
+		if (target[1] <= 0) {
 			return this.sendReply('Your donation must be more than $0.');
 		}
-		donation = targets[1];
+		donation = target[1];
 		user.balance -= donation;
 		targetUser.balance += donation;
 		return donation = 0;
