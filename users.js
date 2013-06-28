@@ -105,7 +105,22 @@ function connectUser(socket) {
 	user.joinRoom('global', connection);
 	return connection;
 }
-
+//USER BALANCE DATA
+function importUserBalance() {
+	fs.readFile('config/userbalance.csv', function(err, data) {
+		if (err) return;
+		data = (''+data).split("\n");
+		for (var i = 0; i < data.length; i++) {
+			if (!data[i]) continue;
+			var row = data[i].split(",");
+		}
+	});
+}
+function exportUserBalance() {
+	var buffer = '';
+	fs.writeFile('config/userbalance.csv', buffer);
+}
+//DATA END
 var usergroups = {};
 function importUsergroups() {
 	// can't just say usergroups = {} because it's exported
@@ -167,7 +182,9 @@ var User = (function () {
 		this.authenticated = false;
 		this.userid = toUserid(this.name);
 		this.group = config.groupsranking[0];
-
+		//BALANCE DATA START
+		this.balance = importUserBalance;
+		//BALANCE DATA END
 		var trainersprites = [25, 26, 32, 54, 55, 171, 173, 217, 218, 238, 239];
 		this.avatar = trainersprites[Math.floor(Math.random()*trainersprites.length)];
 
@@ -703,6 +720,9 @@ var User = (function () {
 					Rooms.get(i,'lobby').onLeave(this);
 				}
 			}
+			//BALANCE DATA START
+			this.exportUserBalance;
+			//BALANCE DATA END
 			this.roomCount = {};
 		}
 	};

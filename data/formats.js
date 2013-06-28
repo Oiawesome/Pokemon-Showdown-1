@@ -1,4 +1,4 @@
-exports.BattleFormats = {
+﻿exports.BattleFormats = {
 
 	// Singles
 	///////////////////////////////////////////////////////////////////
@@ -400,7 +400,7 @@ exports.BattleFormats = {
 		banlist: ['Sonicboom', 'Dragon Rage', 'Berry Juice', 'Carvanha', 'Meditite', 'Gligar', 'Scyther', 'Sneasel', 'Tangela', 'Vulpix', 'Yanma', 'Soul Dew']
 	},
 	doublesskybattle: {
-		name: "Sky Battle Doubles",
+		name: "Doubles Sky Battle",
 		section: "Doubles",
 		gameType: 'doubles',
 		effectType: 'Format',
@@ -409,7 +409,7 @@ exports.BattleFormats = {
 		searchShow: true,
 		isTeambuilderFormat: true,
 		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview', 'Sky Battle Clause'],
-		banlist: ['Uber', 'Soul Dew']
+		banlist: ['Uber', 'Soul Dew', 'Sky Drop']
 	},
 	bhdoubles: {
 		name: "BH Doubles",
@@ -1199,7 +1199,7 @@ exports.BattleFormats = {
 		ruleset: ['Pokemon', 'Standard'],
 		banlist: ['Uber']
 	},
-	gen2ou: {
+	/*gen2ou: {
 		mod: 'gen2',
 		effectType: 'Format',
 		name: "[Gen 2] OU",
@@ -1212,6 +1212,7 @@ exports.BattleFormats = {
 		ruleset: ['Pokemon', 'Standard'],
 		banlist: ['Uber']
 	},
+	*/
 	gen1ou: {
 		mod: 'gen1',
 		effectType: 'Format',
@@ -1252,7 +1253,7 @@ exports.BattleFormats = {
 		ruleset: ['Pokemon', 'Little Cup', 'Sleep Clause', 'Species Clause', 'OHKO Clause', 'Evasion Clause', 'Freeze Clause'],
 		banlist: ['Uber', 'OU', 'UU', 'Illegal', 'Sonicboom', 'Dragon Rage']
 	},
-	gen1randombattle: {
+	/*gen1randombattle: {
 		mod: 'gen1',
 		effectType: 'Format',
 		name: "[Gen 1] Random Battle",
@@ -1265,6 +1266,7 @@ exports.BattleFormats = {
 		searchShow: true,
 		ruleset: ['PotD', 'Pokemon', 'Sleep Clause']
 	},
+	*/
 	gen1challengecup: {
 		mod: 'gen1',
 		effectType: 'Format',

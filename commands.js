@@ -609,15 +609,26 @@ var commands = exports.commands = {
 		room.addRaw('<b>' + t[0] +'</b> has left the tournament and is replaced by <b>' + t[1] + '</b>.');
 	},
 	//End of tour commands
-	//Money Commands
+	/*Money Commands, made with the help of Chomi and Orivexes*/
 	balance: function(target, room, user) {
 		if (!user.balance || user.balance <= 0) {
 			user.balance = 0;
 		}
-		this.sendReply('Your current balance is $' + user.balance);
+		this.sendReply('Your current balance is $' +user.balance+ '.');
+	},
+	userbalance: function(target, room, user) {
+		var targetUser = this.targetUser;
+		if (!targetUser || !targetUser.connected) {
+			return this.sendReply('User '+this.targetUsername+' not found.');
+		}
+
+		if (!this.can('ban', targetUser)) {
+			return this.sendReply('You do not have enough authority to use this command.')
+		}
+		this.sendReply(''+targetUser.name+' currently has $' +targetUser.balance+ '.');
+
 	},
 	award: function(target, room, user) {
-		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
@@ -627,12 +638,11 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $100. '+target);
 		this.addModCommand(''+targetUser.name+' was awarded $100 by '+user.name+'.');
-		targetUser.winnings += 100;
-		user.balance += winnings;
+		winnings += 100;
+		targetUser.balance += winnings;
 		return winnings = 0;
 	},
 	bigaward: function(target, room, user) {
-		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
@@ -642,12 +652,11 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $500. Good job!'+target);
 		this.addModCommand(''+targetUser.name+' was awarded $500 by '+user.name+'.');
-		targetUser.winnings += 500;
-		user.balance += winnings;
+		winnings += 500;
+		targetUser.balance += winnings;
 		return winnings = 0;
 	},
 	hugeaward: function(target, room, user) {
-		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
@@ -657,12 +666,11 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $1000. Amazing!'+target);
 		this.addModCommand(''+targetUser.name+' was awarded $1000 by '+user.name+'.');
-		targetUser.winnings += 1000;
-		user.balance += winnings;
+		winnings += 1000;
+		targetUser.balance += winnings;
 		return winnings = 0;
 	},
 	touraward: function(target, room, user) {
-		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
@@ -672,8 +680,8 @@ var commands = exports.commands = {
 		}
 		targetUser.popup(user.name+' has awarded you $5000 for winning the tournament, congratulations!'+target);
 		this.addModCommand(''+targetUser.name+' was awarded $5000 by '+user.name+', since he/she won the tournament.');
-		targetUser.winnings += 5000;
-		user.balance += winnings;
+		winnings += 5000;
+		targetUser.balance += winnings;
 		return winnings = 0;
 	},
 	bigmoney: function(target, room, user) {
@@ -686,6 +694,30 @@ var commands = exports.commands = {
 			return this.sendReply('Only Nollan can use this command.');
 		}
 	},
+	donate: 'give',
+	give: function(target, room, user) {
+		var targetUser = this.targetUser;
+		var donation = 0;
+		//tour.splint is used since it is the command needed and is already specified in the tour functions
+		var targets = tour.splint(target);
+		if (!targetUser || !targetUser.connected) {
+			return this.sendReply('User '+this.targetUsername+' not found.');
+		}
+		targets[1] = parseInt(targets[1]);
+		if (isNaN(targets[1])) {
+			return this.sendReply('Proper syntax for this command: /give user, amount of money');
+		}
+		if (user.balance < targets[1]) {
+			return this.sendReply('You do not have enough balance to make this donation.');
+		}
+		if (targets[1] <= 0) {
+			return this.sendReply('Your donation must be more than $0.');
+		}
+		donation = targets[1];
+		user.balance -= donation;
+		targetUser.balance += donation;
+		return donation = 0;
+	},	
 	buy: function(target, room, user) {
 		var match = false;
 		if (match = false) {
@@ -701,7 +733,7 @@ var commands = exports.commands = {
 			}
 			this.addModCommand(''+user.name+' has purchased voice.');
 			this.sendReply('You have successfully purchased voice. Please wait while an Administrator promotes you. If you do not get promoted, please remind or contact an Administrator to promote you.');
-			user.winnings -= 100000;
+			winnings -= 100000;
 			user.balance += winnings;
 			return winnings = 0;
 		}
@@ -712,7 +744,7 @@ var commands = exports.commands = {
 			}
 			this.addModCommand(''+user.name+' has purchased a usermon.');
 			this.sendReply('You now have the ability to make a new usermon. A usermon is a custom made pokemon, general based on a person or character. Please make an outline including base stats, abilities, learnsets, typing, etc, and then get it to Nollan so he can make it.');
-			user.winnings -= 50000;
+			winnings -= 50000;
 			user.balance += winnings;
 			return winnings = 0;
 		}
@@ -729,29 +761,29 @@ var commands = exports.commands = {
 			if (chance < 1) {
 				user.winnings += 5000; // 1/100
 			} else if (chance < 5) { // 4/100
-				user.winnings += 3000;
+				winnings += 4000;
 			} else if (chance < 10) {	// 5/100
-				user.winnings += 1500;
+				winnings += 2500;
 			} else if (chance < 20) {	// 10/100
-				user.winnings += 1000;
+				winnings += 2000;
 			} else if (chance < 40) {	// 30/100
-				user.winnings += 750;
+				winnings += 1750;
 			} else {	// 50/100
-				user.winnings -= 1500;
+				winnings -= 1500;
 			}
 
 			if (chance2 < 1) {
-				user.winnings += 10000;
+				winnings += 11000;
 			} else if (chance2 < 10) {
-				user.winnings += 5000;
+				winnings += 6000;
 			} else if (chance2 < 100) {
-				user.winnings += 2500;
+				winnings += 3500;
 			} else if (chance2 < 500) {
-				user.winnings += 1000;
+				winnings += 2000;
 			}
 
 			if (chance3 < 1) {
-			user.winnings += (Math.floor(Math.random() * (10000 - 2000 + 10)) + 2000) * 1000;
+			user.winnings += (Math.floor(Math.random() * (10000 - 2000 + 10)) + 3000) * 1000;
 			} 
 			this.sendReply('You' + ((winnings < 0) ? " lost":" won") + " $" + Math.abs(winnings) + "!");
 			user.balance += winnings;
@@ -759,7 +791,7 @@ var commands = exports.commands = {
 			return winnings = 0;
 		}
 	},
-	//End of Money Commands
+	/*End of Money Commands*/
 	version: function(target, room, user) {
 		if (!this.canBroadcast()) return;
 		this.sendReplyBox('Server version: <b>'+CommandParser.package.version+'</b> <small>(<a href="http://pokemonshowdown.com/versions#' + CommandParser.serverVersion + '" target="_blank">' + CommandParser.serverVersion.substr(0,10) + '</a>)</small>');
