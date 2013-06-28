@@ -702,12 +702,11 @@ var commands = exports.commands = {
 			return this.sendReply('Only Nollan can use this command.');
 		}
 	},
-	donate: 'give',
+	/*donate: 'give',
 	give: function(target, room, user) {
+		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		var donation = 0;
-		//tour.splint is used since it is the command needed and is already specified in the tour functions
-		var target = tour.splint(target);
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
@@ -725,7 +724,7 @@ var commands = exports.commands = {
 		user.balance -= donation;
 		targetUser.balance += donation;
 		return donation = 0;
-	},	
+	},*/	
 	buy: function(target, room, user) {
 		var match = false;
 		if (match = false) {
