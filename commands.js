@@ -631,7 +631,7 @@ var commands = exports.commands = {
 	savebalance: function(target, room, user, connection) {
 		if (!this.can('modchat')) return false;
 		connection.sendTo(room, 'Saving userbalance.csv...');
-		fs.writeFile('config/usergroups.csv', function (err, data)) {
+		fs.writeFile('config/usergroups.csv', function (err, data) {
 			if (err) return;
 			data = (''+data).split("\n");
 			var count = 0;
