@@ -27,18 +27,27 @@
                 background: none repeat scroll 0% 0% #303030;
         }
         .userlist {
-                border-left: 1px solid #545454;
-                border-right: 1px solid #545454;
+                border-left: 1px solid #F2F2F2;
+                border-right: 1px solid #F2F2F2;
                 min-height: 100%;
-                background: #545454;
+                background: #F2F2F2;
         }
         .userlist li {
-                border-bottom: 1px solid #545454;
-                border-top: 1px solid #545454;
+                border-bottom: 1px solid #F2F2F2;
+                border-top: 1px solid #F2F2F2;
                 height: 19px;
                 font: 10pt Verdana, sans-serif;
                 white-space: nowrap;
         }
         .userlist li button:hover {
-                background: #444444;
+                background: #FFFFFF;
+        }
+        .chat-log {
+                font-size: 10pt;
+                background: url("http://i.imgur.com/ZyZevw7.png") no-repeat scroll right bottom;
+                color: #CCFFFF;
+                overflow: auto;
+        }
+        .ps-room.ps-room-light {
+                color: #CCFFFF;
         }
