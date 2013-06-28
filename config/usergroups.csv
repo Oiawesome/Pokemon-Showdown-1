@@ -1,14 +1,29 @@
-function (err, data) {
-			if (err) return;
-			data = (''+data).split("\n");
-			var count = 0;
-			for (var i=0; i<data.length; i++) {
-				data[i] = user.balance;
-				count++;
-			}
-			if (!count) {
-				connection.sendTo(room, 'No balance was saved; userbalance.csv has not been updated since the last time /loadbanlist was called.');
-			} else {
-				connection.sendTo(room, ''+count+' users had their balances saved from userbalance.csv.');
-			}
-		}
+Nollan,~
+Nollan101,~
+TheBurgerKing99,@
+PokermansCoach,+
+Aikenkа,%
+SmashBrosBrawl,+
+VoltingAndTurning,+
+AOrtega,+
+Kitega,+
+Leader Wolf,&
+Dusk209,&
+Jewzilla,@
+Arceus11,@
+Darth Onom,+
+EnerG218,+
+Leafshield,%
+iSmogoon,@
+Smogoon,%
+DreMZ,&
+simsims2800,+
+piiiikachuuu,%
+Jirachii,+
+Magolor,+
+Brunoo,+
+KiingOfRandom,+
+mrSmellyfeet100,+
+Slayer95,+
+Oiawesome,%
+i dont play this,+
