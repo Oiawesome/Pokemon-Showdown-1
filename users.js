@@ -106,6 +106,7 @@ function connectUser(socket) {
 	return connection;
 }
 //USER BALANCE DATA
+var user.balance = {};
 function importUserBalance() {
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) return;
@@ -120,6 +121,7 @@ function exportUserBalance() {
 	var buffer = '';
 	fs.writeFile('config/userbalance.csv', buffer);
 }
+importUserBalance();
 //DATA END
 var usergroups = {};
 function importUsergroups() {
@@ -182,9 +184,6 @@ var User = (function () {
 		this.authenticated = false;
 		this.userid = toUserid(this.name);
 		this.group = config.groupsranking[0];
-		//BALANCE DATA START
-		this.balance = importUserBalance;
-		//BALANCE DATA END
 		var trainersprites = [25, 26, 32, 54, 55, 171, 173, 217, 218, 238, 239];
 		this.avatar = trainersprites[Math.floor(Math.random()*trainersprites.length)];
 
@@ -720,9 +719,6 @@ var User = (function () {
 					Rooms.get(i,'lobby').onLeave(this);
 				}
 			}
-			//BALANCE DATA START
-			this.exportUserBalance;
-			//BALANCE DATA END
 			this.roomCount = {};
 		}
 	};
@@ -1188,6 +1184,7 @@ exports.get = getUser;
 exports.getExact = getExactUser;
 exports.searchUser = searchUser;
 exports.connectUser = connectUser;
+exports.importUserBalance = importUserBalance;
 exports.importUsergroups = importUsergroups;
 exports.addBannedWord = addBannedWord;
 exports.removeBannedWord = removeBannedWord;
