@@ -466,6 +466,42 @@
     		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause'],
     		banlist: ['Unreleased', 'Illegal', 'Sheer Cold', 'Horn Drill', 'Guillotine']
     	},
+    	nuv2: {
+                effectType: 'Format',
+                name: "NUv2",
+                section: 'Other Metagames',
+                mod: "v2project",
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		isTeambuilderFormat: true,
+                ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
+                banlist: ['RU']
+        },
+	ruv2: {
+                effectType: 'Format',
+                name: "RUv2",
+                section: 'Other Metagames',
+                mod: "v2project",
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		isTeambuilderFormat: true,
+                ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
+                banlist: ['BL2','UU']
+        },
+	uuv2: {
+                effectType: 'Format',
+                name: "UUv2",
+                section: 'Other Metagames',
+                mod: "v2project",
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		isTeambuilderFormat: true,
+                ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
+                banlist: ['BL1','OU']
+        },
     	dscap: {
     		effectType: 'Format',
     		section: "Other Metagames",
