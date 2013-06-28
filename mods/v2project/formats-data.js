@@ -1,8 +1,12 @@
 exports.BattleFormatsData = {
-    luxray: {
-    inherit: true,
-    tier: "RU"
+    	luxray: {
+    		inherit: true,
+    		tier: "RU"
 	},
+	nihoneon: {
+                inherit: true,
+                tier: "OU"
+        },
 	jynx: {
 		inherit: true,
 		tier: "NU"
