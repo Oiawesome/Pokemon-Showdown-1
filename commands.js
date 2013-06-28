@@ -610,6 +610,42 @@ var commands = exports.commands = {
 	},
 	//End of tour commands
 	/*Money Commands, made with the help of Chomi and Orivexes*/
+	uploadbalance: function(target, room, user, connection) {
+		if (!this.can('modchat')) return false;
+		connection.sendTo(room, 'Loading userbalance.csv...');
+		fs.readFile('config/userbalance.csv', function (err, data) {
+			if (err) return;
+			data = (''+data).split("\n");
+			var count = 0;
+			for (var i=0; i<data.length; i++) {
+				user.balance = data[i];
+				count++;
+			}
+			if (!count) {
+				connection.sendTo(room, 'No balance was banned; userbalance.csv has not been updated since the last time /loadbanlist was called.');
+			} else {
+				connection.sendTo(room, ''+count+' users had their balances loaded from userbalance.csv.');
+			}
+		});
+	},
+	savebalance: function(target, room, user, connection) {
+		if (!this.can('modchat')) return false;
+		connection.sendTo(room, 'Saving userbalance.csv...');
+		fs.writeFile('config/usergroups.csv', function (err, data)) {
+			if (err) return;
+			data = (''+data).split("\n");
+			var count = 0;
+			for (var i=0; i<data.length; i++) {
+				data[i] = user.balance;
+				count++;
+			}
+			if (!count) {
+				connection.sendTo(room, 'No balance was saved; userbalance.csv has not been updated since the last time /loadbanlist was called.');
+			} else {
+				connection.sendTo(room, ''+count+' users had their balances saved from userbalance.csv.');
+			}
+		}
+	},
 	balance: function(target, room, user) {
 		if (!user.balance || user.balance <= 0) {
 			user.balance = 0;
