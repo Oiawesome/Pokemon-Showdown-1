@@ -644,7 +644,7 @@ var commands = exports.commands = {
 			} else {
 				connection.sendTo(room, ''+count+' users had their balances saved from userbalance.csv.');
 			}
-		}
+		});
 	},
 	balance: function(target, room, user) {
 		if (!user.balance || user.balance <= 0) {
