@@ -105,24 +105,6 @@ function connectUser(socket) {
 	user.joinRoom('global', connection);
 	return connection;
 }
-//USER BALANCE DATA
-var userbalance = {};
-function importUserBalance() {
-	fs.readFile('config/userbalance.csv', function(err, data) {
-		if (err) return;
-		data = (''+data).split("\n");
-		for (var i = 0; i < data.length; i++) {
-			if (!data[i]) continue;
-			var row = data[i].split(",");
-		}
-	});
-}
-function exportUserBalance() {
-	var buffer = '';
-	fs.writeFile('config/userbalance.csv', buffer);
-}
-importUserBalance();
-//DATA END
 var usergroups = {};
 function importUsergroups() {
 	// can't just say usergroups = {} because it's exported
@@ -1170,7 +1152,6 @@ exports.get = getUser;
 exports.getExact = getExactUser;
 exports.searchUser = searchUser;
 exports.connectUser = connectUser;
-exports.importUserBalance = importUserBalance;
 exports.importUsergroups = importUsergroups;
 exports.addBannedWord = addBannedWord;
 exports.removeBannedWord = removeBannedWord;
