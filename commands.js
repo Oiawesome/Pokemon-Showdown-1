@@ -815,7 +815,7 @@ var commands = exports.commands = {
 		if (!target) return this.parse('/avatars');
 		var parts = target.split(',');
 		var avatar = parseInt(parts[0]);
-		if (!avatar || avatar > 294 || avatar < 1) {
+		if (!avatar || avatar > 294 && avatar < 1005 || avatar > 1013 && avatar < 5000 || avatar < 1 || avatar > 5004) {
 			if (!parts[1]) {
 				this.sendReply("Invalid avatar.");
 			}
@@ -1238,14 +1238,8 @@ var commands = exports.commands = {
 	},
 	
 	fire: function(target, room, user) {
-		// warning: never document this command in /help
 		if (!this.can('forcepromote')) return false;
-		var target = this.splitTarget(target, true);
-		var name = this.targetUsername;
-		this.addModCommand(''+name+' was fired by '+user.name+'.');
-	},
-
-	deauth: function(target, room, user) {
+		this.addModCommand(''+target+' was fired by '+user.name+'.');
 		return this.parse('/demote '+target+', deauth');
 	},
 
