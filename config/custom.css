@@ -44,10 +44,10 @@
         }
         .chat-log {
                 font-size: 10pt;
-                background: url("http://i.imgur.com/ZyZevw7.png") no-repeat scroll right bottom;
-                color: #CCFFFF;
+                background: url("http://i.imgur.com/ZyZevw7.png") no-repeat scroll right top;
+                color: black;
                 overflow: auto;
         }
         .ps-room.ps-room-light {
-                color: #CCFFFF;
+                color: black;
         }
