@@ -106,7 +106,7 @@ function connectUser(socket) {
 	return connection;
 }
 //USER BALANCE DATA
-var user.balance = {};
+var userbalance = {};
 function importUserBalance() {
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) return;
