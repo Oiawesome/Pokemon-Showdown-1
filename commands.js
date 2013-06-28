@@ -620,7 +620,7 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser.balance || targetUser.balance <= 0) {
-			user.balance = 0;
+			targetUser.balance = 0;
 		}
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
