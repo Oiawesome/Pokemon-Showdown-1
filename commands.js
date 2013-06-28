@@ -894,6 +894,7 @@ var commands = exports.commands = {
 			return this.sendReply("The room '"+target+"' already exists.");
 		}
 		Rooms.rooms[id] = new Rooms.ChatRoom(id, target);
+		tour.reset(target);
 		return this.sendReply("The room '"+target+"' was created.");
 	},
 	privateroom: function(target, room, user) {
