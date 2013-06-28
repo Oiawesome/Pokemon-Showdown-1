@@ -617,6 +617,7 @@ var commands = exports.commands = {
 		this.sendReply('Your current balance is $' +user.balance+ '.');
 	},
 	userbalance: function(target, room, user) {
+		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
@@ -629,6 +630,7 @@ var commands = exports.commands = {
 
 	},
 	award: function(target, room, user) {
+		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
@@ -643,6 +645,7 @@ var commands = exports.commands = {
 		return winnings = 0;
 	},
 	bigaward: function(target, room, user) {
+		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
@@ -657,6 +660,7 @@ var commands = exports.commands = {
 		return winnings = 0;
 	},
 	hugeaward: function(target, room, user) {
+		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
@@ -671,6 +675,7 @@ var commands = exports.commands = {
 		return winnings = 0;
 	},
 	touraward: function(target, room, user) {
+		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
