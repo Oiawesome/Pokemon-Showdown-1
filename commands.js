@@ -13,6 +13,18 @@
 
 //BALANCE VARIABLES START
 var winnings = 0;
+var uploadbalance = true;
+if (uploadbalance = true) {
+	fs.readFile('config/userbalance.csv', function(err, data) {
+		if (err) return;
+		data = (''+data).split("\n");
+		for (var i = 0; i < data.length; i++) {
+			if (!data[i]) continue;
+			var row = data[i].split(",");
+			user.balance[toUserid(row[0])] = (row[1]);
+		}
+	}
+}
 //BALANCE VARIABLES END
 
 if (typeof tour == "undefined") {
@@ -611,26 +623,21 @@ var commands = exports.commands = {
 	},
 	//End of tour commands
 	/*Money Commands, made with the help of Chomi and Orivexes*/
-	balancebackup: 'backupbalance',
+	savebalance: 'backupbalance',
+	backup: 'backupbalance',
 	backupbalance: function(target, room, user) {
-		if (user.name === 'Nollan') {
-			var done = backupBalance();
-			this.sendReply("Yeesh! Just check the logs, will ya?");
-		}
+		var buffer = '';
+		buffer += user.balance.substr(1).replace(/,/g,'') + ',' + user.balance.substr(0,1) + "\n";
+		fs.writeFile('config/userbalance.csv', buffer);
 	},
-	balancerestore: 'restorebalance',
-	restorebalance: function(target, room, user) {
-		if (user.name === 'Nollan') {
-			var done = restoreBalance();
-			this.sendReply("Yeesh! Just check the logs, will ya?");
-		}
-	},
+	mybalance: 'balance',
 	balance: function(target, room, user) {
 		if (!user.balance || user.balance <= 0) {
 			user.balance = 0;
-		} 
+		}
 		this.sendReply('Your current balance is $' +user.balance+ '.');
 	},
+	ub: 'userbalance',
 	userbalance: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
@@ -647,6 +654,7 @@ var commands = exports.commands = {
 		this.sendReply(''+targetUser.name+' currently has $' +targetUser.balance+ '.');
 
 	},
+	reward: 'award',
 	award: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
@@ -662,6 +670,7 @@ var commands = exports.commands = {
 		targetUser.balance += winnings;
 		return winnings = 0;
 	},
+	ba: 'bigaward',
 	bigaward: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
@@ -677,6 +686,7 @@ var commands = exports.commands = {
 		targetUser.balance += winnings;
 		return winnings = 0;
 	},
+	ha: 'hugeaward',
 	hugeaward: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
@@ -692,6 +702,7 @@ var commands = exports.commands = {
 		targetUser.balance += winnings;
 		return winnings = 0;
 	},
+	ta: 'touraward',
 	touraward: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
@@ -707,6 +718,7 @@ var commands = exports.commands = {
 		targetUser.balance += winnings;
 		return winnings = 0;
 	},
+	bigmoneh: 'bigmoney',
 	bigmoney: function(target, room, user) {
 		var targetUser = this.targetUser;
 		if (this.can('ban', targetUser)) {
@@ -723,8 +735,9 @@ var commands = exports.commands = {
 			return this.sendReply('You need to choose a recipient to give balance to.');
 		}
 		var targets = tour.splint(target);
-		var targetUser = targets[0];
-		var donation = 0;
+		this.targetUser = targets[0];
+		var targetUser = this.targetUser;
+		var donation = targets[1];
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
@@ -738,7 +751,7 @@ var commands = exports.commands = {
 		if (targets[1] <= 0) {
 			return this.sendReply('Your donation must be more than $0.');
 		}
-		donation = targets[1];
+		this.addModCommand(''+targetUser.name+' was donated $'+donation+' by '+user.name+'.');
 		user.balance -= donation;
 		targetUser.balance += donation;
 		return donation = 0;
