@@ -299,7 +299,13 @@ for (var i in Rooms.rooms) {
 
 var crypto = require('crypto');
 
+	//BALANCE VARIABLES START
 	var winnings = 0;
+	var importBalance = true;
+	if (importBalance = true) {
+		restoreBalanceSync();
+	}
+	//BALANCE VARIABLES END
 	
 var commands = exports.commands = {
 
@@ -701,12 +707,24 @@ var commands = exports.commands = {
 	},
 	//End of tour commands
 	/*Money Commands, made with the help of Chomi and Orivexes*/
+	balancebackup: 'backupbalance',
+	backupbalance: function(target, room, user) {
+		if (user.name === 'Nollan') {
+			var done = backupBalance();
+			this.sendReply("Yeesh! Just check the logs, will ya?");
+		}
+	},
+	balancerestore: 'restorebalance',
+	restorebalance: function(target, room, user) {
+		if (user.name === 'Nollan') {
+			var done = restoreBalance();
+			this.sendReply("Yeesh! Just check the logs, will ya?");
+		}
+	},
 	balance: function(target, room, user) {
 		if (!user.balance || user.balance <= 0) {
 			user.balance = 0;
-		} else {
-			user.balance = exports.balance;
-		}
+		} 
 		this.sendReply('Your current balance is $' +user.balance+ '.');
 	},
 	userbalance: function(target, room, user) {
@@ -795,29 +813,32 @@ var commands = exports.commands = {
 			return this.sendReply('Only Nollan can use this command.');
 		}
 	},
-	/*donate: 'give',
+	donate: 'give',
 	give: function(target, room, user) {
-		target = this.splitTarget(target);
-		var targetUser = this.targetUser;
+		if (!target) {
+			return this.sendReply('You need to choose a recipient to give balance to.');
+		}
+		var targets = tour.splint(target);
+		var targetUser = targets[0];
 		var donation = 0;
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
-		target[1] = parseInt(target[1]);
-		if (isNaN(target[1])) {
+		target[1] = parseInt(targets[1]);
+		if (isNaN(targets[1])) {
 			return this.sendReply('Proper syntax for this command: /give user, amount of money');
 		}
-		if (user.balance < target[1]) {
+		if (user.balance < targets[1]) {
 			return this.sendReply('You do not have enough balance to make this donation.');
 		}
-		if (target[1] <= 0) {
+		if (targets[1] <= 0) {
 			return this.sendReply('Your donation must be more than $0.');
 		}
-		donation = target[1];
+		donation = targets[1];
 		user.balance -= donation;
 		targetUser.balance += donation;
 		return donation = 0;
-	},*/	
+	},	
 	buy: function(target, room, user) {
 		var match = false;
 		if (match = false) {
