@@ -12,6 +12,7 @@
  */
 
 //BALANCE VARIABLES START
+var allMoney = new Array();
 var winnings = 0;
 var importBalance = true;
 if (importBalance = true) {
