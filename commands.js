@@ -18,9 +18,6 @@ var importBalance = true;
 if (importBalance = true) {
 	restoreBalanceSync();
 }
-if (lockdown = true) {
-	backupBalanceSync();
-}
 //BALANCE VARIABLES END
 //BALANCE FUNCTIONS START
 function backupBalance() {
