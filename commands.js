@@ -623,13 +623,13 @@ var commands = exports.commands = {
 	},
 	//End of tour commands
 	/*Money Commands, made with the help of Chomi and Orivexes*/
-	savebalance: 'backupbalance',
+	/*savebalance: 'backupbalance',
 	backup: 'backupbalance',
 	backupbalance: function(target, room, user) {
 		var buffer = '';
 		buffer += user.balance.substr(1).replace(/,/g,'') + ',' + user.balance.substr(0,1) + "\n";
 		fs.writeFile('config/userbalance.csv', buffer);
-	},
+	},*/
 	mybalance: 'balance',
 	balance: function(target, room, user) {
 		if (!user.balance || user.balance <= 0) {
