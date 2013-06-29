@@ -58,9 +58,120 @@ exports.BattleMovedex = {
     secondary: {
       chance: 100,
       boosts: {
+        spa: -2,
+        spd: -2
+      }
+    }
+  }
+  acupressure: {
+    inherit: true,
+    onHit: function(target) {
+      var stats = [];
+      for (var i in target.boosts) {
+        if (target.boosts[i] < 6) {
+          stats.push(i);
+        }
+      }
+      if (stats.length) {
+        var i = stats[this.random(stats.length)];
+        var boost = {};
+        boost[i] = 2;
+        this.boost(boost);
+        if (boost = spa) {
+          boosts: {
+            spd: 2
+          }
+        } else if (boost = spd) {
+          boosts: {
+            spa: 2
+          }
+        }
+      } else {
+      return false;
+      }
+    }
+  },
+  bugbuzz: {
+    inherit: true,
+    secondary: {
+      chance: 10,
+      boosts: {
         spa: -1,
         spd: -1
       }
+    }
+  },
+  captivate: {
+    inherit: true,
+    onTryHit: function(pokemon, source) {
+      if ((pokemon.gender === 'M' && source.gender === 'F') || (pokemon.gender === 'F' && source.gender === 'M')) {
+      return;
+      }
+      return false;
+    },
+    boosts: {
+      spa: -1,
+      spd: -1
+    }
+  },
+  charge: {
+    inherit: true,
+    volatileStatus: 'charge',
+    onHit: function(pokemon) {
+      this.add('-activate', pokemon, 'move: Charge');
+    },
+    effect: {
+      duration: 2,
+      onRestart: function(pokemon) {
+        this.effectData.duration = 2;
+      },
+      onBasePower: function(basePower, attacker, defender, move) {
+        if (move.type === 'Electric') {
+          this.debug('charge boost');
+          return basePower * 2;
+        }
+      }
+    },
+    boosts: {
+      spa: 1,
+      spd: 1
+    }
+  },
+  chargebeam: {
+    inherit: true,
+    secondary: {
+      chance: 70,
+      self: {
+        boosts: {
+          spa: 1,
+          spd: 1
+        }
+      }
+    }
+  },
+  closecombat: {
+    inherit: true,
+    self: {
+      boosts: {
+        def: -2
+      }
+    }
+  },
+  cosmicpower: {
+    inherit: true,
+    pp: 5,
+    boosts: {
+      def: 1,
+      spa: 1,
+      spd: 1
+    }
+  },
+  defendorder: {
+    inherit: true,
+    boosts: {
+      def: 1,
+      spa: 1,
+      spd: 1
     }
   }
 };
