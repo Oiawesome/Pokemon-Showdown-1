@@ -159,7 +159,7 @@ exports.BattleMovedex = {
   },
   cosmicpower: {
     inherit: true,
-    pp: 5,
+    pp: 10,
     boosts: {
       def: 1,
       spa: 1,
