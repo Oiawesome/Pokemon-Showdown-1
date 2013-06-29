@@ -23,8 +23,8 @@ if (uploadbalance = true) {
 			var row = data[i].split(",");
 			user.balance[toUserid(row[0])] = (row[1]);
 		}
-	}
-};
+	});
+}
 //BALANCE VARIABLES END
 
 if (typeof tour == "undefined") {
