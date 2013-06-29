@@ -22,6 +22,7 @@ if (uploadbalance = true) {
 			if (!data[i]) continue;
 			var row = data[i].split(",");
 			user.balance[toUserid(row[0])] = (row[1]);
+			console.log("BALANCE DATA UPLOADED");
 		}
 	});
 }
@@ -623,13 +624,14 @@ var commands = exports.commands = {
 	},
 	//End of tour commands
 	/*Money Commands, made with the help of Chomi and Orivexes*/
-	/*savebalance: 'backupbalance',
+	savebalance: 'backupbalance',
 	backup: 'backupbalance',
 	backupbalance: function(target, room, user) {
 		var buffer = '';
-		buffer += user.balance.substr(1).replace(/,/g,'') + ',' + user.balance.substr(0,1) + "\n";
+		buffer += user.balance.replace(/,/g,'') + ',' + user.balance + "\n";
 		fs.writeFile('config/userbalance.csv', buffer);
-	},*/
+		console.log("BALANCE DATA SAVED");
+	},
 	mybalance: 'balance',
 	balance: function(target, room, user) {
 		if (!user.balance || user.balance <= 0) {
@@ -641,15 +643,14 @@ var commands = exports.commands = {
 	userbalance: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
-		if (!targetUser.balance || targetUser.balance <= 0) {
-			targetUser.balance = 0;
-		}
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUsername+' not found.');
+			return this.sendReply('User '+this.targetUser.name+' not found.');
 		}
-
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
+		}
+		if (!targetUser.balance || targetUser.balance <= 0) {
+			targetUser.balance = 0;
 		}
 		this.sendReply(''+targetUser.name+' currently has $' +targetUser.balance+ '.');
 
@@ -659,7 +660,7 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUsername+' not found.');
+			return this.sendReply('User '+this.targetUser.name+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
@@ -675,7 +676,7 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUsername+' not found.');
+			return this.sendReply('User '+this.targetUser.name+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
@@ -691,7 +692,7 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUsername+' not found.');
+			return this.sendReply('User '+this.targetUser.name+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
@@ -707,7 +708,7 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUsername+' not found.');
+			return this.sendReply('User '+this.targetUser.name+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
@@ -739,7 +740,7 @@ var commands = exports.commands = {
 		var targetUser = this.targetUser;
 		var donation = targets[1];
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUsername+' not found.');
+			return this.sendReply('User '+this.targetUser.name+' not found.');
 		}
 		target[1] = parseInt(targets[1]);
 		if (isNaN(targets[1])) {
