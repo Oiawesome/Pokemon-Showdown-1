@@ -645,7 +645,7 @@
 	},
 	rbymons: {
 		effectType: 'Format',
-		name: "RBYmons",
+		name: "RBYmons (Incomplete)",
 		section: "Other Metagames",
 		mod: 'rbymons',
 		rated: true,
