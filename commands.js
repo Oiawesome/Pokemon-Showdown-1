@@ -10,7 +10,98 @@
  *
  * @license MIT license
  */
-	
+
+//BALANCE FUNCTIONS START
+function backupBalance() {
+	var backupCashArray = JSON.stringify(allMoney);	
+	fs.writeFile("config/balance.txt", backupCashArray, function(err) {
+    		if(err) {
+        		console.log(err);
+			return false;
+		} else {
+        	console.log("The file was saved!");
+		return true;
+		}
+	});
+};
+
+function backupBalanceSync() {
+	var backupCashArray = JSON.stringify(allMoney);	
+	fs.writeFileSync("config/balance.txt", backupCashArray);
+	console.log("The file was saved!");
+	return true;
+};
+
+function restoreBalance() {
+	var backupString;
+	var backupArray;
+	fs.readFile("config/balance.txt", 'utf8', function(err, data) {
+		if (err) {
+			console.log(err);
+			return false;
+		}
+		console.log("The file was restored! ");
+		backupString = data;
+		var errCheck = false;
+		try
+			{
+			backupArray = JSON.parse(backupString);
+			}
+		catch(err)
+			{
+			console.log("The file was not properly read into the system! Please run /importbalance to import balance. The error was: " + err);
+			errCheck = true;
+			}
+		if (!errCheck) {
+			allMoney = backupArray;
+		} else {
+			fs.writeFile("config/balanceerror.txt", backupString, function(err) {
+				if(err) {
+					console.log(err);
+					return false;
+				} else {
+					console.log("The error was saved!");
+					return true;
+				}
+			});
+		}
+	});
+	return true;
+};
+
+function restoreBalanceSync() {
+	var backupString;
+	var backupArray;
+	var data = fs.readFileSync("config/balance.txt", 'utf8');
+	console.log("The file was restored! ");
+	backupString = data;
+	var errCheck = false;
+	try
+		{
+		backupArray = JSON.parse(backupString);
+		}
+	catch(err)
+		{
+		console.log("The file was not properly read into the system! Please run /importbalance to import balance. The error was: " + err);
+		errCheck = true;
+		}
+	if (!errCheck) {
+		allMoney = backupArray;
+	} else {
+		fs.writeFile("config/balanceerror.txt", backupString, function(err) {
+			if(err) {
+				console.log(err);
+				return false;
+			} else {
+				console.log("The error was saved!");
+				return true;
+			}
+		});
+	}
+	return true;
+};
+//BALANCE FUNCTIONS END
+
 if (typeof tour == "undefined") {
 	tour = new Object();
 }
@@ -613,6 +704,8 @@ var commands = exports.commands = {
 	balance: function(target, room, user) {
 		if (!user.balance || user.balance <= 0) {
 			user.balance = 0;
+		} else {
+			user.balance = exports.balance;
 		}
 		this.sendReply('Your current balance is $' +user.balance+ '.');
 	},
