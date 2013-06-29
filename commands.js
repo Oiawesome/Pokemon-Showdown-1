@@ -15,7 +15,7 @@
 var winnings = 0;
 var uploadbalance = true;
 if (uploadbalance = true) {
-	fs.readFile('config/userbalance.csv', function(err, data) {
+	fs.readFile('config/userbalance.csv', function(user, err, data) {
 		if (err) return;
 		data = (''+data).split("\n");
 		for (var i = 0; i < data.length; i++) {
