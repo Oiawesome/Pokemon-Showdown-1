@@ -11,6 +11,13 @@
  * @license MIT license
  */
 
+//BALANCE VARIABLES START
+var winnings = 0;
+var importBalance = true;
+if (importBalance = true) {
+	restoreBalanceSync();
+}
+//BALANCE VARIABLES END
 //BALANCE FUNCTIONS START
 function backupBalance() {
 	var backupCashArray = JSON.stringify(allMoney);	
@@ -297,16 +304,7 @@ for (var i in Rooms.rooms) {
 	}
 }
 
-var crypto = require('crypto');
-
-	//BALANCE VARIABLES START
-	var winnings = 0;
-	var importBalance = true;
-	if (importBalance = true) {
-		restoreBalanceSync();
-	}
-	//BALANCE VARIABLES END
-	
+var crypto = require('crypto');	
 var commands = exports.commands = {
 
 	/**** tour commands, also by StevoDuhHero ****/
