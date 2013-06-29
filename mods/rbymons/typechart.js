@@ -2,6 +2,7 @@ exports.BattleTypeChart = {
   "Bug": {
     "damageTaken": {
       "Bug": 0,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 0,
       "Fighting": 2,
@@ -15,12 +16,37 @@ exports.BattleTypeChart = {
       "Poison": 1,
       "Psychic": 0,
       "Rock": 1,
+      "Steel": 0,
       "Water": 0
-    }
+    },
+    "HPivs": {"atk":30,"def":30,"spd":30}
+  },
+  "Dark": {
+    "damageTaken": {
+      "Bug": 1,
+      "Dark": 2,
+      "Dragon": 0,
+      "Electric": 0,
+      "Fighting": 1,
+      "Fire": 0,
+      "Flying": 0,
+      "Ghost": 2,
+      "Grass": 0,
+      "Ground": 0,
+      "Ice": 0,
+      "Normal": 0,
+      "Poison": 0,
+      "Psychic": 3,
+      "Rock": 0,
+      "Steel": 0,
+      "Water": 0
+    },
+    "HPivs": {}
   },
   "Dragon": {
     "damageTaken": {
       "Bug": 0,
+      "Dark": 0,
       "Dragon": 1,
       "Electric": 2,
       "Fighting": 0,
@@ -34,12 +60,15 @@ exports.BattleTypeChart = {
       "Poison": 0,
       "Psychic": 0,
       "Rock": 0,
+      "Steel": 0,
       "Water": 2
-    }
+    },
+    "HPivs": {"atk":30}
   },
   "Electric": {
     "damageTaken": {
       "Bug": 0,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 2,
       "Fighting": 0,
@@ -53,12 +82,15 @@ exports.BattleTypeChart = {
       "Poison": 0,
       "Psychic": 0,
       "Rock": 0,
+      "Steel": 2,
       "Water": 0
-    }
+    },
+    "HPivs": {"spa":30}
   },
   "Fighting": {
     "damageTaken": {
       "Bug": 2,
+      "Dark": 2,
       "Dragon": 0,
       "Electric": 0,
       "Fighting": 0,
@@ -72,13 +104,16 @@ exports.BattleTypeChart = {
       "Poison": 0,
       "Psychic": 1,
       "Rock": 2,
+      "Steel": 0,
       "Water": 0
-    }
+    },
+    "HPivs": {"def":30,"spa":30,"spd":30,"spe":30}
   },
   "Fire": {
     "damageTaken": {
       brn: 3,
       "Bug": 2,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 0,
       "Fighting": 0,
@@ -92,12 +127,15 @@ exports.BattleTypeChart = {
       "Poison": 0,
       "Psychic": 0,
       "Rock": 1,
+      "Steel": 2,
       "Water": 1
-    }
+    },
+    "HPivs": {"atk":30,"spa":30,"spe":30}
   },
   "Flying": {
     "damageTaken": {
       "Bug": 2,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 1,
       "Fighting": 2,
@@ -111,12 +149,15 @@ exports.BattleTypeChart = {
       "Poison": 0,
       "Psychic": 0,
       "Rock": 1,
+      "Steel": 0,
       "Water": 0
-    }
+    },
+    "HPivs": {"hp":30,"atk":30,"def":30,"spa":30,"spd":30}
   },
   "Ghost": {
     "damageTaken": {
-      "Bug": 0,
+      "Bug": 2,
+      "Dark": 1,
       "Dragon": 0,
       "Electric": 0,
       "Fighting": 3,
@@ -130,12 +171,15 @@ exports.BattleTypeChart = {
       "Poison": 2,
       "Psychic": 0,
       "Rock": 0,
+      "Steel": 0,
       "Water": 0
-    }
+    },
+    "HPivs": {"def":30,"spd":30}
   },
   "Grass": {
     "damageTaken": {
       "Bug": 1,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 2,
       "Fighting": 0,
@@ -149,13 +193,16 @@ exports.BattleTypeChart = {
       "Poison": 1,
       "Psychic": 0,
       "Rock": 0,
+      "Steel": 0,
       "Water": 2
-    }
+    },
+    "HPivs": {"atk":30,"spa":30}
   },
   "Ground": {
     "damageTaken": {
       sandstorm: 3,
       "Bug": 0,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 3,
       "Fighting": 0,
@@ -169,14 +216,17 @@ exports.BattleTypeChart = {
       "Poison": 2,
       "Psychic": 0,
       "Rock": 2,
+      "Steel": 0,
       "Water": 1
-    }
+    },
+    "HPivs": {"spa":30,"spd":30}
   },
   "Ice": {
     "damageTaken": {
       hail: 3,
       frz: 3,
       "Bug": 0,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 0,
       "Fighting": 1,
@@ -190,12 +240,15 @@ exports.BattleTypeChart = {
       "Poison": 0,
       "Psychic": 0,
       "Rock": 1,
+      "Steel": 1,
       "Water": 0
-    }
+    },
+    "HPivs": {"atk":30,"def":30}
   },
   "Normal": {
     "damageTaken": {
       "Bug": 0,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 0,
       "Fighting": 1,
@@ -209,6 +262,7 @@ exports.BattleTypeChart = {
       "Poison": 0,
       "Psychic": 0,
       "Rock": 0,
+      "Steel": 0,
       "Water": 0
     }
   },
@@ -217,6 +271,7 @@ exports.BattleTypeChart = {
       psn: 3,
       tox: 3,
       "Bug": 1,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 0,
       "Fighting": 2,
@@ -227,15 +282,18 @@ exports.BattleTypeChart = {
       "Ground": 1,
       "Ice": 0,
       "Normal": 0,
-      "Poison": 1,
+      "Poison": 2,
       "Psychic": 1,
       "Rock": 0,
+      "Steel": 0,
       "Water": 0
-    }
+    },
+    "HPivs": {"def":30,"spa":30,"spd":30}
   },
   "Psychic": {
     "damageTaken": {
       "Bug": 1,
+      "Dark": 1,
       "Dragon": 0,
       "Electric": 0,
       "Fighting": 2,
@@ -249,13 +307,16 @@ exports.BattleTypeChart = {
       "Poison": 0,
       "Psychic": 2,
       "Rock": 0,
+      "Steel": 0,
       "Water": 0
-    }
+    },
+    "HPivs": {"atk":30,"spe":30}
   },
   "Rock": {
     "damageTaken": {
       sandstorm: 3,
       "Bug": 0,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 0,
       "Fighting": 1,
@@ -269,12 +330,40 @@ exports.BattleTypeChart = {
       "Poison": 2,
       "Psychic": 0,
       "Rock": 0,
+      "Steel": 1,
       "Water": 1
-    }
+    },
+    "HPivs": {"def":30,"spd":30,"spe":30}
+  },
+  "Steel": {
+    "damageTaken": {
+      psn: 3,
+      tox: 3,
+      sandstorm: 3,
+      "Bug": 2,
+      "Dark": 2,
+      "Dragon": 2,
+      "Electric": 0,
+      "Fighting": 1,
+      "Fire": 1,
+      "Flying": 2,
+      "Ghost": 2,
+      "Grass": 2,
+      "Ground": 1,
+      "Ice": 2,
+      "Normal": 2,
+      "Poison": 3,
+      "Psychic": 2,
+      "Rock": 2,
+      "Steel": 2,
+      "Water": 0
+    },
+    "HPivs": {"spd":30}
   },
   "Water": {
     "damageTaken": {
       "Bug": 0,
+      "Dark": 0,
       "Dragon": 0,
       "Electric": 1,
       "Fighting": 0,
@@ -288,7 +377,9 @@ exports.BattleTypeChart = {
       "Poison": 0,
       "Psychic": 0,
       "Rock": 0,
+      "Steel": 2,
       "Water": 2
-    }
+    },
+    "HPivs": {"atk":30,"def":30,"spa":30}
   }
 };
