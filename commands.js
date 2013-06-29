@@ -24,7 +24,7 @@ if (uploadbalance = true) {
 			user.balance[toUserid(row[0])] = (row[1]);
 		}
 	}
-}
+};
 //BALANCE VARIABLES END
 
 if (typeof tour == "undefined") {
