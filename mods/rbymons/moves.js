@@ -62,7 +62,7 @@ exports.BattleMovedex = {
         spd: -2
       }
     }
-  }
+  },
   acupressure: {
     inherit: true,
     onHit: function(target) {
