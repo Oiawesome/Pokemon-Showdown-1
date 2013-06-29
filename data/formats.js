@@ -643,6 +643,18 @@
 			}
 		}
 	},
+	rbymons: {
+		effectType: 'Format',
+		name: "RBYmons",
+		section: "Other Metagames",
+		mod: 'rbymons',
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		isTeambuilderFormat: true,
+		ruleset: ['Standard', 'Team Preview', 'Pokemon'],
+		banlist: ['Uber', 'Drizzle ++ Swift Swim', 'Soul Dew', 'Cosmic Power']
+	},
 	ousixmoves: {
 		effectType: 'Format',
 		name: "OU Six Moves",
