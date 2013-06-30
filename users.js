@@ -105,26 +105,6 @@ function connectUser(socket) {
 	user.joinRoom('global', connection);
 	return connection;
 }
-//BALANCE FUNCTIONS START
-function importUserBalance() {
-	var balance = this.balance;
-	fs.readFile('config/userbalance.csv', function(err, data) {
-		if (err) {
-			console.log("The file was not properly read into the system! The error was: " + err);
-			return false;
-		}
-		data = (''+data).split("\n");
-		for (var i = 0; i < data.length; i++) {
-			if (!data[i]) continue;
-			var row = data[i].split(",");
-			balance[getUser(row[0])] = (row[1])+row[0];
-			console.log('USER BALANCE UPLOADED');
-		}
-	});
-}
-importUserBalance();
-//BALANCE FUNCTIONS END
-
 var usergroups = {};
 function importUsergroups() {
 	// can't just say usergroups = {} because it's exported
@@ -188,9 +168,7 @@ var User = (function () {
 		this.group = config.groupsranking[0];
 		var trainersprites = [25, 26, 32, 54, 55, 171, 173, 217, 218, 238, 239];
 		this.avatar = trainersprites[Math.floor(Math.random()*trainersprites.length)];
-		//BALANCE CODE START
-		this.balance = 0;
-		//BALANCE CODE END
+
 		this.connected = true;
 
 		if (connection.user) connection.user = this;
@@ -1175,9 +1153,6 @@ exports.getExact = getExactUser;
 exports.searchUser = searchUser;
 exports.connectUser = connectUser;
 exports.importUsergroups = importUsergroups;
-//BALANCE CODE START
-exports.importUserBalance = importUserBalance;
-//BALANCE CODE END
 exports.addBannedWord = addBannedWord;
 exports.removeBannedWord = removeBannedWord;
 
