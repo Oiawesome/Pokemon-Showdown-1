@@ -121,9 +121,7 @@ function importUserBalance(user) {
 }
 function exportUserBalance(user) {
 	var buffer = '';
-	for (user.balance) {
-		buffer += user.balance.substr(1).replace(/,/g,'') + ',' + user.balance.substr(0,1) + "\n";
-	}
+	buffer += user.balance.substr(1).replace(/,/g,'') + ',' + user.balance.substr(0,1) + "\n";
 	fs.writeFile('config/userbalance.csv', buffer);
 	console.log('USER BALANCE SAVED');
 }
