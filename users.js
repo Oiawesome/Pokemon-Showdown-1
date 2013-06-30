@@ -107,15 +107,23 @@ function connectUser(socket) {
 }
 //BALANCE FUNCTIONS START
 function importUserBalance() {
-	var balance = 0;
+	var balance = user.balance;
 	fs.readFile('config/userbalance.csv', function(err, data) {
-		if (err) return;
+		if (err) {
+			console.log(err);
+			return false;
+		}
 		data = (''+data).split("\n");
 		for (var i = 0; i < data.length; i++) {
 			if (!data[i]) continue;
 			var row = data[i].split(",");
 			balance[toUserid(row[0])] = (row[1])+row[0];
 			console.log('USER BALANCE UPLOADED');
+		}
+		var errCheck = false;
+		catch(err) {
+			console.log("The file was not properly read into the system! The error was: " + err);
+			errCheck = true;
 		}
 	});
 }
@@ -185,7 +193,9 @@ var User = (function () {
 		this.group = config.groupsranking[0];
 		var trainersprites = [25, 26, 32, 54, 55, 171, 173, 217, 218, 238, 239];
 		this.avatar = trainersprites[Math.floor(Math.random()*trainersprites.length)];
-
+		//BALANCE CODE START
+		this.balance = 0;
+		//BALANCE CODE END
 		this.connected = true;
 
 		if (connection.user) connection.user = this;
