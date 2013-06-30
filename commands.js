@@ -13,8 +13,12 @@
 
 //BALANCE VARIABLES START
 var winnings = 0;
+if (!user.balance || user.balance <= 0) {
+	user.balance = 0;
+}
 var uploadbalance = true;
 if (uploadbalance = true) {
+	for (var i in userbalance) delete userbalance[i];
 	fs.readFile('config/userbalance.csv', function(err, data, user) {
 		if (err) return;
 		data = (''+data).split("\n");
@@ -642,9 +646,6 @@ var commands = exports.commands = {
 	},
 	mybalance: 'balance',
 	balance: function(target, room, user) {
-		if (!user.balance || user.balance <= 0) {
-			user.balance = 0;
-		}
 		this.sendReply('Your current balance is $' +user.balance+ '.');
 	},
 	ub: 'userbalance',
@@ -656,9 +657,6 @@ var commands = exports.commands = {
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
-		}
-		if (!targetUser.balance || targetUser.balance <= 0) {
-			targetUser.balance = 0;
 		}
 		this.sendReply(''+targetUser.name+' currently has $' +targetUser.balance+ '.');
 
