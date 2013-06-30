@@ -632,22 +632,6 @@ var commands = exports.commands = {
 	},
 	//End of tour commands
 	/*Money Commands, made with the help of Chomi and Orivexes*/
-	savebalance: 'backupbalance',
-	backup: 'backupbalance',
-	backupbalance: function(err, data, user) {
-		var buffer = '';
-		buffer += user.balance.replace(/,/g,'') + ',' + user.balance + "\n";
-		fs.writeFile('config/userbalance.csv', function(err, data, user) {
-			if (err) return;
-			data = (''+data).split("\n");
-			for (var i = 0; i < data.length; i++) {
-				if (!data[i]) continue;
-				var row = data[i].split(",");
-				user.balance[toUserid(row[0])] = (row[1]);
-				console.log("BALANCE DATA SAVED");
-			}
-		});
-	},
 	mybalance: 'balance',
 	balance: function(target, room, user) {
 		this.sendReply('Your current balance is $' +user.balance+ '.');
