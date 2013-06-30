@@ -13,6 +13,10 @@
 
 //BALANCE VARIABLES START
 var winnings = 0;
+var uploadbalance = true;
+if (uploadbalance = true) {
+	importUserBalance;
+}
 //BALANCE VARIABLES END
 
 if (typeof tour == "undefined") {
