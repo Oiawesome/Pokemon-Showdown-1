@@ -107,7 +107,7 @@ function connectUser(socket) {
 }
 //BALANCE FUNCTIONS START
 function importUserBalance(user) {
-	return user.balance = 0;
+	var balance = 0;
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) return;
 		data = (''+data).split("\n");
@@ -118,12 +118,6 @@ function importUserBalance(user) {
 			console.log('USER BALANCE UPLOADED');
 		}
 	});
-}
-function exportUserBalance(user) {
-	var buffer = '';
-	buffer += user.balance.substr(1).replace(/,/g,'') + ',' + user.balance.substr(0,1) + "\n";
-	fs.writeFile('config/userbalance.csv', buffer);
-	console.log('USER BALANCE SAVED');
 }
 importUserBalance();
 //BALANCE FUNCTIONS END
@@ -1178,7 +1172,6 @@ exports.connectUser = connectUser;
 exports.importUsergroups = importUsergroups;
 //BALANCE CODE START
 exports.importUserBalance = importUserBalance;
-exports.exportUserBalance = exportUserBalance;
 //BALANCE CODE END
 exports.addBannedWord = addBannedWord;
 exports.removeBannedWord = removeBannedWord;
