@@ -69,17 +69,23 @@
 		basePower: 90
 	},
 	"icywind": {
-	      	inherit: true,
-		accuracy: 100,
-		basePower: 90,
-		category: "Physical",
-		defensiveCategory: "Special",
-		desc: "Physical But Deals Special Damage.",
-		shortDesc: "Physical but hits on Special Defense.",
-		secondary: false
+		num: 196,
+	      	accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		defensiveCategory: "Physical",
+		desc: "Deals damage to one adjacent target based on its Defense instead of Special Defense.",
+		shortDesc: "Damages target based on Defense, not Sp. Def.",
+		id: "icywind",
+		name: "Icy Wind",
+		pp: 10,
+		priority: 0,
+		secondary: false,
+		target: "normal",
+		type: "Psychic"
 	},
 	"moonblast": {
-		num: 1000,
+		num: 1005,
 		accuracy: 90,
 		basePower: 130,
 		category: "Special",
@@ -101,7 +107,7 @@
 		type: "Fairy"
 	},
 	"fairywind": {
-		num: 1001,
+		num: 1006,
 	        accuracy: 100,
 		basePower: 85,
 		category: "Special",
@@ -123,8 +129,8 @@
 		target: "normal",
 		type: "Fairy"
 	},
-		"mysticcrash": {
-		num: 1002,
+	"mysticcrash": {
+		num: 1007,
 	        accuracy: 100,
 		basePower: 120,
 		category: "Physical",
@@ -140,5 +146,21 @@
 		secondary: false,
 		target: "normal",
 		type: "Fairy"
-	}
+	},
+	"Star Shot": {
+		num: 1008,
+	        accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		desc: "Deals damage to one adjacent target by summoning a star from the sky going lightspeed to hit the opponent(671 million MPH).",
+		shortDesc: "A special extremespeed.",
+	        id: "starshot",
+		isViable: true,
+		name: "Star Shot",
+		pp: 5,
+		priority: 2,
+		secondary: false,
+		target: "normal",
+		type: "Fairy"
+	},
 };  
