@@ -105,6 +105,31 @@ function connectUser(socket) {
 	user.joinRoom('global', connection);
 	return connection;
 }
+//BALANCE FUNCTIONS START
+function importUserBalance(user) {
+	return user.balance = 0;
+	fs.readFile('config/userbalance.csv', function(err, data) {
+		if (err) return;
+		data = (''+data).split("\n");
+		for (var i = 0; i < data.length; i++) {
+			if (!data[i]) continue;
+			var row = data[i].split(",");
+			user.balance[toUserid(row[0])] = (row[1])+row[0];
+			console.log('USER BALANCE UPLOADED');
+		}
+	});
+}
+function exportUserBalance(user) {
+	var buffer = '';
+	for (user.balance) {
+		buffer += user.balance.substr(1).replace(/,/g,'') + ',' + user.balance.substr(0,1) + "\n";
+	}
+	fs.writeFile('config/userbalance.csv', buffer);
+	console.log('USER BALANCE SAVED');
+}
+importUserBalance();
+//BALANCE FUNCTIONS END
+
 var usergroups = {};
 function importUsergroups() {
 	// can't just say usergroups = {} because it's exported
@@ -1153,6 +1178,10 @@ exports.getExact = getExactUser;
 exports.searchUser = searchUser;
 exports.connectUser = connectUser;
 exports.importUsergroups = importUsergroups;
+//BALANCE CODE START
+exports.importUserBalance = importUserBalance;
+exports.exportUserBalance = exportUserBalance;
+//BALANCE CODE END
 exports.addBannedWord = addBannedWord;
 exports.removeBannedWord = removeBannedWord;
 
