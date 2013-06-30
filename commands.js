@@ -13,6 +13,10 @@
 
 //BALANCE VARIABLES START
 var winnings = 0;
+if (typeof user == "undefined") {
+	user = new Object();
+}
+user.balance = new Array();
 if (!user.balance || user.balance <= 0) {
 	user.balance = 0;
 }
