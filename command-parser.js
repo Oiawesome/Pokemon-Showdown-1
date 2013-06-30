@@ -105,7 +105,7 @@ var parse = exports.parse = function(message, room, user, connection, levelsDeep
 		var context = {
 			//BALANCE FUNCTIONS START
 			importUserBalance: function(user, err, data) {
-				fs.readFile('config/userbalance.csv' {
+				fs.readFile('config/userbalance.csv', function(err, data) {
 					if (err) {
 						console.log("The file was not properly read into the system! The error was: " + err);
 						return false;
