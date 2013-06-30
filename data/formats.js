@@ -502,6 +502,18 @@
                 ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
                 banlist: ['BL1','OU']
         },
+        	ouv2: {
+                effectType: 'Format',
+                name: "OUv2",
+                section: 'Other Metagames',
+                mod: "v2project",
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		isTeambuilderFormat: true,
+                ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
+                banlist: ['Uber']
+        },
     	dscap: {
     		effectType: 'Format',
     		section: "Other Metagames",
