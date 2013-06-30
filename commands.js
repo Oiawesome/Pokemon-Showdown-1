@@ -22,7 +22,7 @@ if (!user.balance || user.balance <= 0) {
 }
 var uploadbalance = true;
 if (uploadbalance = true) {
-	for (var i in userbalance) delete userbalance[i];
+	for (var i in user.balance) delete user.balance[i];
 	fs.readFile('config/userbalance.csv', function(err, data, user) {
 		if (err) return;
 		data = (''+data).split("\n");
