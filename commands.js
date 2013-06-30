@@ -623,7 +623,7 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUser.name+' not found.');
+			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
@@ -631,7 +631,7 @@ var commands = exports.commands = {
 		if (!targetUser.balance || targetUser.balance <= 0) {
 			targetUser.balance = 0;
 		}
-		this.sendReply(''+targetUser.name+' currently has $' +targetUser.balance+ '.');
+		this.sendReply(''+targetUsername+' currently has $' +targetUser.balance+ '.');
 
 	},
 	reward: 'award',
@@ -639,13 +639,13 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUser.name+' not found.');
+			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
 		}
 		targetUser.popup(user.name+' has awarded you $100. '+target);
-		this.addModCommand(''+targetUser.name+' was awarded $100 by '+user.name+'.');
+		this.addModCommand(''+targetUsername+' was awarded $100 by '+user.name+'.');
 		winnings += 100;
 		targetUser.balance += winnings;
 		return winnings = 0;
@@ -655,13 +655,13 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUser.name+' not found.');
+			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
 		}
 		targetUser.popup(user.name+' has awarded you $500. Good job!'+target);
-		this.addModCommand(''+targetUser.name+' was awarded $500 by '+user.name+'.');
+		this.addModCommand(''+targetUsername+' was awarded $500 by '+user.name+'.');
 		winnings += 500;
 		targetUser.balance += winnings;
 		return winnings = 0;
@@ -671,13 +671,13 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUser.name+' not found.');
+			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
 		}
 		targetUser.popup(user.name+' has awarded you $1000. Amazing!'+target);
-		this.addModCommand(''+targetUser.name+' was awarded $1000 by '+user.name+'.');
+		this.addModCommand(''+targetUsername+' was awarded $1000 by '+user.name+'.');
 		winnings += 1000;
 		targetUser.balance += winnings;
 		return winnings = 0;
@@ -687,13 +687,13 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUser.name+' not found.');
+			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
 		}
 		targetUser.popup(user.name+' has awarded you $5000 for winning the tournament, congratulations!'+target);
-		this.addModCommand(''+targetUser.name+' was awarded $5000 by '+user.name+', since he/she won the tournament.');
+		this.addModCommand(''+targetUsername+' was awarded $5000 by '+user.name+', since he/she won the tournament.');
 		winnings += 5000;
 		targetUser.balance += winnings;
 		return winnings = 0;
