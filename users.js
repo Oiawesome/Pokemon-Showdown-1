@@ -106,7 +106,7 @@ function connectUser(socket) {
 	return connection;
 }
 //BALANCE FUNCTIONS START
-function importUserBalance(user) {
+function importUserBalance() {
 	var balance = 0;
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) return;
@@ -114,7 +114,7 @@ function importUserBalance(user) {
 		for (var i = 0; i < data.length; i++) {
 			if (!data[i]) continue;
 			var row = data[i].split(",");
-			user.balance[toUserid(row[0])] = (row[1])+row[0];
+			balance[toUserid(row[0])] = (row[1])+row[0];
 			console.log('USER BALANCE UPLOADED');
 		}
 	});
