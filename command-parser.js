@@ -103,23 +103,6 @@ var parse = exports.parse = function(message, room, user, connection, levelsDeep
 	}
 	if (commandHandler) {
 		var context = {
-			//BALANCE FUNCTIONS START
-			importUserBalance: function(user, err, data) {
-				fs.readFile('config/userbalance.csv', function(err, data) {
-					if (err) {
-						console.log("The file was not properly read into the system! The error was: " + err);
-						return false;
-					}
-					data = (''+data).split("\n");
-					for (var i = 0; i < data.length; i++) {
-						if (!data[i]) continue;
-						var row = data[i].split(",");
-						user.balance[toUserId(row[0])] = (row[1])+row[0];
-						console.log('USER BALANCE UPLOADED');
-					}
-				});
-			},
-			//BALANCE FUNCTIONS END
 			sendReply: function(data) {
 				if (this.broadcasting) {
 					room.add(data, true);
