@@ -110,7 +110,6 @@ function importUserBalance() {
 	var balance = this.balance;
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) {
-			console.log(err);
 			console.log("The file was not properly read into the system! The error was: " + err);
 			return false;
 		}
@@ -118,7 +117,7 @@ function importUserBalance() {
 		for (var i = 0; i < data.length; i++) {
 			if (!data[i]) continue;
 			var row = data[i].split(",");
-			balance[toUserid(row[0])] = (row[1])+row[0];
+			balance[getUser(row[0])] = (row[1])+row[0];
 			console.log('USER BALANCE UPLOADED');
 		}
 	});
