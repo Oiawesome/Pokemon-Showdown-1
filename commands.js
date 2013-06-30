@@ -13,27 +13,6 @@
 
 //BALANCE VARIABLES START
 var winnings = 0;
-if (typeof user == "undefined") {
-	user = new Object();
-}
-user.balance = new Array();
-if (!user.balance || user.balance <= 0) {
-	user.balance = 0;
-}
-var uploadbalance = true;
-if (uploadbalance = true) {
-	for (var i in user.balance) delete user.balance[i];
-	fs.readFile('config/userbalance.csv', function(err, data, user) {
-		if (err) return;
-		data = (''+data).split("\n");
-		for (var i = 0; i < data.length; i++) {
-			if (!data[i]) continue;
-			var row = data[i].split(",");
-			user.balance[toUserid(row[0])] = (row[1]);
-			console.log("BALANCE DATA UPLOADED");
-		}
-	});
-}
 //BALANCE VARIABLES END
 
 if (typeof tour == "undefined") {
@@ -634,6 +613,9 @@ var commands = exports.commands = {
 	/*Money Commands, made with the help of Chomi and Orivexes*/
 	mybalance: 'balance',
 	balance: function(target, room, user) {
+		if (!user.balance || user.balance <= 0) {
+			user.balance = 0;
+		}
 		this.sendReply('Your current balance is $' +user.balance+ '.');
 	},
 	ub: 'userbalance',
@@ -645,6 +627,9 @@ var commands = exports.commands = {
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
+		}
+		if (!targetUser.balance || targetUser.balance <= 0) {
+			targetUser.balance = 0;
 		}
 		this.sendReply(''+targetUser.name+' currently has $' +targetUser.balance+ '.');
 
