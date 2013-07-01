@@ -634,12 +634,12 @@ var commands = exports.commands = {
 	/*Money Commands, made with the help of Chomi and Orivexes*/
 	mybalance: 'balance',
 	balance: function(target, room, user) {
+		if (!user.balance || user.balance <= 0) {
+			user.balance = 0;
+		}
 		if (uploadbalance = true) {
 			user.balance += userbalance;
 			return userbalance = 0;
-		}
-		if (!user.balance || user.balance <= 0) {
-			user.balance = 0;
 		}
 		this.sendReply('Your current balance is $' +user.balance+ '.');
 	},
@@ -648,7 +648,7 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUsername+' not found.');
+			return this.sendReply('User '+this.targetUser.name+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
@@ -656,7 +656,7 @@ var commands = exports.commands = {
 		if (!targetUser.balance || targetUser.balance <= 0) {
 			targetUser.balance = 0;
 		}
-		this.sendReply(''+targetUsername+' currently has $' +targetUser.balance+ '.');
+		this.sendReply(''+targetUser.name+' currently has $' +targetUser.balance+ '.');
 
 	},
 	reward: 'award',
