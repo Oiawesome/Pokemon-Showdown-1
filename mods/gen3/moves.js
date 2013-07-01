@@ -69,49 +69,8 @@ exports.BattleMovedex = {
 	},
 	bide: {
 		inherit: true,
-<<<<<<< HEAD
-		desc: "The user spends two to three turns locked into this move and then, on the second turn after using this move, the user attacks the last Pokemon that hit it, inflicting double the damage in HP it lost during the two turns. If the last Pokemon that hit it is no longer on the field, the user attacks a random foe instead. If the user is prevented from moving during this move's use, the effect ends. This move ignores Accuracy and Evasion modifiers and can hit Ghost-types. Makes contact. Priority +1.",
-		shortDesc: "Waits 2-3 turns; deals double the damage taken.",
-		priority: 0,
-		effect: {
-			duration: 2,	// TODO: Use correct duration.
-			onLockMove: 'bide',
-			onStart: function(pokemon) {
-				this.effectData.totalDamage = 0;
-				this.add('-start', pokemon, 'Bide');
-			},
-			onDamage: function(damage, target, source, move) {
-				if (!move || move.effectType !== 'Move') return;
-				if (!source || source.side === target.side) return;
-				this.effectData.totalDamage += damage;
-				this.effectData.sourcePosition = source.position;
-				this.effectData.sourceSide = source.side;
-			},
-			onAfterSetStatus: function(status, pokemon) {
-				if (status.id === 'slp') {
-					pokemon.removeVolatile('bide');
-				}
-			},
-			onBeforeMove: function(pokemon) {
-				if (this.effectData.duration === 1) {
-					if (!this.effectData.totalDamage) {
-						this.add('-fail', pokemon);
-						return false;
-					}
-					this.add('-end', pokemon, 'Bide');
-					var target = this.effectData.sourceSide.active[this.effectData.sourcePosition];
-					this.moveHit(target, pokemon, 'bide', {damage: this.effectData.totalDamage*2});
-					return false;
-				}
-				this.add('-message', pokemon.name+' is storing energy! (placeholder)');
-				return false;
-			}
-		},
-		type: "???"
-=======
 		accuracy: 100,
 		priority: 0
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	},
 	bind: {
 		inherit: true,
@@ -157,11 +116,7 @@ exports.BattleMovedex = {
 			if (pokemon.lastAttackedBy && pokemon.lastAttackedBy.thisTurn && (this.getCategory(pokemon.lastAttackedBy.move) === 'Physical' || this.getMove(pokemon.lastAttackedBy.move).id === 'hiddenpower')) {
 				return 2 * pokemon.lastAttackedBy.damage;
 			}
-<<<<<<< HEAD
-			this.add('-fail',pokemon.id);
-=======
 			this.add('-fail', pokemon);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			return false;
 		}
 	},
@@ -265,11 +220,7 @@ exports.BattleMovedex = {
 		desc: "Deals damage to one adjacent target, if it is asleep and does not have a Substitute. The user recovers half of the HP lost by the target, rounded up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
 		onTryHit: function(target) {
 			if (target.status !== 'slp' || target.volatiles['substitute']) {
-<<<<<<< HEAD
-				this.add('-immune', target.id, '[msg]');
-=======
 				this.add('-immune', target, '[msg]');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return null;
 			}
 		}
@@ -289,11 +240,7 @@ exports.BattleMovedex = {
 				var moveIndex = target.moves.indexOf(target.lastMove);
 				if (!target.lastMove || noEncore[target.lastMove] || (target.moveset[moveIndex] && target.moveset[moveIndex].pp <= 0)) {
 					// it failed
-<<<<<<< HEAD
-					this.add('-fail',target);
-=======
 					this.add('-fail', target);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 					delete target.volatiles['encore'];
 					return;
 				}
@@ -468,15 +415,9 @@ exports.BattleMovedex = {
 		shortDesc: "User takes half damage it would have dealt if miss.",
 		pp: 20,
 		onMoveFail: function(target, source, move) {
-<<<<<<< HEAD
-			if (target.type !== 'ghost') {
-				var damage = this.getDamage(source, target, move, true);
-				this.damage(clampIntRange(damage/8, 1, Math.floor(target.maxhp/2)), source);
-=======
 			if (target.runImmunity('Fighting')) {
 				var damage = this.getDamage(source, target, move, true);
 				this.damage(clampIntRange(damage/2, 1, Math.floor(target.maxhp/2)), source);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			}
 		}
 	},
@@ -495,15 +436,10 @@ exports.BattleMovedex = {
 		shortDesc: "User takes half damage it would have dealt if miss.",
 		pp: 25,
 		onMoveFail: function(target, source, move) {
-<<<<<<< HEAD
-			var damage = this.getDamage(source, target, move, true);
-			this.damage(clampIntRange(damage/2, 1, Math.floor(target.maxhp/2)), source);
-=======
 			if (target.runImmunity('Fighting')) {
 				var damage = this.getDamage(source, target, move, true);
 				this.damage(clampIntRange(damage/2, 1, Math.floor(target.maxhp/2)), source);
 			}
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		}
 	},
 	leafblade: {
@@ -631,8 +567,6 @@ exports.BattleMovedex = {
 		basePower: 400,
 		//desc: ""
 	},
-<<<<<<< HEAD
-=======
 	skillswap: {
 		inherit: true,
 		onHit: function(target, source) {
@@ -646,7 +580,6 @@ exports.BattleMovedex = {
 			this.add('-activate', source, 'move: Skill Swap');
 		}
 	},
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	spikes: {
 		inherit: true,
 		isBounceable: false
