@@ -3,7 +3,6 @@ exports.BattleFormatsData = {
 		isNonstandard: true,
 		tier: ""
 	},
-<<<<<<< HEAD
 	nollan: {
 		viableMoves: {"slackoff":1,"bulkup":1,"drainpunch":1,"return":1},
 		isNonstandard: true,
@@ -16,8 +15,6 @@ exports.BattleFormatsData = {
                 dreamWorldRelease: true,
                 tier: "G5CAP"
         },
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	tomohawk: {
 		viableMoves: {"aurasphere":1,"roost":1,"stealthrock":1,"rapidspin":1,"hurricane":1,"airslash":1,"taunt":1,"substitute":1,"toxic":1},
 		isNonstandard: true,
