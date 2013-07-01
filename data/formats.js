@@ -133,8 +133,6 @@
 		name: "Sky Battle OU",
 		section: "Singles",
 		effectType: 'Format',
-		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
-		banlist: ['Uber', 'Drizzle ++ Swift Swim', 'Soul Dew']
 		rated: true,
 		challengeShow: true,
 		searchShow: true,
@@ -144,8 +142,10 @@
 	},
 	cap: {
 		name: "CAP",
-		ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
-		banlist: ['Uber', 'Drizzle ++ Swift Swim', 'Soul Dew', 'Landorus']
+		section: "Singles",
+		effectType: 'Format',
+		rated: true,
+		challengeShow: true,
 	 	searchShow: true,
 		isTeambuilderFormat: true,
 		ruleset: ['CAP Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
