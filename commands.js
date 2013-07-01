@@ -25,7 +25,7 @@ function importUserBalance(user, balance) {
 		for (var i = 0; i < data.length; i++) {
 			if (!data[i]) continue;
 			var row = data[i].split(",");
-			balance[user.name(row[0])] = (row[1])+row[0];
+			balance[user(row[0])] = (row[1])+row[0];
 			console.log('USER BALANCE UPLOADED');
 		}
 	});
