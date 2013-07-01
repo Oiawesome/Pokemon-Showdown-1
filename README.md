@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-Money Mod
-========================================================================
-
-Hey everyone, Nollan here. For those interested in the money commands for my server, I will kindly offer some advice. But first,
-I want to give credit where credit is due. I can easily say I did not make these commands by myself. Additional credit goes to Chomi
-and Orivexes, whose respective Money Mod and Slots command were very helpful in the making of these commands. I also want to recognize
-bandicam, who requested I make these and is the reason I decided to in the first place. Additionally, note these commands are very new,
-and stil have several bugs to be fixed.
-
-Ok, so if you want to try these, simply pull them from commands.js, that is where it all is. Make sure to pull the "var winners = 0;" at 
-line 211, without that the code will NOT work. Anyways, enjoy!
-
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 Pokémon Showdown
 ========================================================================
 
@@ -82,19 +67,15 @@ To become an Administrator, create a file named `config/usergroups.csv` containi
 
 Replace `USER` with the username that you would like to become an Administrator.
 
-<<<<<<< HEAD
 This username must be registered. If you do not have a registered Pokémon Showdown account, you can create one using [the registration form][4].
 
 Once you're an administrator, you can promote/demote others easily with the `/admin`, `/leader`, `/mod`, etc commands.
 
   [4]: http://pokemonshowdown.com/forum/register
 
-=======
 This username must be registered. If you do not have a registered account, you can create one using the Register button in the settings menu (it looks like a gear) in the upper-right of Pokémon Showdown.
 
 Once you're an administrator, you can promote/demote others easily with the `/admin`, `/leader`, `/mod`, etc commands.
-
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 Browser support
 ------------------------------------------------------------------------
@@ -119,29 +100,24 @@ Community
 
 The Pokémon Showdown development IRC channel is `#showdown` at `irc.synirc.net`.
 
-<<<<<<< HEAD
 [The Pokémon Showdown forums][5] are hosted on Smogon Forums.
 
   [5]: http://www.smogon.com/forums/forumdisplay.php?f=209
-=======
+  
 You can also visit the [Pokémon Showdown forums][4] for discussion and help.
 
   [4]: http://pokemonshowdown.com/forums/
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
-
 
 License
 ------------------------------------------------------------------------
 
-<<<<<<< HEAD
 Pokémon Showdown's server is distributed under the terms of the [MIT License][6].
 
   [6]: https://github.com/Zarel/Pokemon-Showdown/blob/master/LICENSE
-=======
+
 Pokémon Showdown's server is distributed under the terms of the [MIT License][5].
 
   [5]: https://github.com/Zarel/Pokemon-Showdown/blob/master/LICENSE
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 
 Credits
