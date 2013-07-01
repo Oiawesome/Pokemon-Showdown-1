@@ -1803,18 +1803,12 @@ exports.BattleItems = {
 		fling: {
 			basePower: 30
 		},
-<<<<<<< HEAD
-		onBasePower: function(basePower, user) {
-			user.addVolatile('lifeorb');
-			return basePower * 1.3;
-=======
 		onModifyDamage: function(damage, source, target, move) {
 			if (damage > 0 && source) {
 				source.addVolatile('lifeorb');
 				damage = this.modify(damage, 1.3);
 			}
 			return damage;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		},
 		effect: {
 			duration: 1,
@@ -2147,30 +2141,18 @@ exports.BattleItems = {
 			type: "Rock"
 		},
 		onResidual: function(pokemon) {
-<<<<<<< HEAD
-			if (pokemon.hp <= pokemon.maxhp/4 || (pokemon.hp <= pokemon.maxhp/2 && pokemon.ability === 'Gluttony')) {
-=======
 			if (pokemon.hp <= pokemon.maxhp/4 || (pokemon.hp <= pokemon.maxhp/2 && pokemon.ability === 'gluttony')) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				pokemon.eatItem();
 			}
 		},
 		onEat: function(pokemon) {
-<<<<<<< HEAD
-			pokemon.addVolatile('MicleBerry');
-=======
 			pokemon.addVolatile('micleberry');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		},
 		effect: {
 			duration: 2,
 			onModifyMove: function(move, pokemon) {
 				this.add('-enditem', pokemon, 'Micle Berry');
-<<<<<<< HEAD
-				pokemon.removeVolatile('MicleBerry');
-=======
 				pokemon.removeVolatile('micleberry');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				if (typeof move.accuracy === 'number') {
 					move.accuracy *= 1.2;
 				}
@@ -2180,17 +2162,6 @@ exports.BattleItems = {
 		gen: 4,
 		desc: "Holder's next move has 1.2x accuracy when at 1/4 max HP or less. Single use."
 	},
-<<<<<<< HEAD
-	"moonball": {
-		id: "moonball",
-		name: "Moon Ball",
-		spritenum: 294,
-		num: 498,
-		gen: 2,
-		desc: "A Poke Ball for catching Pokemon that evolve using the Moon Stone."
-	},
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	"mindplate": {
 		id: "mindplate",
 		name: "Mind Plate",
@@ -2224,8 +2195,6 @@ exports.BattleItems = {
 		gen: 2,
 		desc: "Holder's Grass-type attacks have 1.2x power."
 	},
-<<<<<<< HEAD
-=======
 	"moonball": {
 		id: "moonball",
 		name: "Moon Ball",
@@ -2234,7 +2203,6 @@ exports.BattleItems = {
 		gen: 2,
 		desc: "A Poke Ball for catching Pokemon that evolve using the Moon Stone."
 	},
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	"muscleband": {
 		id: "muscleband",
 		name: "Muscle Band",
@@ -2873,13 +2841,9 @@ exports.BattleItems = {
 			basePower: 10
 		},
 		onModifyPokemon: function(pokemon) {
-<<<<<<< HEAD
-			pokemon.negateImmunity['Type'] = true;
-=======
 			for (var type in this.data.TypeChart) {
 				pokemon.negateImmunity[type] = true;
 			}
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		},
 		num: 543,
 		gen: 5,
@@ -3265,6 +3229,7 @@ exports.BattleItems = {
 			}
 		},
 		num: 247,
+
 		gen: 2,
 		desc: "Holder's Ghost-type attacks have 1.2x power."
 	},
