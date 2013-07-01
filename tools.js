@@ -731,11 +731,7 @@ module.exports = (function () {
 				}
 			}
 			if (bannedCombo) {
-<<<<<<< HEAD
-				clause = format.name ? " by "+format.name : '';
-=======
 				var clause = format.name ? " by "+format.name : '';
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				problems.push("Your team has the combination of "+bannedCombo+", which is banned"+clause+".");
 			}
 		}
@@ -924,38 +920,23 @@ module.exports = (function () {
 					if (eventTemplate.eventPokemon) eventData = eventTemplate.eventPokemon[parseInt(splitSource[0],10)];
 					if (eventData) {
 						if (eventData.nature && eventData.nature !== set.nature) {
-<<<<<<< HEAD
-							problems.push(name+" must come from a specific event that gives it a "+eventData.nature+" nature.");
-=======
 							problems.push(name+" must have a "+eventData.nature+" nature because it comes from a specific event.");
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 						}
 						if (eventData.shiny) {
 							set.shiny = true;
 						}
 						if (eventData.generation < 5) eventData.isDW = false;
 						if (eventData.isDW !== undefined && eventData.isDW !== isDW) {
-<<<<<<< HEAD
-							problems.push(name+" must come from a specific event that "+(isDW?"gives":"doesn't give")+" it its DW ability.");
-						}
-						if (eventData.abilities && eventData.abilities.indexOf(ability.id) < 0) {
-							problems.push(name+" must come from a specific event that gives it "+eventData.abilities.join(" or ")+".");
-=======
 							problems.push(name+(isDW?" can't have":" must have")+" its DW ability because it comes from a specific event.");
 						}
 						if (eventData.abilities && eventData.abilities.indexOf(ability.id) < 0) {
 							problems.push(name+" must have "+eventData.abilities.join(" or ")+" because it comes from a specific event.");
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 						}
 						if (eventData.gender) {
 							set.gender = eventData.gender;
 						}
 						if (eventData.level && set.level < eventData.level) {
-<<<<<<< HEAD
-							problems.push(name+" must come from a specific event that makes it at least level "+eventData.level+".");
-=======
 							problems.push(name+" must be at least level "+eventData.level+" because it comes from a specific event.");
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 						}
 					}
 					isDW = false;
