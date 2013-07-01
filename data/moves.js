@@ -828,11 +828,7 @@ exports.BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Physical",
-<<<<<<< HEAD
-		desc: "The user spends two turns locked into this move and then, on the second turn after using this move, the user attacks the last Pokemon that hit it, inflicting double the damage in HP it lost during the two turns. If the last Pokemon that hit it is no longer on the field, the user attacks a random foe instead. If the user is prevented from moving during this move's use, the effect ends. This move does not check accuracy and can hit Ghost-types. Makes contact. Priority +1.",
-=======
 		desc: "The user spends two turns locked into this move and then, on the second turn after using this move, the user attacks the last Pokemon that hit it, inflicting double the damage in HP it lost during the two turns. If the last Pokemon that hit it is no longer on the field, the user attacks a random foe instead. If the user is prevented from moving during this move's use, the effect ends. This move does not check accuracy. Makes contact. Priority +1.",
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		shortDesc: "Waits 2 turns; deals double the damage taken.",
 		id: "bide",
 		name: "Bide",
@@ -869,13 +865,10 @@ exports.BattleMovedex = {
 					}
 					this.add('-end', pokemon, 'Bide');
 					var target = this.effectData.sourceSide.active[this.effectData.sourcePosition];
-<<<<<<< HEAD
-=======
 					if (!target.runImmunity('Normal')) {
 						this.add('-immune', target, '[msg]');
 						return false;
 					}
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 					this.moveHit(target, pokemon, 'bide', {damage: this.effectData.totalDamage*2});
 					return false;
 				}
@@ -892,11 +885,7 @@ exports.BattleMovedex = {
 		accuracy: 85,
 		basePower: 15,
 		category: "Physical",
-<<<<<<< HEAD
-		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; always five turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move. Makes contact.",
-=======
 		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move. Makes contact.",
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		id: "bind",
 		name: "Bind",
@@ -1595,11 +1584,7 @@ exports.BattleMovedex = {
 		accuracy: 85,
 		basePower: 35,
 		category: "Physical",
-<<<<<<< HEAD
-		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; always five turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move. Makes contact.",
-=======
 		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move. Makes contact.",
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		id: "clamp",
 		name: "Clamp",
@@ -1770,10 +1755,6 @@ exports.BattleMovedex = {
 				}
 			}, this).compact();
 			if (!possibleTypes.length) {
-<<<<<<< HEAD
-				this.add('-fail', target);
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return false;
 			}
 			var type = possibleTypes[this.random(possibleTypes.length)];
@@ -1798,10 +1779,6 @@ exports.BattleMovedex = {
 		isNotProtectable: true,
 		onHit: function(target, source) {
 			if (!target.lastMove) {
-<<<<<<< HEAD
-				this.add('-fail', source);
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return false;
 			}
 			var possibleTypes = [];
@@ -1814,10 +1791,6 @@ exports.BattleMovedex = {
 				}
 			}
 			if (!possibleTypes.length) {
-<<<<<<< HEAD
-				this.add('-fail', source);
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return false;
 			}
 			var type = possibleTypes[this.random(possibleTypes.length)];
@@ -1918,10 +1891,6 @@ exports.BattleMovedex = {
 			if (pokemon.lastAttackedBy && pokemon.lastAttackedBy.thisTurn && this.getCategory(pokemon.lastAttackedBy.move) === 'Physical') {
 				return 2 * pokemon.lastAttackedBy.damage;
 			}
-<<<<<<< HEAD
-			this.add('-fail',pokemon.id);
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			return false;
 		},
 		category: "Physical",
@@ -2803,11 +2772,7 @@ exports.BattleMovedex = {
 		drain: [1,2],
 		onTryHit: function(target) {
 			if (target.status !== 'slp') {
-<<<<<<< HEAD
-				this.add('-immune', target.id, '[msg]');
-=======
 				this.add('-immune', target, '[msg]');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return null;
 			}
 		},
@@ -3101,14 +3066,8 @@ exports.BattleMovedex = {
 				var moveIndex = target.moves.indexOf(target.lastMove);
 				if (!target.lastMove || noEncore[target.lastMove] || (target.moveset[moveIndex] && target.moveset[moveIndex].pp <= 0)) {
 					// it failed
-<<<<<<< HEAD
-					this.add('-fail',target);
-					delete target.volatiles['encore'];
-					return;
-=======
 					delete target.volatiles['encore'];
 					return false;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				}
 				this.effectData.move = target.lastMove;
 				this.add('-start', target, 'Encore');
@@ -3642,11 +3601,7 @@ exports.BattleMovedex = {
 		accuracy: 85,
 		basePower: 35,
 		category: "Special",
-<<<<<<< HEAD
-		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; always five turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
-=======
 		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		id: "firespin",
 		name: "Fire Spin",
@@ -4416,23 +4371,12 @@ exports.BattleMovedex = {
 		pp: 10,
 		priority: 0,
 		isBounceable: true,
-<<<<<<< HEAD
-=======
 		volatileStatus: 'gastroacid',
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		onTryHit: function(pokemon) {
 			if (pokemon.ability === 'multitype') {
 				return false;
 			}
 		},
-<<<<<<< HEAD
-		onHit: function(pokemon) {
-			if (pokemon.setAbility('')) {
-				this.add('-endability', pokemon, pokemon.ability);
-				return;
-			}
-			return false;
-=======
 		effect: {
 			onStart: function(pokemon) {
 				this.add('-endability', pokemon, pokemon.ability);
@@ -4440,7 +4384,6 @@ exports.BattleMovedex = {
 			onModifyPokemon: function(pokemon) {
 				pokemon.ignore['Ability'] = true;
 			}
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		},
 		secondary: false,
 		target: "normal",
@@ -6215,11 +6158,7 @@ exports.BattleMovedex = {
 			},
 			onDragOut: function(pokemon) {
 				this.add('-activate', pokemon, 'move: Ingrain');
-<<<<<<< HEAD
-				return false;
-=======
 				return null;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			}
 		},
 		secondary: false,
@@ -6960,11 +6899,7 @@ exports.BattleMovedex = {
 		accuracy: 75,
 		basePower: 120,
 		category: "Special",
-<<<<<<< HEAD
-		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; always five turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
-=======
 		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		id: "magmastorm",
 		isViable: true,
@@ -7237,10 +7172,6 @@ exports.BattleMovedex = {
 			if (pokemon.lastAttackedBy && pokemon.lastAttackedBy.thisTurn) {
 				return 1.5 * pokemon.lastAttackedBy.damage;
 			}
-<<<<<<< HEAD
-			this.add('-fail', pokemon);
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			return false;
 		},
 		category: "Physical",
@@ -7479,10 +7410,6 @@ exports.BattleMovedex = {
 			if (pokemon.lastAttackedBy && pokemon.lastAttackedBy.thisTurn && this.getCategory(pokemon.lastAttackedBy.move) === 'Special') {
 				return 2 * pokemon.lastAttackedBy.damage;
 			}
-<<<<<<< HEAD
-			this.add('-fail', pokemon);
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			return false;
 		},
 		category: "Special",
@@ -9870,11 +9797,7 @@ exports.BattleMovedex = {
 		accuracy: 85,
 		basePower: 35,
 		category: "Physical",
-<<<<<<< HEAD
-		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; always five turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
-=======
 		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		id: "sandtomb",
 		name: "Sand Tomb",
@@ -10465,11 +10388,7 @@ exports.BattleMovedex = {
 				source.ability = sourceAbility;
 				return false;
 			}
-<<<<<<< HEAD
-			this.add('-activate', source, 'move: Skill Swap');
-=======
 			this.add('-activate', source, 'move: Skill Swap', this.getAbility(targetAbility), this.getAbility(sourceAbility), '[of] '+target);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		},
 		secondary: false,
 		target: "normal",
@@ -10566,12 +10485,7 @@ exports.BattleMovedex = {
 				return;
 			}
 			if (defender.volatiles['substitute'] || defender.side === attacker.side) {
-<<<<<<< HEAD
-				this.add('-fail', defender);
-				return null;
-=======
 				return false;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			}
 			if (defender.volatiles['protect']) {
 				this.add('-activate', defender, 'Protect');
@@ -11186,16 +11100,9 @@ exports.BattleMovedex = {
 				this.effectData.layers = 1;
 			},
 			onRestart: function(side) {
-<<<<<<< HEAD
-				if (this.effectData.layers < 3) {
-					this.add('-sidestart', side, 'Spikes');
-					this.effectData.layers++;
-				}
-=======
 				if (this.effectData.layers >= 3) return false;
 				this.add('-sidestart', side, 'Spikes');
 				this.effectData.layers++;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			},
 			onSwitchIn: function(pokemon) {
 				var side = pokemon.side;
@@ -11225,10 +11132,6 @@ exports.BattleMovedex = {
 		priority: 0,
 		onTry: function(pokemon) {
 			if (!pokemon.volatiles['stockpile']) {
-<<<<<<< HEAD
-				this.add('-fail', pokemon);
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return false;
 			}
 		},
@@ -11378,18 +11281,10 @@ exports.BattleMovedex = {
 				this.boost({def:1, spd:1}, target, target, this.getMove('stockpile'));
 			},
 			onRestart: function(target) {
-<<<<<<< HEAD
-				if (this.effectData.layers < 3) {
-					this.effectData.layers++;
-					this.add('-start', target, 'stockpile'+this.effectData.layers);
-					this.boost({def:1, spd:1}, target, target, this.getMove('stockpile'));
-				}
-=======
 				if (this.effectData.layers >= 3) return false;
 				this.effectData.layers++;
 				this.add('-start', target, 'stockpile'+this.effectData.layers);
 				this.boost({def:1, spd:1}, target, target, this.getMove('stockpile'));
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			},
 			onEnd: function(target) {
 				var layers = this.effectData.layers * -1;
@@ -12523,16 +12418,9 @@ exports.BattleMovedex = {
 				this.effectData.layers = 1;
 			},
 			onRestart: function(side) {
-<<<<<<< HEAD
-				if (this.effectData.layers < 2) {
-					this.add('-sidestart', side, 'move: Toxic Spikes');
-					this.effectData.layers++;
-				}
-=======
 				if (this.effectData.layers >= 2) return false;
 				this.add('-sidestart', side, 'move: Toxic Spikes');
 				this.effectData.layers++;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			},
 			onSwitchIn: function(pokemon) {
 				if (!pokemon.runImmunity('Ground')) return;
@@ -12564,11 +12452,7 @@ exports.BattleMovedex = {
 		priority: 0,
 		isNotProtectable: true,
 		onHit: function(target, pokemon) {
-<<<<<<< HEAD
-			if (!pokemon.transformInto(target)) {
-=======
 			if (!pokemon.transformInto(target, pokemon)) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return false;
 			}
 			this.add('-transform', pokemon, target);
@@ -13226,11 +13110,7 @@ exports.BattleMovedex = {
 		accuracy: 85,
 		basePower: 35,
 		category: "Special",
-<<<<<<< HEAD
-		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; always five turns if the user is holding Grip Claw. Power doubles if the target is using Dive. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
-=======
 		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; seven turns if the user is holding Grip Claw. Power doubles if the target is using Dive. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move.",
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		id: "whirlpool",
 		name: "Whirlpool",
@@ -13523,11 +13403,7 @@ exports.BattleMovedex = {
 		accuracy: 90,
 		basePower: 15,
 		category: "Physical",
-<<<<<<< HEAD
-		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; always five turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move. Makes contact.",
-=======
 		desc: "Deals damage to one adjacent target and prevents it from switching for four or five turns; seven turns if the user is holding Grip Claw. Causes damage to the target equal to 1/16 of its maximum HP (1/8 if the user is holding Binding Band), rounded down, at the end of each turn during effect. The target can still switch out if it is holding Shed Shell or uses Baton Pass, U-turn, or Volt Switch. The effect ends if either the user or the target leaves the field, or if the target uses Rapid Spin. This effect is not stackable or reset by using this or another partial-trapping move. Makes contact.",
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		shortDesc: "Traps and damages the target for 4-5 turns.",
 		id: "wrap",
 		name: "Wrap",
