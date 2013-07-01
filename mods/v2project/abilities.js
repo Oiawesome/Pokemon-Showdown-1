@@ -36,5 +36,40 @@
 		name: "Telepathy",
 		rating: 4,
 		num: 140
-	}
+	},
+		"risingwind": {
+		desc: "When this Pokemon enters the battlefield, it causes a permanent Hyper Storm that can only be stopped by Air Lock, Cloud Nine or another weather condition.",
+		shortDesc: "On switch-in, this Pokemon summons Hyper Storm until another weather replaces it.",
+		onStart: function(source) {
+			this.setWeather('hyperstorm');
+			this.weatherData.duration = 0;
+		},
+		id: "risingwind",
+		name: "Rising Wind",
+		rating: 5,
+		num: -6
+	},
+			"clearance": {
+		desc: "When this Pokemon enters the battlefield, it causes a permanent clearance of the weather that can only be stopped by another weather condition.",
+		shortDesc: "On switch-in, this Pokemon summons a clearance of weather until another weather replaces it.",
+		onStart: function(source) {
+			this.setWeather('clearance');
+			this.weatherData.duration = 0;
+		},
+		id: "clearance",
+		name: "Clearance",
+		rating: 5,
+		num: -7
+	},
+		"cleansing": {
+		desc: "This Pokemon is immune to Dark-type attacks including Dark Void.",
+		shortDesc: "This Pokemon is immune to Dark.",
+		onImmunity: function(type) {
+			if (type === 'Dark') return false;
+		},
+		id: "cleansing",
+		name: "Cleansing",
+		rating: 3.5,
+		num: -8
+	},
 };
