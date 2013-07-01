@@ -110,12 +110,9 @@ var parse = exports.parse = function(message, room, user, connection, levelsDeep
 					connection.sendTo(room, data);
 				}
 			},
-<<<<<<< HEAD
 			sendReplyNobox: function(html) {
 				this.sendReply('|raw|'+html);
 			},
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			sendReplyBox: function(html) {
 				this.sendReply('|raw|<div class="infobox">'+html+'</div>');
 			},
@@ -156,12 +153,8 @@ var parse = exports.parse = function(message, room, user, connection, levelsDeep
 			},
 			canBroadcast: function() {
 				if (broadcast) {
-<<<<<<< HEAD
-					if (!this.canTalk(message)) return false;
-=======
 					message = this.canTalk(message);
 					if (!message) return false;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 					if (!user.can('broadcast')) {
 						connection.send("You need to be voiced to broadcast this command's information.");
 						connection.send("To see it for yourself, use: /"+message.substr(1));
@@ -189,14 +182,9 @@ var parse = exports.parse = function(message, room, user, connection, levelsDeep
 				}
 				return parse(message, room, user, connection, levelsDeep+1);
 			},
-<<<<<<< HEAD
-			canTalk: function(message) {
-				return canTalk(user, room, connection, message);
-=======
 			canTalk: function(message, relevantRoom) {
 				var innerRoom = (relevantRoom !== undefined) ? relevantRoom : room;
 				return canTalk(user, innerRoom, connection, message);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			},
 			targetUserOrSelf: function(target) {
 				if (!target) return user;
@@ -253,24 +241,6 @@ function splitTarget(target, exactName) {
 
 /**
  * Can this user talk?
-<<<<<<< HEAD
- * Pass the corresponding connection to give the user an error, if not
- */
-function canTalk(user, room, connection, message) {
-	if (!user.named) return false;
-	if (user.locked) {
-		if (connection) connection.sendTo(room, 'You are locked from talking in chat.');
-		return false;
-	}
-	if (user.mutedRooms[room.id]) {
-		if (connection) connection.sendTo(room, 'You are muted and cannot talk in this room.');
-		return false;
-	}
-	if (config.modchat && room.id === 'lobby') {
-		if (config.modchat === 'crash') {
-			if (!user.can('ignorelimits')) {
-				if (connection) connection.sendTo(room, 'Because the server has crashed, you cannot speak in lobby chat.');
-=======
  * Shows an error message if not.
  */
 function canTalk(user, room, connection, message) {
@@ -290,34 +260,21 @@ function canTalk(user, room, connection, message) {
 		if (config.modchat === 'crash') {
 			if (!user.can('ignorelimits')) {
 				connection.sendTo(room, 'Because the server has crashed, you cannot speak in lobby chat.');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return false;
 			}
 		} else {
 			if (!user.authenticated && config.modchat === true) {
-<<<<<<< HEAD
-				if (connection) connection.sendTo(room, 'Because moderated chat is set, you must be registered to speak in lobby chat. To register, simply win a rated battle by clicking the look for battle button');
-=======
 				connection.sendTo(room, 'Because moderated chat is set, you must be registered to speak in lobby chat. To register, simply win a rated battle by clicking the look for battle button');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return false;
 			} else if (config.groupsranking.indexOf(user.group) < config.groupsranking.indexOf(config.modchat)) {
 				var groupName = config.groups[config.modchat].name;
 				if (!groupName) groupName = config.modchat;
-<<<<<<< HEAD
-				if (connection) connection.sendTo(room, 'Because moderated chat is set, you must be of rank ' + groupName +' or higher to speak in lobby chat.');
-=======
 				connection.sendTo(room, 'Because moderated chat is set, you must be of rank ' + groupName +' or higher to speak in lobby chat.');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return false;
 			}
 		}
 	}
-<<<<<<< HEAD
-	if (!(user.userid in room.users)) {
-=======
 	if (room && !(user.userid in room.users)) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		connection.popup("You can't send a message to this room without being in it.");
 		return false;
 	}
@@ -334,11 +291,7 @@ function canTalk(user, room, connection, message) {
 		// remove zalgo
 		message = message.replace(/[\u0300-\u036f]{3,}/g,'');
 
-<<<<<<< HEAD
-		if (room.id === 'lobby') {
-=======
 		if (room && room.id === 'lobby') {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			var normalized = message.trim();
 			if ((normalized === user.lastMessage) &&
 					((Date.now() - user.lastMessageTime) < MESSAGE_COOLDOWN)) {
