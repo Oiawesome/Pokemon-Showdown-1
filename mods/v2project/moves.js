@@ -148,7 +148,7 @@
 		target: "normal",
 		type: "Fairy"
 	},
-	"Star Shot": {
+	"starshot": {
 		num: 1008,
 	        accuracy: 100,
 		basePower: 80,
@@ -164,7 +164,7 @@
 		target: "normal",
 		type: "Fairy"
 	},
-	"Lunar Fist": {
+	"lunarfist": {
 		num: 7,
 		accuracy: 100,
 		basePower: 75,
