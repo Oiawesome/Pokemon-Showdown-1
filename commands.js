@@ -15,7 +15,7 @@
 if (typeof balance == "undefined") {
 	balance = new Object();
 }
-function importUserBalance(balance) {
+function importUserBalance(user, balance) {
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) {
 			console.log("The file was not properly read into the system! The error was: " + err);
