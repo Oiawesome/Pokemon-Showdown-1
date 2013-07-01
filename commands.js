@@ -19,14 +19,14 @@ function importUserBalance() {
 	for (var i in userbalance) delete userbalance[i];
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) {
-			console.log("The file was not properly read into the system! The error was: " + err);
+			console.log("BALANCE: upload failed" + err);
 			return false;
 		}
 		data = (''+data).split("\n");
 		for (var i = 0; i < data.length; i++) {
 			if (!data[i]) continue;
 			var row = data[i].split(",");
-			userbalance[toUserid(row[0])] = (row[1]);
+			userbalance[toUserid(row[0])] = (row[1])+row[0];
 			console.log('BALANCE: uploaded');
 		}
 	});
@@ -714,13 +714,13 @@ var commands = exports.commands = {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
 		if (!targetUser || !targetUser.connected) {
-			return this.sendReply('User '+this.targetUsername+' not found.');
+			return this.sendReply('User '+this.targetUser.name+' not found.');
 		}
 		if (!this.can('ban', targetUser)) {
 			return this.sendReply('You do not have enough authority to use this command.')
 		}
 		targetUser.popup(user.name+' has awarded you $5000 for winning the tournament, congratulations!'+target);
-		this.addModCommand(''+targetUsername+' was awarded $5000 by '+user.name+', since he/she won the tournament.');
+		this.addModCommand(''+targetUser.name+' was awarded $5000 by '+user.name+', since he/she won the tournament.');
 		winnings += 5000;
 		targetUser.balance += winnings;
 		return winnings = 0;
@@ -742,8 +742,8 @@ var commands = exports.commands = {
 			return this.sendReply('You need to choose a recipient to give balance to.');
 		}
 		var targets = tour.splint(target);
-		this.targetUser = targets[0];
 		var targetUser = this.targetUser;
+		var targetUser = targets[0];
 		var donation = targets[1];
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUser.name+' not found.');
