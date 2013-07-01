@@ -12,9 +12,10 @@
  */
 
 //BALANCE FUNCTIONS START
-function importUserBalance(user) {
-	user.balance = new Array();
-	for (var i  in user.balance) user.balance = 0;
+function importUserBalance() {
+	user.balance = function(user) {
+		var userbalance = 0;	
+	}
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) {
 			console.log("The file was not properly read into the system! The error was: " + err);
@@ -24,7 +25,7 @@ function importUserBalance(user) {
 		for (var i = 0; i < data.length; i++) {
 			if (!data[i]) continue;
 			var row = data[i].split(",");
-			user.balance[toUserid(row[0])] = (row[1])+row[0];
+			userbalance[toUserid(row[0])] = (row[1])+row[0];
 			console.log('USER BALANCE UPLOADED');
 		}
 	});
@@ -636,6 +637,8 @@ var commands = exports.commands = {
 	mybalance: 'balance',
 	balance: function(target, room, user) {
 		if (!user.balance || user.balance <= 0) {
+			user.balance = userbalance;
+		} else if (!userbalance || userbalance <= 0) {
 			user.balance = 0;
 		}
 		this.sendReply('Your current balance is $' +user.balance+ '.');
