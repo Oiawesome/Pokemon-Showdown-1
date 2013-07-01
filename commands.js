@@ -11,7 +11,6 @@
  * @license MIT license
  */
 
-<<<<<<< HEAD
 //BALANCE VARIABLES START
 var userbalance = 0;
 //BALANCE FUNCTIONS START
@@ -839,15 +838,6 @@ var commands = exports.commands = {
 	version: function(target, room, user) {
 		if (!this.canBroadcast()) return;
 		this.sendReplyBox('Server version: <b>'+CommandParser.package.version+'</b> <small>(<a href="http://pokemonshowdown.com/versions#' + CommandParser.serverVersion + '" target="_blank">' + CommandParser.serverVersion.substr(0,10) + '</a>)</small>');
-=======
-var crypto = require('crypto');
-
-var commands = exports.commands = {
-
-	version: function(target, room, user) {
-		if (!this.canBroadcast()) return;
-		this.sendReplyBox('Server version: <b>'+CommandParser.package.version+'</b> <small>(<a href="http://pokemonshowdown.com/versions#' + CommandParser.serverVersion + '">' + CommandParser.serverVersion.substr(0,10) + '</a>)</small>');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	},
 
 	me: function(target, room, user, connection) {
@@ -868,11 +858,7 @@ var commands = exports.commands = {
 		if (!target) return this.parse('/avatars');
 		var parts = target.split(',');
 		var avatar = parseInt(parts[0]);
-<<<<<<< HEAD
-		if (!avatar || avatar > 294 && avatar < 1005 || avatar > 1013 && avatar < 5000 || avatar < 1 || avatar > 5004) {
-=======
-		if (!avatar || avatar > 294 || avatar < 1) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
+		if (!avatar || avatar > 294 && avatar < 1001 || avatar > 1013 || avatar < 1) {
 			if (!parts[1]) {
 				this.sendReply("Invalid avatar.");
 			}
@@ -898,7 +884,6 @@ var commands = exports.commands = {
 		}
 		return this.parse('/msg '+(user.lastPM||'')+', '+target);
 	},
-
 	pm: 'msg',
 	whisper: 'msg',
 	w: 'msg',
@@ -926,14 +911,8 @@ var commands = exports.commands = {
 			return this.popupReply('This user is locked and cannot PM.');
 		}
 
-<<<<<<< HEAD
-		if (!user.named) {
-			return this.popupReply('You must choose a name before you can send private messages.');
-		}
-=======
 		target = this.canTalk(target, null);
 		if (!target) return false;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 		var message = '|pm|'+user.getIdentity()+'|'+targetUser.getIdentity()+'|'+target;
 		user.send(message);
@@ -949,47 +928,27 @@ var commands = exports.commands = {
 			return this.sendReply("The room '"+target+"' already exists.");
 		}
 		Rooms.rooms[id] = new Rooms.ChatRoom(id, target);
-<<<<<<< HEAD
 		tour.reset(target);
 		return this.sendReply("The room '"+target+"' was created.");
 	},
-	privateroom: function(target, room, user) {
-		if (!this.can('makeroom')) return;
-		if (room.isPrivate) {
-			room.isPrivate = false;
-			this.addModCommand(user.name+' made the room public.');
-		}
-		if (!room.isPrivate) {
-=======
-		return this.sendReply("The room '"+target+"' was created.");
-	},
-
 	privateroom: function(target, room, user) {
 		if (!this.can('makeroom')) return;
 		if (target === 'off') {
 			room.isPrivate = false;
 			this.addModCommand(user.name+' made the room public.');
 		} else {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			room.isPrivate = true;
 			this.addModCommand(user.name+' made the room private.');
 		}
 	},
-<<<<<<< HEAD
-=======
-
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	join: function(target, room, user, connection) {
 		var targetRoom = Rooms.get(target);
 		if (target && !targetRoom) {
 			return connection.sendTo(target, "|noinit|nonexistent|The room '"+target+"' does not exist.");
 		}
-<<<<<<< HEAD
 		if (target.toLowerCase() == "authchat" && !user.can('mute')) {
 			return this.sendReply("Nice try. But this room is for Nollan\'s Factory staff only. NOW GET OUT!");
 		}
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		if (targetRoom && !targetRoom.battle && targetRoom !== Rooms.lobby && !user.named) {
 			return connection.sendTo(target, "|noinit|namerequired|You must have a name in order to join the room '"+target+"'.");
 		}
@@ -1109,12 +1068,7 @@ var commands = exports.commands = {
 		if (!user.can('lock', targetUser)) {
 			return this.sendReply('/lock - Access denied.');
 		}
-
-<<<<<<< HEAD
-		if ((targetUser.locked || Users.checkBanned(Object.keys(targetUser.ips)[0])) && !target) {
-=======
 		if ((targetUser.locked || Users.checkBanned(targetUser.latestIp)) && !target) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			var problem = ' but was already '+(targetUser.locked ? 'locked' : 'banned');
 			return this.privateModCommand('('+targetUser.name+' would be locked by '+user.name+problem+'.)');
 		}
@@ -1124,10 +1078,7 @@ var commands = exports.commands = {
 		this.addModCommand(""+targetUser.name+" was locked from talking by "+user.name+"." + (target ? " (" + target + ")" : ""));
 		var alts = targetUser.getAlts();
 		if (alts.length) this.addModCommand(""+targetUser.name+"'s alts were also locked: "+alts.join(", "));
-<<<<<<< HEAD
-=======
 		this.add('|unlink|' + targetUser.userid);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 		targetUser.lock();
 	},
@@ -1158,24 +1109,11 @@ var commands = exports.commands = {
 			return this.sendReply('User '+this.targetUsername+' not found.');
 		}
 		if (!this.can('ban', targetUser)) return false;
-
-<<<<<<< HEAD
-		if (Users.checkBanned(Object.keys(targetUser.ips)[0]) && !target) {
-=======
+		
 		if (Users.checkBanned(targetUser.latestIp) && !target) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			var problem = ' but was already banned';
 			return this.privateModCommand('('+targetUser.name+' would be banned by '+user.name+problem+'.)');
 		}
-
-<<<<<<< HEAD
-		targetUser.popup(user.name+" has banned you.  If you feel that your banning was unjustified you can appeal the ban:\nhttp://www.smogon.com/forums/announcement.php?f=126&a=204\n\n"+target);
-
-		this.addModCommand(""+targetUser.name+" was banned by "+user.name+"." + (target ? " (" + target + ")" : ""));
-		var alts = targetUser.getAlts();
-		if (alts.length) this.addModCommand(""+targetUser.name+"'s alts were also banned: "+alts.join(", "));
-
-=======
 		targetUser.popup(user.name+" has banned you." + (config.appealurl ? ("  If you feel that your banning was unjustified you can appeal the ban:\n" + config.appealurl) : "") + "\n\n"+target);
 
 		this.addModCommand(""+targetUser.name+" was banned by "+user.name+"." + (target ? " (" + target + ")" : ""));
@@ -1188,7 +1126,6 @@ var commands = exports.commands = {
 		}
 
 		this.add('|unlink|' + targetUser.userid);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		targetUser.ban();
 	},
 
@@ -1248,8 +1185,6 @@ var commands = exports.commands = {
 	/*********************************************************
 	 * Moderating: Other
 	 *********************************************************/
-<<<<<<< HEAD
-
 	hide: 'hideauth',
 	hideauth: function(target, room, user){
 		if(!user.can('hideauth'))
@@ -1289,13 +1224,11 @@ var commands = exports.commands = {
 		user.updateIdentity();
 		this.sendReply('You have now revealed your auth symbol.');
 		return this.logModCommand(user.name + ' has revealed their auth symbol.');
-=======
 	
 	modnote: function(target, room, user, connection, cmd) {
 		if (!target) return this.parse('/help note');
 		if (!this.can('mute')) return false;
 		return this.privateModCommand('(' + user.name + ' notes: ' + target + ')');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	},
 	
 	demote: 'promote',
@@ -1339,11 +1272,6 @@ var commands = exports.commands = {
 			targetUser.updateIdentity();
 		}
 	},
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	forcepromote: function(target, room, user) {
 		// warning: never document this command in /help
 		if (!this.can('forcepromote')) return false;
@@ -1357,15 +1285,7 @@ var commands = exports.commands = {
 		var groupName = config.groups[nextGroup].name || nextGroup || '';
 		this.addModCommand(''+name+' was promoted to ' + (groupName.trim()) + ' by '+user.name+'.');
 	},
-<<<<<<< HEAD
-	
-	fire: function(target, room, user) {
-		if (!this.can('forcepromote')) return false;
-		this.addModCommand(''+target+' was fired by '+user.name+'.');
-=======
-
 	deauth: function(target, room, user) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		return this.parse('/demote '+target+', deauth');
 	},
 
@@ -1445,11 +1365,7 @@ var commands = exports.commands = {
 		if (targetUser.userid === toUserid(this.targetUser)) {
 			var entry = ''+targetUser.name+' was forced to choose a new name by '+user.name+'.' + (target ? " (" + target + ")" : "");
 			this.logModCommand(entry);
-<<<<<<< HEAD
-			Rooms.lobby.sendAuth(entry);
-=======
 			Rooms.lobby.sendAuth('(' + entry + ')');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			if (room.id !== 'lobby') {
 				this.add(entry);
 			} else {
@@ -1478,21 +1394,15 @@ var commands = exports.commands = {
 		if (targetUser.userid === toUserid(this.targetUser)) {
 			var entry = ''+targetUser.name+' was forcibly renamed to '+target+' by '+user.name+'.';
 			this.logModCommand(entry);
-<<<<<<< HEAD
-			Rooms.lobby.sendAuth(entry);
-=======
 			Rooms.lobby.sendAuth('(' + entry + ')');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
+
 			if (room.id !== 'lobby') {
 				room.add(entry);
 			} else {
 				room.logEntry(entry);
 			}
-<<<<<<< HEAD
-			targetUser.forceRename(target);
-=======
 			targetUser.forceRename(target, undefined, true);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
+
 		} else {
 			this.sendReply("User "+targetUser.name+" is no longer using that name.");
 		}
@@ -1564,12 +1474,8 @@ var commands = exports.commands = {
 	hotpatch: function(target, room, user) {
 		if (!target) return this.parse('/help hotpatch');
 		if (!this.can('hotpatch')) return false;
-
-<<<<<<< HEAD
-=======
 		Rooms.lobby.logEntry(user.name + ' used /hotpatch ' + target);
 
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		if (target === 'chat') {
 
 			CommandParser.uncacheTree('./command-parser.js');
@@ -1685,10 +1591,6 @@ var commands = exports.commands = {
 			data = (''+data).split("\n");
 			var count = 0;
 			for (var i=0; i<data.length; i++) {
-<<<<<<< HEAD
-=======
-				data[i] = data[i].split('#')[0].trim();
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				if (data[i] && !Users.bannedIps[data[i]]) {
 					Users.bannedIps[data[i]] = '#ipban';
 					count++;
@@ -1709,11 +1611,7 @@ var commands = exports.commands = {
 	},
 
 	updateserver: function(target, room, user, connection) {
-<<<<<<< HEAD
-		if (!user.checkConsolePermission(connection.socket)) {
-=======
 		if (!user.checkConsolePermission(connection)) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			return this.sendReply('/updateserver - Access denied.');
 		}
 
@@ -1784,11 +1682,7 @@ var commands = exports.commands = {
 	},
 
 	eval: function(target, room, user, connection, cmd, message) {
-<<<<<<< HEAD
-		if (!user.checkConsolePermission(connection.socket)) {
-=======
 		if (!user.checkConsolePermission(connection)) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			return this.sendReply("/eval - Access denied.");
 		}
 		if (!this.canBroadcast()) return;
@@ -1806,11 +1700,7 @@ var commands = exports.commands = {
 	},
 
 	evalbattle: function(target, room, user, connection, cmd, message) {
-<<<<<<< HEAD
-		if (!user.checkConsolePermission(connection.socket)) {
-=======
 		if (!user.checkConsolePermission(connection)) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			return this.sendReply("/evalbattle - Access denied.");
 		}
 		if (!this.canBroadcast()) return;
@@ -1953,12 +1843,9 @@ var commands = exports.commands = {
 		if (!this.can('forcewin')) return false;
 		if (!room.battle) {
 			this.sendReply('/forcewin - This is not a battle room.');
-<<<<<<< HEAD
-=======
 			return false;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
-		}
 
+		}
 		room.battle.endType = 'forced';
 		if (!target) {
 			room.battle.tie();
@@ -2128,11 +2015,6 @@ var commands = exports.commands = {
 				targetToken = target.substr(commaIndex+1);
 			}
 		}
-<<<<<<< HEAD
-		user.rename(targetName, targetToken, targetAuth, connection.socket);
-=======
 		user.rename(targetName, targetToken, targetAuth, connection);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	},
-
 };
