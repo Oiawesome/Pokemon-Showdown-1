@@ -637,13 +637,11 @@ var commands = exports.commands = {
 		if (!user.balance || user.balance <= 0) {
 			user.balance = 0;
 		}
-		if (uploadbalance = true) {
-			user.balance += userbalance;
-			return userbalance = 0;
-		}
+		user.balance += userbalance;
+		return userbalance = 0;
 		this.sendReply('Your current balance is $' +user.balance+ '.');
 	},
-	ub: 'userbalance',
+	/*ub: 'userbalance',
 	userbalance: function(target, room, user) {
 		target = this.splitTarget(target);
 		var targetUser = this.targetUser;
@@ -658,7 +656,7 @@ var commands = exports.commands = {
 		}
 		this.sendReply(''+targetUser.name+' currently has $' +targetUser.balance+ '.');
 
-	},
+	},*/
 	reward: 'award',
 	award: function(target, room, user) {
 		target = this.splitTarget(target);
@@ -746,7 +744,6 @@ var commands = exports.commands = {
 		if (!targetUser || !targetUser.connected) {
 			return this.sendReply('User '+this.targetUser.name+' not found.');
 		}
-		target[1] = parseInt(targets[1]);
 		if (isNaN(targets[1])) {
 			return this.sendReply('Proper syntax for this command: /give user, amount of money');
 		}
