@@ -111,11 +111,7 @@ exports.BattleAbilities = {
 	},
 	"stench": {
 		inherit: true,
-<<<<<<< HEAD
-		onModifyMove: null
-=======
 		onModifyMove: function(){}
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	},
 	"sturdy": {
 		inherit: true,
