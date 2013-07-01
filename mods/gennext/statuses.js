@@ -2,11 +2,7 @@ exports.BattleStatuses = {
 	frz: {
 		effectType: 'Status',
 		onStart: function(target) {
-<<<<<<< HEAD
-			this.add('-status', target.id, 'frz');
-=======
 			this.add('-status', target, 'frz');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		},
 		duration: 2,
 		onBeforeMovePriority: 2,
@@ -15,11 +11,7 @@ exports.BattleStatuses = {
 				pokemon.cureStatus();
 				return;
 			}
-<<<<<<< HEAD
-			this.add('cant', pokemon.id, 'frz');
-=======
 			this.add('cant', pokemon, 'frz');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			return false;
 		},
 		onHit: function(target, source, move) {
