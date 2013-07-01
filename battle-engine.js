@@ -12,20 +12,12 @@
 
 require('sugar');
 
-<<<<<<< HEAD
-fs = require('fs');
-=======
 global.fs = require('fs');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 if (!('existsSync' in fs)) {
 	// for compatibility with ancient versions of node
 	fs.existsSync = require('path').existsSync;
 }
-<<<<<<< HEAD
-config = require('./config/config.js');
-=======
 global.config = require('./config/config.js');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 if (config.crashguard) {
 	// graceful crash - allow current battles to finish before restarting
@@ -47,31 +39,19 @@ if (config.crashguard) {
  * If an object with an ID is passed, its ID will be returned.
  * Otherwise, an empty string will be returned.
  */
-<<<<<<< HEAD
-toId = function(text) {
-=======
 global.toId = function(text) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	if (text && text.id) text = text.id;
 	else if (text && text.userid) text = text.userid;
 
 	return string(text).toLowerCase().replace(/[^a-z0-9]+/g, '');
 };
-<<<<<<< HEAD
-toUserid = toId;
-=======
 global.toUserid = toId;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 /**
  * Validates a username or Pokemon nickname
  */
 var bannedNameStartChars = {'~':1, '&':1, '@':1, '%':1, '+':1, '-':1, '!':1, '?':1, '#':1, ' ':1};
-<<<<<<< HEAD
-toName = function(name) {
-=======
 global.toName = function(name) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	name = string(name);
 	name = name.replace(/[\|\s\[\]\,]+/g, ' ').trim();
 	while (bannedNameStartChars[name.charAt(0)]) {
@@ -88,11 +68,7 @@ global.toName = function(name) {
  * Escapes a string for HTML
  * If strEscape is true, escapes it for JavaScript, too
  */
-<<<<<<< HEAD
-sanitize = function(str, strEscape) {
-=======
 global.sanitize = function(str, strEscape) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	str = (''+(str||''));
 	str = str.escapeHTML();
 	if (strEscape) str = str.replace(/'/g, '\\\'');
@@ -105,11 +81,7 @@ global.sanitize = function(str, strEscape) {
  * If we're expecting a string and being given anything that isn't a string
  * or a number, it's safe to assume it's an error, and return ''
  */
-<<<<<<< HEAD
-string = function(str) {
-=======
 global.string = function(str) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	if (typeof str === 'string' || typeof str === 'number') return ''+str;
 	return '';
 }
@@ -126,13 +98,8 @@ clampIntRange = function(num, min, max) {
 	return num;
 };
 
-<<<<<<< HEAD
-Data = {};
-Tools = require('./tools.js');
-=======
 global.Data = {};
 global.Tools = require('./tools.js');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 var Battles = {};
 
@@ -500,11 +467,7 @@ var BattlePokemon = (function() {
 			lockedMove = toId(lockedMove);
 			this.trapped = true;
 		}
-<<<<<<< HEAD
-		if (this.volatiles['mustRecharge'] || lockedMove === 'recharge') {
-=======
 		if (lockedMove === 'recharge') {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			return [{
 				move: 'Recharge',
 				id: 'recharge'
@@ -614,20 +577,12 @@ var BattlePokemon = (function() {
 			this.battle.singleEvent('Copy', status, this.volatiles[i], this);
 		}
 	};
-<<<<<<< HEAD
-	BattlePokemon.prototype.transformInto = function(pokemon) {
-=======
 	BattlePokemon.prototype.transformInto = function(pokemon, user) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		var template = pokemon.template;
 		if (pokemon.fainted || pokemon.illusion || pokemon.volatiles['substitute']) {
 			return false;
 		}
-<<<<<<< HEAD
-		if (!template.abilities || pokemon && pokemon.transformed) {
-=======
 		if (!template.abilities || (pokemon && pokemon.transformed && this.battle.gen >= 2) || (user && user.transformed && this.battle.gen >= 5)) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			return false;
 		}
 		if (!this.formeChange(template, true)) {
@@ -642,10 +597,7 @@ var BattlePokemon = (function() {
 		this.moveset = [];
 		this.moves = [];
 		for (var i=0; i<pokemon.moveset.length; i++) {
-<<<<<<< HEAD
-=======
 			var move = this.battle.getMove(this.set.moves[i]);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			var moveData = pokemon.moveset[i];
 			var moveName = moveData.move;
 			if (moveData.id === 'hiddenpower') {
@@ -654,13 +606,8 @@ var BattlePokemon = (function() {
 			this.moveset.push({
 				move: moveName,
 				id: moveData.id,
-<<<<<<< HEAD
-				pp: 5,
-				maxpp: 5,
-=======
 				pp: move.noPPBoosts ? moveData.maxpp : 5,
 				maxpp: this.battle.gen >= 5 ? (move.noPPBoosts ? moveData.maxpp : 5) : (this.battle.gen <= 2 ? move.pp : moveData.maxpp),
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				target: moveData.target,
 				disabled: false
 			});
@@ -786,34 +733,15 @@ var BattlePokemon = (function() {
 		}
 		return false;
 	};
-<<<<<<< HEAD
-	BattlePokemon.prototype.canUseMove = function(moveid) {
-		moveid = toId(moveid);
-		if (moveid.substr(0,11) === 'hiddenpower') moveid = 'hiddenpower';
-		if (!this.hasMove(moveid)) return false;
-		if (this.disabledMoves[moveid]) return false;
-		var moveData = this.getMoveData(moveid);
-		if (!moveData || !moveData.pp || moveData.disabled) return false;
-		return true;
-	};
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	BattlePokemon.prototype.getValidMoves = function() {
 		var pMoves = this.getMoves(this.getLockedMove());
 		var moves = [];
 		for (var i=0; i<pMoves.length; i++) {
 			if (!pMoves[i].disabled) {
-<<<<<<< HEAD
-				moves.push(pMoves[i].move);
-			}
-		}
-		if (!moves.length) return ['Struggle'];
-=======
 				moves.push(pMoves[i].id);
 			}
 		}
 		if (!moves.length) return ['struggle'];
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		return moves;
 	};
 	// returns the amount of damage actually healed
@@ -1031,13 +959,8 @@ var BattlePokemon = (function() {
 		}
 
 		if (this.volatiles[status.id]) {
-<<<<<<< HEAD
-			this.battle.singleEvent('Restart', status, this.volatiles[status.id], this, source, sourceEffect);
-			return false;
-=======
 			if (!status.onRestart) return false;
 			return this.battle.singleEvent('Restart', status, this.volatiles[status.id], this, source, sourceEffect);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		}
 		if (!this.runImmunity(status.id)) return false;
 		var result = this.battle.runEvent('TryAddVolatile', this, source, sourceEffect, status);
@@ -1060,18 +983,11 @@ var BattlePokemon = (function() {
 		if (status.durationCallback) {
 			this.volatiles[status.id].duration = status.durationCallback.call(this.battle, this, source, sourceEffect);
 		}
-<<<<<<< HEAD
-		if (!this.battle.singleEvent('Start', status, this.volatiles[status.id], this, source, sourceEffect)) {
-			// cancel
-			delete this.volatiles[status.id];
-			return false;
-=======
 		var result = this.battle.singleEvent('Start', status, this.volatiles[status.id], this, source, sourceEffect);
 		if (!result) {
 			// cancel
 			delete this.volatiles[status.id];
 			return result;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		}
 		this.update();
 		return true;
@@ -1227,13 +1143,8 @@ var BattleSide = (function() {
 	BattleSide.prototype.addSideCondition = function(status, source, sourceEffect) {
 		status = this.battle.getEffect(status);
 		if (this.sideConditions[status.id]) {
-<<<<<<< HEAD
-			this.battle.singleEvent('Restart', status, this.sideConditions[status.id], this, source, sourceEffect);
-			return false;
-=======
 			if (!status.onRestart) return false;
 			return this.battle.singleEvent('Restart', status, this.sideConditions[status.id], this, source, sourceEffect);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		}
 		this.sideConditions[status.id] = {id: status.id};
 		this.sideConditions[status.id].target = this;
@@ -1459,13 +1370,8 @@ var Battle = (function() {
 	Battle.prototype.addPseudoWeather = function(status, source, sourceEffect) {
 		status = this.getEffect(status);
 		if (this.pseudoWeather[status.id]) {
-<<<<<<< HEAD
-			this.singleEvent('Restart', status, this.pseudoWeather[status.id], this, source, sourceEffect);
-			return false;
-=======
 			if (!status.onRestart) return false;
 			return this.singleEvent('Restart', status, this.pseudoWeather[status.id], this, source, sourceEffect);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		}
 		this.pseudoWeather[status.id] = {id: status.id};
 		if (source) {
@@ -2130,14 +2036,11 @@ var Battle = (function() {
 
 		if (this.p2.decision && this.p1.decision) {
 			if (this.p2.decision === true && this.p1.decision === true) {
-<<<<<<< HEAD
-=======
 				if (type !== 'move') {
 					// TODO: investigate this race condition; should be fixed
 					// properly later
 					return this.makeRequest('move');
 				}
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				this.add('html', '<div class="broadcast-red"><b>The battle crashed</b></div>');
 				this.win();
 			} else {
@@ -2423,11 +2326,7 @@ var Battle = (function() {
 		}
 
 		if (effect.recoil && source) {
-<<<<<<< HEAD
-			this.damage(Math.round(damage * effect.recoil[0] / effect.recoil[1]), source, target, 'recoil');
-=======
 			this.damage(clampIntRange(Math.round(damage * effect.recoil[0] / effect.recoil[1]), 1), source, target, 'recoil');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		}
 		if (effect.drain && source) {
 			this.heal(Math.ceil(damage * effect.drain[0] / effect.drain[1]), source, target, 'drain');
@@ -2693,12 +2592,9 @@ var Battle = (function() {
 		if (basePower && !Math.floor(baseDamage)) {
 			return 1;
 		}
-<<<<<<< HEAD
-=======
 		
 		// Final modifier. Modifiers that modify damage after min damage check, such as Life Orb.
 		baseDamage = this.runEvent('ModifyDamage', pokemon, target, move, baseDamage);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 		return Math.floor(baseDamage);
 	};
@@ -3354,16 +3250,6 @@ var Battle = (function() {
 				if (targetLoc) data = data.substr(0, data.lastIndexOf(' '));
 
 				var pokemon = side.pokemon[i];
-<<<<<<< HEAD
-				var move = '';
-				if (data.search(/^[0-9]+$/) >= 0) {
-					move = pokemon.getValidMoves()[parseInt(data,10)-1];
-				} else {
-					move = data;
-				}
-				if (!pokemon.canUseMove(move)) move = pokemon.getValidMoves()[0];
-				move = this.getMove(move).id;
-=======
 				var validMoves = pokemon.getValidMoves();
 				var moveid = '';
 				if (data.search(/^[0-9]+$/) >= 0) {
@@ -3380,17 +3266,12 @@ var Battle = (function() {
 				if (!moveid) {
 					moveid = validMoves[0];
 				}
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 				decisions.push({
 					choice: 'move',
 					pokemon: pokemon,
 					targetLoc: targetLoc,
-<<<<<<< HEAD
-					move: move
-=======
 					move: moveid
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				});
 				break;
 			}
