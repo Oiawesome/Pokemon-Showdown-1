@@ -12,8 +12,12 @@
  */
 
 //BALANCE FUNCTIONS START
+if (typeof user == "undefined") {
+	user = new Object();
+}
+user.balance = new Array();
+
 function importUserBalance(user) {
-	user.balance = new Array();
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) {
 			console.log("The file was not properly read into the system! The error was: " + err);
