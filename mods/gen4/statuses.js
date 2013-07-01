@@ -4,7 +4,11 @@ exports.BattleStatuses = {
 		onBeforeMovePriority: 2,
 		onBeforeMove: function(pokemon) {
 			if (pokemon.ability !== 'magicguard' && this.random(4) === 0) {
+<<<<<<< HEAD
 				this.add('cant', pokemon.id, 'par');
+=======
+				this.add('cant', pokemon, 'par');
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return false;
 			}
 		}
@@ -12,7 +16,11 @@ exports.BattleStatuses = {
 	slp: {
 		effectType: 'Status',
 		onStart: function(target) {
+<<<<<<< HEAD
 			this.add('-status', target.id, 'slp');
+=======
+			this.add('-status', target, 'slp');
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			// 1-4 turns
 			this.effectData.time = this.random(2,6);
 		},
@@ -26,7 +34,11 @@ exports.BattleStatuses = {
 				pokemon.cureStatus();
 				return;
 			}
+<<<<<<< HEAD
 			this.add('cant', pokemon.id, 'slp');
+=======
+			this.add('cant', pokemon, 'slp');
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			if (move.sleepUsable) {
 				return;
 			}

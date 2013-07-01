@@ -65,6 +65,47 @@ exports.BattleMovedex = {
 		basePowerCallback: undefined,
 		desc: "Does one hit for the user and each other unfainted non-egg active and non-active Pokemon on the user's side without a status problem."
 	},
+<<<<<<< HEAD
+=======
+	bide: {
+		inherit: true,
+		effect: {
+			duration: 3,
+			onLockMove: 'bide',
+			onStart: function(pokemon) {
+				this.effectData.totalDamage = 0;
+				this.add('-start', pokemon, 'Bide');
+			},
+			onDamage: function(damage, target, source, move) {
+				if (!move || move.effectType !== 'Move') return;
+				if (!source || source.side === target.side) return;
+				this.effectData.totalDamage += damage;
+				this.effectData.sourcePosition = source.position;
+				this.effectData.sourceSide = source.side;
+			},
+			onAfterSetStatus: function(status, pokemon) {
+				if (status.id === 'slp') {
+					pokemon.removeVolatile('bide');
+				}
+			},
+			onBeforeMove: function(pokemon) {
+				if (this.effectData.duration === 1) {
+					if (!this.effectData.totalDamage) {
+						this.add('-end', pokemon, 'Bide');
+						this.add('-fail', pokemon);
+						return false;
+					}
+					this.add('-end', pokemon, 'Bide');
+					var target = this.effectData.sourceSide.active[this.effectData.sourcePosition];
+					this.moveHit(target, pokemon, 'bide', {damage: this.effectData.totalDamage*2});
+					return false;
+				}
+				this.add('-activate', pokemon, 'Bide');
+				return false;
+			}
+		}
+	},
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	bind: {
 		inherit: true,
 		accuracy: 75
@@ -231,7 +272,11 @@ exports.BattleMovedex = {
 		desc: "Deals damage to one adjacent target, if it is asleep and does not have a Substitute. The user recovers half of the HP lost by the target, rounded up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
 		onTryHit: function(target) {
 			if (target.status !== 'slp' || target.volatiles['substitute']) {
+<<<<<<< HEAD
 				this.add('-immune', target.id, '[msg]');
+=======
+				this.add('-immune', target, '[msg]');
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return null;
 			}
 		}
@@ -683,6 +728,22 @@ exports.BattleMovedex = {
 			this.add('-message', source.name+' learned '+move.name+'! (placeholder)');
 		}
 	},
+<<<<<<< HEAD
+=======
+	skillswap: {
+		inherit: true,
+		onHit: function(target, source) {
+			var targetAbility = target.ability;
+			var sourceAbility = source.ability;
+			if (!target.setAbility(sourceAbility) || !source.setAbility(targetAbility)) {
+				target.ability = targetAbility;
+				source.ability = sourceAbility;
+				return false;
+			}
+			this.add('-activate', source, 'move: Skill Swap');
+		}
+	},
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	spikes: {
 		inherit: true,
 		isBounceable: false
@@ -736,7 +797,38 @@ exports.BattleMovedex = {
 	},
 	toxicspikes: {
 		inherit: true,
+<<<<<<< HEAD
 		isBounceable: false
+=======
+		isBounceable: false,
+		effect: {
+			// this is a side condition
+			onStart: function(side) {
+				this.add('-sidestart', side, 'move: Toxic Spikes');
+				this.effectData.layers = 1;
+			},
+			onRestart: function(side) {
+				if (this.effectData.layers >= 2) return false;
+				this.add('-sidestart', side, 'move: Toxic Spikes');
+				this.effectData.layers++;
+			},
+			onSwitchIn: function(pokemon) {
+				if (!pokemon.runImmunity('Ground')) return;
+				if (!pokemon.runImmunity('Poison')) return;
+				if (pokemon.hasType('Poison')) {
+					this.add('-sideend', pokemon.side, 'move: Toxic Spikes', '[of] '+pokemon);
+					pokemon.side.removeSideCondition('toxicspikes');
+				}
+				if (pokemon.volatiles['substitute']) {
+					return;
+				} else if (this.effectData.layers >= 2) {
+					pokemon.trySetStatus('tox');
+				} else {
+					pokemon.trySetStatus('psn');
+				}
+			}
+		}
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	},
 	uproar: {
 		inherit: true,

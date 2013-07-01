@@ -904,7 +904,11 @@ exports.BattleAbilities = {
 		shortDesc: "On switch-in, this Pokemon copies the foe it's facing; stats, moves, types, Ability.",
 		onStart: function(pokemon) {
 			var target = pokemon.side.foe.active[pokemon.side.foe.active.length-1-pokemon.position];
+<<<<<<< HEAD
 			if (target && pokemon.transformInto(target)) {
+=======
+			if (target && pokemon.transformInto(target, pokemon)) {
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				this.add('-transform', pokemon, target);
 			}
 		},
@@ -1887,7 +1891,11 @@ exports.BattleAbilities = {
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual: function(pokemon) {
+<<<<<<< HEAD
 			if (pokemon.status && this.random(3) === 0) {
+=======
+			if (pokemon.hp && pokemon.status && this.random(3) === 0) {
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				this.debug('shed skin');
 				this.add('-activate', pokemon, 'ability: Shed Skin');
 				pokemon.cureStatus();
@@ -2073,7 +2081,11 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon is immune to sound-based moves, except Heal Bell.",
 		onTryHit: function(target, source, move) {
 			if (target !== source && move.isSoundBased) {
+<<<<<<< HEAD
 				this.add('-immune', target.id, '[msg]');
+=======
+				this.add('-immune', target, '[msg]');
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return null;
 			}
 		},
@@ -2214,7 +2226,11 @@ exports.BattleAbilities = {
 		onDragOutPriority: 1,
 		onDragOut: function(pokemon) {
 			this.add('-activate', pokemon, 'ability: Suction Cups');
+<<<<<<< HEAD
 			return false;
+=======
+			return null;
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		},
 		id: "suctioncups",
 		name: "Suction Cups",

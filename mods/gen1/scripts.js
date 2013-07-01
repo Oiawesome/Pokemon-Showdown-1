@@ -290,7 +290,11 @@ exports.BattleScripts = {
 		}
 		
 		// If we used a partial trapping move, we save the damage to repeat it
+<<<<<<< HEAD
 		if (move.volatileStatus === 'partiallytrapped' && !pokemon.volatiles['partialtrappinglock'].damage) {
+=======
+		if (pokemon.volatiles['partialtrappinglock'] && !pokemon.volatiles['partialtrappinglock'].damage) {
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			pokemon.volatiles['partialtrappinglock'].damage = damage;
 		}
 
@@ -505,9 +509,17 @@ exports.BattleScripts = {
 		}
 		if (moveData.secondaries) {
 			var secondaryRoll;
+<<<<<<< HEAD
 			for (var i = 0; i < moveData.secondaries.length; i++) {
 				secondaryRoll = this.random(100);
 				if (typeof moveData.secondaries[i].chance === 'undefined' || secondaryRoll < moveData.secondaries[i].chance) {
+=======
+			var effectChance;
+			for (var i = 0; i < moveData.secondaries.length; i++) {
+				secondaryRoll = this.random(256);
+				effectChance = Math.floor(moveData.secondaries[i].chance*255/100);
+				if (typeof moveData.secondaries[i].chance === 'undefined' || secondaryRoll < effectChance) {
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 					this.moveHit(target, pokemon, move, moveData.secondaries[i], true, isSelf);
 				}
 			}

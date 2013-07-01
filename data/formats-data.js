@@ -3,6 +3,7 @@ exports.BattleFormatsData = {
 		isNonstandard: true,
 		tier: ""
 	},
+<<<<<<< HEAD
 	nollan: {
 		viableMoves: {"slackoff":1,"bulkup":1,"drainpunch":1,"return":1},
 		isNonstandard: true,
@@ -15,6 +16,8 @@ exports.BattleFormatsData = {
                 dreamWorldRelease: true,
                 tier: "G5CAP"
         },
+=======
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	tomohawk: {
 		viableMoves: {"aurasphere":1,"roost":1,"stealthrock":1,"rapidspin":1,"hurricane":1,"airslash":1,"taunt":1,"substitute":1,"toxic":1},
 		isNonstandard: true,
@@ -339,7 +342,11 @@ exports.BattleFormatsData = {
 	sandshrew: {
 		viableMoves: {"earthquake":1,"rockslide":1,"swordsdance":1,"rapidspin":1,"xscissor":1,"stealthrock":1,"toxic":1},
 		eventPokemon: [
+<<<<<<< HEAD
 			{"generation":3,"level":12,"moves":["scratch","defensecurl","sandattack","vitalthrow"]}
+=======
+			{"generation":3,"level":12,"moves":["scratch","defensecurl","sandattack","poisonsting"]}
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		],
 		dreamWorldRelease: true,
 		tier: "LC"
@@ -1393,8 +1400,15 @@ exports.BattleFormatsData = {
 	mewtwo: {
 		viableMoves: {"psystrike":1,"aurasphere":1,"fireblast":1,"icebeam":1,"calmmind":1,"substitute":1,"recover":1,"thunderbolt":1},
 		eventPokemon: [
+<<<<<<< HEAD
 			{"generation":5,"level":70,"isDW":false,"moves":["psystrike","shadowball","aurasphere","electroball"],"pokeball":"cherishball"}
 		],
+=======
+			{"generation":5,"level":70,"isDW":false,"moves":["psystrike","shadowball","aurasphere","electroball"],"pokeball":"cherishball"},
+			{"generation":5,"level":100,"nature":"Timid","isDW":true,"moves":["psystrike","icebeam","healpulse","hurricane"],"pokeball":"cherishball"}
+		],
+		dreamWorldRelease: true,
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		tier: "Uber"
 	},
 	mew: {
@@ -3082,6 +3096,12 @@ exports.BattleFormatsData = {
 	},
 	torterra: {
 		viableMoves: {"stealthrock":1,"earthquake":1,"woodhammer":1,"stoneedge":1,"synthesis":1,"leechseed":1},
+<<<<<<< HEAD
+=======
+		eventPokemon: [
+			{"generation":5,"level":100,"gender":"M","isDW":false,"moves":["woodhammer","earthquake","outrage","stoneedge"],"pokeball":"cherishball"}
+		],
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		dreamWorldRelease: true,
 		maleOnlyDreamWorld: true,
 		tier: "NU"
@@ -3106,6 +3126,12 @@ exports.BattleFormatsData = {
 	},
 	infernape: {
 		viableMoves: {"stealthrock":1,"fireblast":1,"closecombat":1,"uturn":1,"grassknot":1,"stoneedge":1,"machpunch":1,"swordsdance":1,"nastyplot":1,"flareblitz":1,"hiddenpowerice":1,"thunderpunch":1},
+<<<<<<< HEAD
+=======
+		eventPokemon: [
+			{"generation":5,"level":100,"gender":"M","isDW":false,"moves":["fireblast","closecombat","uturn","grassknot"],"pokeball":"cherishball"}
+		],
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		dreamWorldRelease: true,
 		maleOnlyDreamWorld: true,
 		tier: "OU"
@@ -3765,6 +3791,12 @@ exports.BattleFormatsData = {
 	},
 	emboar: {
 		viableMoves: {"flareblitz":1,"superpower":1,"flamecharge":1,"wildcharge":1,"headsmash":1,"earthquake":1,"fireblast":1},
+<<<<<<< HEAD
+=======
+		eventPokemon: [
+			{"generation":5,"level":100,"gender":"M","isDW":false,"moves":["flareblitz","hammerarm","wildcharge","headsmash"],"pokeball":"cherishball"}
+		],
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		tier: "RU"
 	},
 	oshawott: {
@@ -3777,6 +3809,12 @@ exports.BattleFormatsData = {
 	},
 	samurott: {
 		viableMoves: {"swordsdance":1,"aquajet":1,"waterfall":1,"megahorn":1,"superpower":1},
+<<<<<<< HEAD
+=======
+		eventPokemon: [
+			{"generation":5,"level":100,"gender":"M","isDW":false,"moves":["hydropump","icebeam","megahorn","superpower"],"pokeball":"cherishball"}
+		],
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		tier: "NU"
 	},
 	patrat: {

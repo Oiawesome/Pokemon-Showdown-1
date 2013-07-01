@@ -71,6 +71,7 @@ var GlobalRoom = (function() {
 			REPORT_USER_STATS_INTERVAL
 		);
 
+<<<<<<< HEAD
 		if (config.reportbattlesperiod) {
 			this.reportBattlesInterval = setInterval(
 				this.reportRecentBattles.bind(this),
@@ -78,6 +79,8 @@ var GlobalRoom = (function() {
 			);
 		}
 
+=======
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		if (!config.herokuhack) {
 			this.sweepClosedSocketsInterval = setInterval(
 				this.sweepClosedSockets.bind(this),
@@ -140,6 +143,7 @@ var GlobalRoom = (function() {
 		return formatListText;
 	};
 
+<<<<<<< HEAD
 	GlobalRoom.prototype.lastRoomReported = null;
 
 	GlobalRoom.prototype.reportRecentBattles = function() {
@@ -155,11 +159,17 @@ var GlobalRoom = (function() {
 		this.send(entries.join('\n'));
 	};
 	GlobalRoom.prototype.getRoomList = function(filter, lastRoomReported) {
+=======
+	GlobalRoom.prototype.getRoomList = function(filter) {
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		var roomList = {};
 		var total = 0;
 		for (var i=this.rooms.length-1; i>=0; i--) {
 			var room = this.rooms[i];
+<<<<<<< HEAD
 			if (lastRoomReported && (room.id === lastRoomReported)) break;
+=======
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			if (!room || !room.active) continue;
 			if (filter && filter !== room.format && filter !== true) continue;
 			var roomData = {};
@@ -379,6 +389,7 @@ var GlobalRoom = (function() {
 		newRoom.joinBattle(p2, p2team);
 		this.cancelSearch(p1, true);
 		this.cancelSearch(p2, true);
+<<<<<<< HEAD
 		if (config.reportbattlesperiod) return;
 		if (config.reportbattles) {
 			rooms.lobby.add('|b|'+newRoom.id+'|'+p1.getIdentity()+'|'+p2.getIdentity());
@@ -402,6 +413,10 @@ var GlobalRoom = (function() {
 					}
 				}
 			}
+=======
+		if (config.reportbattles) {
+			rooms.lobby.add('|b|'+newRoom.id+'|'+p1.getIdentity()+'|'+p2.getIdentity());
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		}
 	};
 	GlobalRoom.prototype.addRoom = function(room, format, p1, p2, parent, rated) {
@@ -481,6 +496,7 @@ var BattleRoom = (function() {
 		}
 	};
 	BattleRoom.prototype.win = function(winner) {
+<<<<<<< HEAD
 		 //tour
                 var winnerid = toId(winner);
                 var p1 = this.originalPlayers[0];
@@ -517,6 +533,8 @@ var BattleRoom = (function() {
                                 }
                         }
                 }
+=======
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		if (this.rated) {
 			var winnerid = toId(winner);
 			var rated = this.rated;
@@ -1112,7 +1130,13 @@ var ChatRoom = (function() {
 			// nothing to report
 			return;
 		}
+<<<<<<< HEAD
 		this.userList = this.getUserList();
+=======
+		if (config.reportjoinsperiod) {
+			this.userList = this.getUserList();
+		}
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		this.send(this.reportJoinsQueue.join('\n'));
 		this.reportJoinsQueue.length = 0;
 	};
@@ -1329,6 +1353,10 @@ var ChatRoom = (function() {
 	};
 	ChatRoom.prototype.chat = function(user, message, connection) {
 		message = CommandParser.parse(message, this, user, connection);
+<<<<<<< HEAD
+=======
+
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		if (message) {
 			this.add('|c|'+user.getIdentity(this.id)+'|'+message, true);
 		}
@@ -1370,9 +1398,12 @@ console.log("NEW GLOBAL: global");
 rooms.global = new GlobalRoom('global');
 console.log("NEW CHATROOM: lobby");
 rooms.lobby = new ChatRoom('lobby', 'Lobby');
+<<<<<<< HEAD
 console.log("NEW CHATROOM: authchat");
 rooms.authchat = new ChatRoom('authchat', 'Authority Chat');
 
+=======
+>>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 exports.GlobalRoom = GlobalRoom;
 exports.BattleRoom = BattleRoom;
