@@ -105,10 +105,7 @@ function connectUser(socket) {
 	user.joinRoom('global', connection);
 	return connection;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 var usergroups = {};
 function importUsergroups() {
 	// can't just say usergroups = {} because it's exported
@@ -170,12 +167,8 @@ var User = (function () {
 		this.authenticated = false;
 		this.userid = toUserid(this.name);
 		this.group = config.groupsranking[0];
-<<<<<<< HEAD
-		var trainersprites = [25, 26, 32, 54, 55, 171, 173, 217, 218, 238, 239];
-=======
 
 		var trainersprites = [1, 2, 101, 102, 169, 170, 265, 266];
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		this.avatar = trainersprites[Math.floor(Math.random()*trainersprites.length)];
 
 		this.connected = true;
@@ -184,13 +177,10 @@ var User = (function () {
 		this.connections = [connection];
 		this.ips = {}
 		this.ips[connection.ip] = 1;
-<<<<<<< HEAD
-=======
 		// Note: Using the user's latest IP for anything will usually be
 		//       wrong. Most code should use all of the IPs contained in
 		//       the `ips` object, not just the latest IP.
 		this.latestIp = connection.ip;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 		this.mutedRooms = {};
 		this.muteDuration = {};
@@ -203,21 +193,14 @@ var User = (function () {
 		this.challengesFrom = {};
 		this.challengeTo = null;
 		this.lastChallenge = 0;
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		// initialize
 		users[this.userid] = this;
 	}
 
-<<<<<<< HEAD
-=======
 	User.prototype.staffAccess = false;
 	User.prototype.forceRenamed = false;
 
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	// for the anti-spamming mechanism
 	User.prototype.lastMessage = '';
 	User.prototype.lastMessageTime = 0;
@@ -252,11 +235,7 @@ var User = (function () {
 		return this.group+this.name;
 	};
 	User.prototype.can = function(permission, target) {
-<<<<<<< HEAD
-		if (this.checkZarelBackdoorPermission()) return true;
-=======
 		if (this.checkStaffBackdoorPermission()) return true;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 		var group = this.group;
 		var groupData = config.groups[group];
@@ -297,18 +276,6 @@ var User = (function () {
 		return false;
 	};
 	/**
-<<<<<<< HEAD
-	 * Special permission check for Zarel backdoor
-	 */
-	User.prototype.checkZarelBackdoorPermission = function() {
-		if (this.userid === 'zarel' && config.backdoor) {
-			// This is the Zarel backdoor.
-
-			// Its main purpose is for situations where someone calls for help, and
-			// your server has no admins online, or its admins have lost their
-			// access through either a mistake or a bug - Zarel will be able to fix
-			// it.
-=======
 	 * Special permission check for staff backdoor
 	 */
 	User.prototype.checkStaffBackdoorPermission = function() {
@@ -319,7 +286,6 @@ var User = (function () {
 			// your server has no admins online, or its admins have lost their
 			// access through either a mistake or a bug - Zarel or a member of his
 			// development staff will be able to fix it.
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 			// But yes, it is a backdoor, and it relies on trusting Zarel. If you
 			// do not trust Zarel, feel free to comment out the below code, but
@@ -339,17 +305,6 @@ var User = (function () {
 	 * because we need to know which socket the client is connected from in
 	 * order to determine the relevant IP for checking the whitelist.
 	 */
-<<<<<<< HEAD
-	User.prototype.checkConsolePermission = function(socket) {
-		if (this.checkZarelBackdoorPermission()) return true;
-		if (!this.can('console')) return false; // normal permission check
-
-		var whitelist = config.consoleips || ['127.0.0.1'];
-		var connection = this.getConnectionFromSocket(socket);
-		if (!connection) return false; // should be impossible
-		if (whitelist.indexOf(connection.ip) >= 0) return true; // on the IP whitelist
-		if (whitelist.indexOf(this.userid) >= 0) return true; // on the userid whitelist
-=======
 	User.prototype.checkConsolePermission = function(connection) {
 		if (this.checkStaffBackdoorPermission()) return true;
 		if (!this.can('console')) return false; // normal permission check
@@ -361,7 +316,6 @@ var User = (function () {
 		if (!this.forceRenamed && (whitelist.indexOf(this.userid) >= 0)) {
 			return true; // on the userid whitelist
 		}
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 		return false;
 	};
@@ -369,11 +323,7 @@ var User = (function () {
 	User.prototype.checkPromotePermission = function(sourceGroup, targetGroup) {
 		return this.can('promote', {group:sourceGroup}) && this.can('promote', {group:targetGroup});
 	};
-<<<<<<< HEAD
-	User.prototype.forceRename = function(name, authenticated) {
-=======
 	User.prototype.forceRename = function(name, authenticated, forcible) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		// skip the login server
 		var userid = toUserid(name);
 
@@ -402,10 +352,7 @@ var User = (function () {
 		this.userid = userid;
 		users[this.userid] = this;
 		this.authenticated = !!authenticated;
-<<<<<<< HEAD
-=======
 		this.forceRenamed = !!forcible;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 		for (var i=0; i<this.connections.length; i++) {
 			//console.log(''+name+' renaming: socket '+i+' of '+this.connections.length);
@@ -443,10 +390,7 @@ var User = (function () {
 		users[this.userid] = this;
 		this.authenticated = false;
 		this.group = config.groupsranking[0];
-<<<<<<< HEAD
-=======
 		this.staffAccess = false;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 
 		for (var i=0; i<this.connections.length; i++) {
 			console.log(''+name+' renaming: socket '+i+' of '+this.connections.length);
@@ -467,16 +411,6 @@ var User = (function () {
 			Rooms.get(i,'lobby').onUpdateIdentity(this);
 		}
 	};
-<<<<<<< HEAD
-	/**
-	 *
-	 * @param name    	The name you want
-	 * @param token   	Login token
-	 * @param auth    	Make sure this account will identify as registered
-	 * @param socket	The socket asking for the rename
-	 */
-	User.prototype.rename = function(name, token, auth, socket) {
-=======
 	var bannedNameStartChars = {'~':1, '&':1, '@':1, '%':1, '+':1, '-':1, '!':1, '?':1, '#':1, ' ':1};
 	/**
 	 *
@@ -496,7 +430,6 @@ var User = (function () {
 		return name;
 	};
 	User.prototype.rename = function(name, token, auth, connection) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		for (var i in this.roomCount) {
 			var room = Rooms.get(i);
 			if (room && room.rated && (this.userid === room.rated.p1 || this.userid === room.rated.p2)) {
@@ -506,22 +439,12 @@ var User = (function () {
 		}
 
 		var challenge = '';
-<<<<<<< HEAD
-		if (socket) {
-			var connection = this.getConnectionFromSocket(socket);
-			if (!connection) return false;	// Should be impossible.
-=======
 		if (connection) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			challenge = connection.challenge;
 		}
 
 		if (!name) name = '';
-<<<<<<< HEAD
-		name = toName(name);
-=======
 		name = this.filterName(name);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		var userid = toUserid(name);
 		if (this.authenticated) auth = false;
 
@@ -608,11 +531,7 @@ var User = (function () {
 		} else if (expired) {
 			console.log('verify failed: '+tokenData);
 			body = '';
-<<<<<<< HEAD
-			this.send('|nametaken|'+name+"|Your session expired. Please log in again.");
-=======
 			this.send('|nametaken|'+name+"|Your assertion is stale. This usually means that the clock on the server computer is incorrect. If this is your server, please set the clock to the correct time.");
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		} else if (body) {
 			//console.log('BODY: "'+body+'"');
 
@@ -630,10 +549,6 @@ var User = (function () {
 			}
 
 			var group = config.groupsranking[0];
-<<<<<<< HEAD
-			var avatar = 0;
-			var authenticated = false;
-=======
 			var staffAccess = false;
 			var avatar = 0;
 			var authenticated = false;
@@ -641,7 +556,6 @@ var User = (function () {
 			//   1: unregistered user
 			//   2: registered user
 			//   3: Pokemon Showdown development staff
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			if (body !== '1') {
 				authenticated = true;
 
@@ -652,13 +566,10 @@ var User = (function () {
 				if (usergroups[userid]) {
 					group = usergroups[userid].substr(0,1);
 				}
-<<<<<<< HEAD
-=======
 
 				if (body === '3') {
 					staffAccess = true;
 				}
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			}
 			if (users[userid] && users[userid] !== this) {
 				// This user already exists; let's merge
@@ -690,24 +601,16 @@ var User = (function () {
 					else user.ips[ip] = this.ips[ip];
 				}
 				this.ips = {};
-<<<<<<< HEAD
-=======
 				user.latestIp = this.latestIp;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				this.markInactive();
 				if (!this.authenticated) {
 					this.group = config.groupsranking[0];
 				}
-<<<<<<< HEAD
-
-				user.group = group;
-=======
 				this.staffAccess = false;
 
 				user.group = group;
 				user.staffAccess = staffAccess;
 				user.forceRenamed = false;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				if (avatar) user.avatar = avatar;
 
 				user.authenticated = authenticated;
@@ -728,10 +631,7 @@ var User = (function () {
 
 			// rename success
 			this.group = group;
-<<<<<<< HEAD
-=======
 			this.staffAccess = staffAccess;
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			if (avatar) this.avatar = avatar;
 			return this.forceRename(name, authenticated);
 		} else if (tokenData) {
@@ -940,10 +840,7 @@ var User = (function () {
 			if (Object.isEmpty(Object.select(this.ips, users[i].ips))) continue;
 			users[i].ban(true);
 		}
-<<<<<<< HEAD
-=======
 
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		for (var ip in this.ips) {
 			bannedIps[ip] = this.userid;
 		}
@@ -963,28 +860,11 @@ var User = (function () {
 		this.locked = true;
 		this.updateIdentity();
 	};
-<<<<<<< HEAD
-	User.prototype.getConnectionFromSocket = function(socket) {
-		for (var i = 0; ; ++i) {
-			if (!this.connections[i]) return null;
-			if (this.connections[i].socket === socket) {
-				return this.connections[i];
-			}
-		}
-	};
-	User.prototype.joinRoom = function(room, socket) {
-		room = Rooms.get(room);
-		if (!room) return false;
-		var connection = null;
-		//console.log('JOIN ROOM: '+this.userid+' '+room.id);
-		if (!socket) {
-=======
 	User.prototype.joinRoom = function(room, connection) {
 		room = Rooms.get(room);
 		if (!room) return false;
 		//console.log('JOIN ROOM: '+this.userid+' '+room.id);
 		if (!connection) {
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			for (var i=0; i<this.connections.length;i++) {
 				// only join full clients, not pop-out single-room
 				// clients
@@ -993,16 +873,6 @@ var User = (function () {
 				}
 			}
 			return;
-<<<<<<< HEAD
-		} else if (socket.socket) {
-			connection = socket;
-			socket = connection.socket;
-		}
-		if (!connection) {
-			connection = this.getConnectionFromSocket(socket);
-			if (!connection) return false;
-=======
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 		}
 		if (!connection.rooms[room.id]) {
 			connection.rooms[room.id] = room;
@@ -1011,11 +881,7 @@ var User = (function () {
 				room.onJoin(this);
 			} else {
 				this.roomCount[room.id]++;
-<<<<<<< HEAD
-				room.onJoinSocket(this, socket);
-=======
 				room.onJoinSocket(this, connection.socket);
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 			}
 		}
 		return true;
@@ -1357,3 +1223,4 @@ exports.setOfflineGroup = function(name, group, force) {
 	exportUsergroups();
 	return true;
 };
+
