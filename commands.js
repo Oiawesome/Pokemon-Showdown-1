@@ -11,9 +11,11 @@
  * @license MIT license
  */
 
-//BALANCE FUNCTIONS START
+//BALANCE VARIABLES START
 var userbalance = 0;
-function importUserBalance() {	
+//BALANCE FUNCTIONS START
+function importUserBalance() {
+	for (var i in userbalance) delete userbalance[i];
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) {
 			console.log("The file was not properly read into the system! The error was: " + err);
@@ -23,13 +25,12 @@ function importUserBalance() {
 		for (var i = 0; i < data.length; i++) {
 			if (!data[i]) continue;
 			var row = data[i].split(",");
-			userbalance[toUserid(row[0])] = (row[1])+row[0];
-			console.log('USER BALANCE UPLOADED');
+			userbalance[toUserid(row[0])] = (row[1]);
+			console.log('BALANCE: uploaded');
 		}
 	});
 }
 //BALANCE FUNCTIONS END
-//BALANCE VARIABLES START
 var winnings = 0;
 var uploadbalance = true;
 if (uploadbalance = true) {
@@ -637,8 +638,10 @@ var commands = exports.commands = {
 		if (!user.balance || user.balance <= 0) {
 			user.balance = 0;
 		}
-		user.balance += userbalance;
-		return userbalance = 0;
+		if (userbalance > 0) {
+			user.balance += userbalance;
+			return userbalance = 0;
+		}
 		this.sendReply('Your current balance is $' +user.balance+ '.');
 	},
 	/*ub: 'userbalance',
@@ -946,7 +949,7 @@ var commands = exports.commands = {
 		if (target && !targetRoom) {
 			return connection.sendTo(target, "|noinit|nonexistent|The room '"+target+"' does not exist.");
 		}
-		if (target.toLowerCase() == "authchat" && !user.can('warn')) {
+		if (target.toLowerCase() == "authchat" && !user.can('mute')) {
 			return this.sendReply("Nice try. But this room is for Nollan\'s Factory staff only. NOW GET OUT!");
 		}
 		if (targetRoom && !targetRoom.battle && targetRoom !== Rooms.lobby && !user.named) {
