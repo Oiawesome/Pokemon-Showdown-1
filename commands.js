@@ -12,12 +12,10 @@
  */
 
 //BALANCE FUNCTIONS START
-if (typeof user == "undefined") {
-	user = new Object();
+if (typeof balance == "undefined") {
+	balance = new Object();
 }
-user.balance = new Array();
-
-function importUserBalance(user) {
+function importUserBalance(balance) {
 	fs.readFile('config/userbalance.csv', function(err, data) {
 		if (err) {
 			console.log("The file was not properly read into the system! The error was: " + err);
@@ -27,7 +25,7 @@ function importUserBalance(user) {
 		for (var i = 0; i < data.length; i++) {
 			if (!data[i]) continue;
 			var row = data[i].split(",");
-			user.balance[toUserId(row[0])] = (row[1])+row[0];
+			balance[toUserId(row[0])] = (row[1])+row[0];
 			console.log('USER BALANCE UPLOADED');
 		}
 	});
