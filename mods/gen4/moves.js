@@ -65,8 +65,6 @@ exports.BattleMovedex = {
 		basePowerCallback: undefined,
 		desc: "Does one hit for the user and each other unfainted non-egg active and non-active Pokemon on the user's side without a status problem."
 	},
-<<<<<<< HEAD
-=======
 	bide: {
 		inherit: true,
 		effect: {
@@ -105,7 +103,6 @@ exports.BattleMovedex = {
 			}
 		}
 	},
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	bind: {
 		inherit: true,
 		accuracy: 75
@@ -272,11 +269,7 @@ exports.BattleMovedex = {
 		desc: "Deals damage to one adjacent target, if it is asleep and does not have a Substitute. The user recovers half of the HP lost by the target, rounded up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
 		onTryHit: function(target) {
 			if (target.status !== 'slp' || target.volatiles['substitute']) {
-<<<<<<< HEAD
-				this.add('-immune', target.id, '[msg]');
-=======
 				this.add('-immune', target, '[msg]');
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 				return null;
 			}
 		}
@@ -728,8 +721,6 @@ exports.BattleMovedex = {
 			this.add('-message', source.name+' learned '+move.name+'! (placeholder)');
 		}
 	},
-<<<<<<< HEAD
-=======
 	skillswap: {
 		inherit: true,
 		onHit: function(target, source) {
@@ -743,7 +734,6 @@ exports.BattleMovedex = {
 			this.add('-activate', source, 'move: Skill Swap');
 		}
 	},
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	spikes: {
 		inherit: true,
 		isBounceable: false
@@ -797,9 +787,6 @@ exports.BattleMovedex = {
 	},
 	toxicspikes: {
 		inherit: true,
-<<<<<<< HEAD
-		isBounceable: false
-=======
 		isBounceable: false,
 		effect: {
 			// this is a side condition
@@ -828,7 +815,6 @@ exports.BattleMovedex = {
 				}
 			}
 		}
->>>>>>> f02eb27b188eead529ace8dc1916f07b8e6672c5
 	},
 	uproar: {
 		inherit: true,
