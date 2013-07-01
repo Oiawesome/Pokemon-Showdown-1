@@ -32,7 +32,7 @@ function importUserBalance(user) {
 var winnings = 0;
 var uploadbalance = true;
 if (uploadbalance = true) {
-	importUserBalance;
+	importUserBalance();
 }
 //BALANCE VARIABLES END
 if (typeof tour == "undefined") {
