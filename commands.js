@@ -634,9 +634,11 @@ var commands = exports.commands = {
 	/*Money Commands, made with the help of Chomi and Orivexes*/
 	mybalance: 'balance',
 	balance: function(target, room, user) {
+		if (uploadbalance = true) {
+			user.balance += userbalance;
+			return userbalance = 0;
+		}
 		if (!user.balance || user.balance <= 0) {
-			user.balance = userbalance;
-		} else if (!userbalance || userbalance <= 0) {
 			user.balance = 0;
 		}
 		this.sendReply('Your current balance is $' +user.balance+ '.');
