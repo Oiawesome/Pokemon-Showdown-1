@@ -223,7 +223,7 @@
 		rated: true,
 		challengeShow: true,
 		searchShow: true,
-		ruleset: ['PotD', 'Pokemon', 'Sleep Clause']
+		ruleset: ['PotD', 'Pokemon', 'Sleep Clause', 'Faint Clause']
 	},
 	challengecup: {
 		name: "Challenge Cup",
@@ -235,7 +235,7 @@
 		rated: true,
 		challengeShow: true,
 		searchShow: true,
-		ruleset: ['Pokemon']
+		ruleset: ['Pokemon', 'Faint Clause']
 	},
 	challengecup1vs1: {
 		name: "Challenge Cup 1-vs-1",
@@ -443,7 +443,7 @@
     		searchShow: true,
     		isTeambuilderFormat: true,
     		debug: true,
-    		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause'],
+    		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause', 'Faint Clause'],
     		banlist: ['Uber', 'Unreleased', 'Illegal', 'Trickster', 'Sheer Cold', 'Horn Drill', 'Guillotine', 'Excadrill + Sand Rush']
     	},
     	npmubers: {
@@ -456,7 +456,7 @@
     		//searchShow: true,
     		isTeambuilderFormat: true,
     		debug: true,
-    		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause'],
+    		ruleset: ['Pokemon', 'Sleep Clause', 'Species Clause', 'Team Preview', 'Moody Clause', 'Evasion Moves Clause', 'Faint Clause'],
     		banlist: ['Unreleased', 'Illegal', 'Sheer Cold', 'Horn Drill', 'Guillotine']
     	},
     	nuv2: {
@@ -494,6 +494,18 @@
 		isTeambuilderFormat: true,
                 ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
                 banlist: ['BL1','OU']
+        },
+        ouv2: {
+                effectType: 'Format',
+                name: "OUv2",
+                section: 'Other Metagames',
+                mod: "v2project",
+		rated: true,
+		challengeShow: true,
+		searchShow: true,
+		isTeambuilderFormat: true,
+                ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
+                banlist: ['Uber', 'Soul Dew', 'Drizzle ++ Swift Swim']
         },
     	dscap: {
     		effectType: 'Format',
@@ -1540,12 +1552,30 @@
 	},
 	skybattleclause: {
                 effectType: 'Rule',
+                onStart: function() {
+			this.add('rule', 'Sky Battle: Only Flying-type and Levitate pokemon are allowed.');
+		},
                 validateSet: function(set) {
                         var template = this.getTemplate(set.ability || set.species);
                         if (set.ability !== 'Levitate' && set.species !== 'Charizard' && set.species !== 'Pidgey' && set.species !== 'Pidgeotto' && set.species !== 'Pidgeot' && set.species !== 'Spearow' && set.species !== 'Fearow' && set.species !== 'Zubat' && set.species !== 'Golbat' && set.species !== 'Farfetch\'D' && set.species !== 'Doduo' && set.species !== 'Dodrio' && set.species !== 'Scyther' && set.species !== 'Gyarados' && set.species !== 'Aerodactyl' && set.species !== 'Articuno' && set.species !== 'Zapdos' && set.species !== 'Moltres' && set.species !== 'Dragonite' && set.species !== 'Hoothoot' && set.species !== 'Noctowl' && set.species !== 'Ledyba' && set.species !== 'Ledian' && set.species !== 'Crobat' && set.species !== 'Togetic' && set.species !== 'Natu' && set.species !== 'Xatu' && set.species !== 'Hoppip' && set.species !== 'Skiploom' && set.species !== 'Jumpluff' && set.species !== 'Yanma' && set.species !== 'Murkrow' && set.species !== 'Gligar' && set.species !== 'Delibird' && set.species !== 'Skarmory' && set.species !== 'Mantine' && set.species !== 'Lugia' && set.species !== 'Ho-oh' && set.species !== 'Beautifly' && set.species !== 'Taillow' && set.species !== 'Swellow' && set.species !== 'Wingull' && set.species !== 'Pelipper' && set.species !== 'Masquerain' && set.species !== 'Ninjask' && set.species !== 'Swablu' && set.species !== 'Altaria' && set.species !== 'Tropius' && set.species !== 'Salamence' && set.species !== 'Rayquaza' && set.species !== 'Starly' && set.species !== 'Staravia' && set.species !== 'Staraptor' && set.species !== 'Mothim' && set.species !== 'Combee' && set.species !== 'Vespiquen' && set.species !== 'Drifloon' && set.species !== 'Drifblim' && set.species !== 'Honchkrow' && set.species !== 'Chatot' && set.species !== 'Mantyke' && set.species !== 'Togekiss' && set.species !== 'Yanmega' && set.species !== 'Gliscor' && set.species !== 'Shaymin-Sky' && set.species !== 'Arceus-Flying' && set.species !== 'Pidove' && set.species !== 'Tranquill' && set.species !== 'Unfezant' && set.species !== 'Woobat' && set.species !== 'Swoobat' && set.species !== 'Sigilyph' && set.species !== 'Archen' && set.species !== 'Archeops' && set.species !== 'Ducklett' && set.species !== 'Swanna' && set.species !== 'Emolga' && set.species !== 'Rufflet' && set.species !== 'Braviary' && set.species !== 'Vullaby' && set.species !== 'Mandibuzz' && set.species !== 'Tornadus' && set.species !== 'Tornadus-Therian' && set.species !== 'Thundurus' && set.species !== 'Thundurus-Therian' && set.species !== 'Landorus' && set.species !== 'Landorus-Therian') {
                                 return [set.species+" is banned because it does not have Levitate or the Flying type."];
                         }
                 }
+        },
+        faintclause: {
+        	effectType: 'Rule',
+		onFaint: function (pokemon) {
+			// A poem every time a Pokemon faints
+			var haikus = ["Lol ur pokemon fainted / You are a bad trainer / go die in a hole", "they see me driving / round town with the girl i love / she just fainted",
+			"Ain't no Pokemon tough enough / ain't no bulk decent enough / ain't no recovery good enough / to keep me from fainting you, babe",
+			"Roses are red / violets are blue / you must be on crack / 'cuz as a trainer you suck",
+			"You're gonna be the very worst / like no one ever was / to lose all the battles is your test / to faint them all is your cause",
+			'Twinkle twinkle little star / fuck you that was my best sweeper', "Once u had a friend / who u cared for very much / guess what he just died", 
+			"You're sharp as a rock / you're bright as a hole / you're one to mock / you could be beaten by a blind mole",
+			"Alas, poor trainer! I knew him, your Pokémon, a fellow of infinite jest, of most excellent fancy. Then I killed him, and now all is just swell."];
+			haikus = haikus.randomize();
+			this.add('-message', haikus[0]);
+		}
         },
 	speciesclause: {
 		effectType: 'Rule',
