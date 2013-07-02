@@ -468,8 +468,8 @@
 		challengeShow: true,
 		searchShow: true,
 		isTeambuilderFormat: true,
-                ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
-                banlist: ['RU']
+		ruleset: ['RU'],
+		banlist: ['RU']
         },
 	ruv2: {
                 effectType: 'Format',
@@ -480,9 +480,9 @@
 		challengeShow: true,
 		searchShow: true,
 		isTeambuilderFormat: true,
-                ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
-                banlist: ['BL2','UU']
-        },
+		ruleset: ['UU'],
+		banlist: ['UU', 'BL2', 'Baton Pass + Shell Smash']
+	},
 	uuv2: {
                 effectType: 'Format',
                 name: "UUv2",
@@ -492,8 +492,8 @@
 		challengeShow: true,
 		searchShow: true,
 		isTeambuilderFormat: true,
-                ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
-                banlist: ['BL1','OU']
+		ruleset: ['OU'],
+		banlist: ['OU', 'BL1']
         },
         ouv2: {
                 effectType: 'Format',
@@ -504,8 +504,8 @@
 		challengeShow: true,
 		searchShow: true,
 		isTeambuilderFormat: true,
-                ruleset: ['Standard', 'Team Preview','Evasion Abilities Clause', 'Team Preview'],
-                banlist: ['Uber', 'Soul Dew', 'Drizzle ++ Swift Swim']
+                ruleset: ['Pokemon', 'Standard', 'Evasion Abilities Clause', 'Team Preview'],
+		banlist: ['Uber', 'Drizzle ++ Swift Swim', 'Soul Dew']
         },
     	dscap: {
     		effectType: 'Format',
