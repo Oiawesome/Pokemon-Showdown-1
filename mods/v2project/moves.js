@@ -182,4 +182,38 @@
 		target: "normal",
 		type: "Fairy"
 	},
+		"hyperstorm": {
+		num: 240,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the weather becomes a Hyper Storm.",
+		shortDesc: "For 5 turns, a heavy storm powers Flying moves.",
+		id: "hyperstorm",
+		isViable: true,
+		name: "Hyper Storm",
+		pp: 5,
+		priority: 0,
+		weather: 'HyperStorm',
+		secondary: false,
+		target: "all",
+		type: "Flying"
+	},
+		"skyclearance": {
+		num: 240,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the weather becomes nothing",
+		shortDesc: "For 5 turns, nothing changes.",
+		id: "skyclearance",
+		isViable: true,
+		name: "Sky Clearance",
+		pp: 5,
+		priority: 0,
+		weather: 'none',
+		secondary: false,
+		target: "all",
+		type: "Normal"
+	},
 };  
