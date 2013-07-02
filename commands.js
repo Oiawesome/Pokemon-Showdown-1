@@ -946,7 +946,7 @@ var commands = exports.commands = {
 		if (target && !targetRoom) {
 			return connection.sendTo(target, "|noinit|nonexistent|The room '"+target+"' does not exist.");
 		}
-		if (target.toLowerCase() == "authchat" && !user.can('mute')) {
+		if (target.toLowerCase() == "staff" && !user.can('mute')) {
 			return this.sendReply("Nice try. But this room is for Nollan\'s Factory staff only. NOW GET OUT!");
 		}
 		if (targetRoom && !targetRoom.battle && targetRoom !== Rooms.lobby && !user.named) {
