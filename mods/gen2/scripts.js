@@ -2,7 +2,7 @@
  * Gen 2 scripts.
  */
 exports.BattleScripts = {
-  gen: 2,
+	gen: 2,
 	getCategory: function(move) {
 		move = this.getMove(move);
 		var specialTypes = {Fire:1, Water:1, Grass:1, Ice:1, Electric:1, Dark:1, Psychic:1, Dragon:1};
