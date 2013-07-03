@@ -1,10 +1,13 @@
 exports.BattleItems = {
-  amuletcoin: {
+	amuletcoin: {
 		id: "amuletcoin",
 		name: "Amulet Coin",
 		num: -1,
 		gen: 2,
 		desc: "Doubles the amount of money received in trainer battles."
+	},
+	berry: {
+	
 	},
 	dragonfang: {
 		inherit: true,
@@ -28,9 +31,9 @@ exports.BattleItems = {
 				return def * 1.5;
 			}
 		},
-		onModifySpD: function(def, pokemon) {
+		onModifySpD: function(spd, pokemon) {
 			if (pokemon.template.species === 'Ditto') {
-				return def * 1.5;
+				return spd * 1.5;
 			}
 		}
 	}
