@@ -1,5 +1,5 @@
 exports.BattleFormats = {
-  pokemon: {
+	pokemon: {
 		effectType: 'Banlist',
 		validateSet: function(set, format) {
 			var template = this.getTemplate(set.species);
