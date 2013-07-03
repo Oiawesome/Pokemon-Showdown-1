@@ -178,7 +178,7 @@
 		priority: 0,
 		isContact: true,
 		isPunchAttack: true,
-		secondary: false
+		secondary: false,
 		target: "normal",
 		type: "Fairy"
 	},
