@@ -969,6 +969,52 @@ var commands = exports.commands = {
 	},
 
 	/*********************************************************
+	 * Rooms: Commands
+	 *********************************************************/
+
+	roommod: function(target, room, user) {
+		if (!room.auth) {
+			this.sendReply("/roommod - This room isn't designed for per-room moderation");
+		}
+		var target = this.splitTarget(target, true);
+		var targetUser = this.targetUser;
+
+		if (!targetUser) return this.sendReply("User '"+this.targetUsername+"' is not online.");
+
+		if (!user.can('roommod', targetUser, room)) return false;
+
+		var name = targetUser.name;
+
+		room.auth[targetUser.userid] = '@';
+		this.add(''+name+' was appointed Factory Supervisor of '+room+' by '+user.name+'.');
+		targetUser.updateIdentity();
+		if (room.chatRoomData) {
+			Rooms.global.writeChatRoomData();
+		}
+	},
+
+	deroommod: function(target, room, user) {
+		if (!room.auth) {
+			this.sendReply("/roommod - This room isn't designed for per-room moderation");
+		}
+		var target = this.splitTarget(target, true);
+		var targetUser = this.targetUser;
+		var name = this.targetUsername;
+		var userid = toId(name);
+
+		if (room.auth[userid] !== '%') return this.sendReply("User '"+name+"' is not a room mod.");
+		if (!user.can('roommod', null, room)) return false;
+
+		delete room.auth[userid];
+		this.sendReply('('+name+' is no longer Room Moderator.)');
+		if (targetUser) targetUser.updateIdentity();
+		if (room.chatRoomData) {
+			Rooms.global.writeChatRoomData();
+		}
+	},
+
+
+	/*********************************************************
 	 * Moderating: Punishments
 	 *********************************************************/
 
