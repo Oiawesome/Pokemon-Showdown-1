@@ -1,5 +1,5 @@
 exports.BattleFormatsData = {
-  aipom: {
+	aipom: {
 		eventPokemon: [
 			{"generation":2,"level":5,"moves":["scratch","tailwhip","mimic"]}
 		],
@@ -416,8 +416,8 @@ exports.BattleFormatsData = {
 		],
 		tier: "OU"
 	},
-  snorlax: {
-  	eventPokemon: [
+	snorlax: {
+		eventPokemon: [
 			{"generation":2,"level":5,"moves":["tackle","lovelykiss"]},
 			{"generation":2,"level":5,"moves":["tackle","splash"]},
 			{"generation":2,"level":5,"moves":["tackle","sweetkiss"]}
