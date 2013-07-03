@@ -1,5 +1,5 @@
 exports.BattleStatuses = {
-  brn: {
+	brn: {
 		effectType: 'Status',
 		onStart: function(target) {
 			this.add('-status', target, 'brn');
