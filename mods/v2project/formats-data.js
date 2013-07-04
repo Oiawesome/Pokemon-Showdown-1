@@ -66,5 +66,17 @@ exports.BattleFormatsData = {
 	sylveon: {
                 inherit: true,
                 tier: "OU"
-        }
+        },
+	nihoneon: {
+                inherit: true,
+                tier: "OU"
+        },
+        utsukaikoutou: {
+                inherit: true,
+                tier: "RU"
+        },
+        utsukaishadou: {
+                inherit: true,
+                tier: "Illegal"
+        },
 };
