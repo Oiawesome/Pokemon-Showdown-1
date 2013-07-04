@@ -63,6 +63,6 @@ gliscor:{num:472,species:"Gliscor",types:["Ground","Flying"],baseStats:{hp:105,a
 victini:{num:494,species:"Victini",types:["Fairy","Fire"],gender:"N",baseStats:{hp:100,atk:100,def:100,spa:100,spd:100,spe:100},abilities:{0:"Victory Star"},heightm:0.4,weightkg:4,color:"Yellow",eggGroups:["No Eggs"]},
 celebi:{num:251,species:"Celebi",types:["Fairy","Grass"],gender:"N",baseStats:{hp:100,atk:100,def:100,spa:100,spd:100,spe:100},abilities:{0:"Natural Cure"},heightm:0.6,weightkg:5,color:"Green",eggGroups:["No Eggs"]},
 utsukaikoutou:{num:5005,species:"Utsukai-Koutou",baseForme:"Koutou",types:["Fairy","Flying"],baseStats:{hp:90,atk:60,def:85,spa:100,spd:70,spe:100},abilities:{0:"Magic Guard",DW:"Rising Wind"},heightm:0.8,weightkg:24.5,color:"White",eggGroups:["No Eggs"],otherFormes:["utsukaishadou"]},
-utsukaishadou:{num:505,species:"Utsukai-Shadou",baseSpecies:"Utsukai-Koutou",forme:"Shadou",formeLetter:"S",types:["Fairy","Dark"],baseStats:{{hp:70,atk:100,def:70,spa:100,spd:70,spe:100},abilities:{0:"Magic Guard",DW:"Cleansing"},heightm:0.8,weightkg:24.5,color:"White",eggGroups:["No Eggs"]},
+utsukaishadou:{num:5005,species:"Utsukai-Shadou",baseSpecies:"Utsukai-Koutou",forme:"Shadou",formeLetter:"S",types:["Fairy","Dark"],baseStats:{{hp:70,atk:100,def:70,spa:100,spd:70,spe:100},abilities:{0:"Magic Guard",DW:"Cleansing"},heightm:0.8,weightkg:24.5,color:"White",eggGroups:["No Eggs"]},
 };
 
