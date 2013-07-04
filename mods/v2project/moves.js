@@ -216,4 +216,39 @@
 		target: "all",
 		type: "Normal"
 	},
+	"solarrelease": {
+    		num: 547,
+    		accuracy: 100,
+    		basePower: 100,
+    		category: "Special",
+    		desc: "Deals damage to all adjacent foes with a 10% chance to  burn them. If this move is successful on at least one foe and the user is a Shiku, it changes to the Shadou Forme if it is currently in Koutou Forme, or changes to Shadou Forme if it is currently in Koutou Forme. The Shadou Forme reverts to Koutou Forme when Shiku is not active. Pokemon with the Ability Soundproof are immune.",
+    		shortDesc: "10% chance to burn foe(s). Utsukai transforms.",
+    		id: "solarrelease",
+    		isViable: true,
+    		name: "Solar Release",
+    		pp: 10,
+    		priority: 0,
+    		secondary: {
+      			chance: 10,
+      			status: 'brn'
+    		},
+    		onHit: function(target, pokemon) {
+      			if (pokemon.baseTemplate.species === 'Utsukai-Koutou' && !pokemon.transformed) {
+        			pokemon.addVolatile('solarrelease');
+      			}
+    		},
+    		effect: {
+      			duration: 1,
+      			onAfterMoveSecondarySelf: function(pokemon, target, move) {
+        			if (pokemon.template.speciesid === 'utsukaishadou' && pokemon.formeChange('Utsukai-Koutou')) {
+          				this.add('-formechange', pokemon, 'Utsukai-Koutou');
+        			} else if (pokemon.formeChange('Utsukai-Koutou')) {
+          				this.add('-formechange', pokemon, 'Utsukai-Shoudou');
+        			}
+        			pokemon.removeVolatile('solarrelease');
+      			}
+    		},
+    		target: "allAdjacentFoes",
+    		type: "Fairy"
+  	} 
 };  
