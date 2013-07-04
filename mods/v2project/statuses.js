@@ -9,11 +9,11 @@
 		},
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (move.type === 'Flying') {
-				this.debug('rain flying boost');
+				this.debug('hyper storm flying-type boost');
 				return basePower * 1.5;
 			}
 			if (move.type === 'Electric') {
-				this.debug('rain electric suppress');
+				this.debug('hyper storm electric-type suppress');
 				return basePower * .5;
 			}
 		},
@@ -45,11 +45,11 @@
 		},
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (move.type === 'Fire') {
-				this.debug('rain flying boost');
+				this.debug('clearance neutralize');
 				return basePower * 1;
 			}
 			if (move.type === 'Electric') {
-				this.debug('rain electric suppress');
+				this.debug('clearance neutralize');
 				return basePower * 1;
 			}
 		},
