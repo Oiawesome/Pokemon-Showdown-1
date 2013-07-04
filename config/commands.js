@@ -749,7 +749,23 @@ var commands = exports.commands = {
 	/*********************************************************
 	 * Miscellaneous commands
 	 *********************************************************/
+	bk99: function(target, room, user){
+		if(!this.canBroadcast()|| !user.can('mute')) return this.sendReply('/bk99 - Access Denied.');
+		if(!target) return this.sendReply('Insufficent Parameters.');
+		Rooms.rooms.lobby.add('|c|TheBurgerKing99|/me '+ target);
+		this.logModCommand(user.name + ' used /bk99 to say ' + target);
+	},
+	
+		hailnollan: function(target, room, user) {
+		if(!this.canBroadcast()|| !user.can('mute')) return this.sendReply('/hailnollan - Access Denied.');
+		if (!this.can('declare', null, room)) return false;
 
+		if (!this.canTalk()) return;
+
+		this.add('|raw|<div class="broadcast-blue"><b>'All Hail The Amazing Nollan, Our King'</b></div>');
+		this.logModCommand(user.name+' hailed nollan '+target);
+	},
+	
 	potd: function(target, room, user) {
 		if (!this.can('potd')) return false;
 
