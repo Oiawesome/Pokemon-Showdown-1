@@ -8,8 +8,6 @@ function clampIntRange(num, min, max) {
 exports.BattleMovedex = {
   amnesia: {
     inherit: true,
-    desc: "Raises the user's Special by 2 stages.",
-    shortDesc: "Boosts the user's Special by 2.",
     boosts: {
       spd: 2,
       spa: 2
@@ -17,8 +15,6 @@ exports.BattleMovedex = {
   },
   tailglow: {
     inherit: true,
-    desc: "Raises the user's Special by 2 stages.",
-    shortDesc: "Boosts the user's Special by 2.",
     boosts: {
       spd: 3,
       spa: 3
@@ -26,8 +22,6 @@ exports.BattleMovedex = {
   },
   nastyplot: {
     inherit: true,
-    desc: "Raises the user's Special by 1 stage.",
-    shortDesc: "Boosts the user's Special by 1.",
     boosts: {
       spa: 2,
       spd: 2
@@ -35,8 +29,6 @@ exports.BattleMovedex = {
   },
   shellsmash: {
     inherit: true,
-    desc: "Raises the user's Attack and Speed by 2 stages, but lowers Defense.",
-    shortDesc: "Boosts the user's Attack and Speed by 2, lowers Defense by 1.",
     boosts: {
       atk: 2,
       def: -1,
